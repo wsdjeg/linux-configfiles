@@ -44,11 +44,7 @@ set listchars=tab:>\ ,trail:·
 set number
 
 " colorscheme
-if has('gui')
-	colorscheme rdark
-else
-	colorscheme default
-endif
+colorscheme desert
 
 " font
 if has('win32')
