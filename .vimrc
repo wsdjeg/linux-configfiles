@@ -38,7 +38,7 @@ set directory=~/.vim/temp
 " display
 " show "invisible" characters
 set list
-set listchars=tab:>\ ,trail:·
+set listchars=tab:>\ ,trail:+
 
 " turn on line numbers
 set number
