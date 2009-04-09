@@ -61,6 +61,8 @@ set showmode
 set noerrorbells
 set novisualbell
 set wildmenu
+set hlsearch
+set incsearch
 
 " maps
 " normal mode maps
@@ -77,3 +79,4 @@ map <A-y> "+y
 " switch buffers
 map <tab> :bn<cr>
 map <S-tab> :bp<cr>
+
