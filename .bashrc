@@ -1,3 +1,7 @@
-alias l="ls -AlF"
+alias ls='ls --color=auto'
+alias l='ls -AlF'
 
-PS1="\h:\u \W \$ "
+PATH=$PATH:/home/tom/bin
+export PATH
+
+PS1='\u:\h \W \$ '
