@@ -44,7 +44,7 @@
 	set number
 
 	" colorscheme
-	colorscheme desert
+	colorscheme slate
 
 	" messages and info
 	set showcmd
