@@ -5,6 +5,9 @@
 
 	" run in nocompatible, giving us more options
 	set nocompatible
+	if has('win32')
+		let &runtimepath = substitute(&runtimepath, '\(\~\|'.$USER.'\)/vimfiles\>', '\1/.vim', 'g')
+	endif
 
 	" make movement keys wrap to the next/previous line
 	set whichwrap=b,s,h,l,<,>,[,]
