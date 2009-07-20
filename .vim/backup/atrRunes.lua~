@@ -1,0 +1,162 @@
+local atrRunes = CreateFrame("Frame", nil, UIParent)
+_G["atrRunes"] = atrRunes
+
+atrRunes.lastUpdate = 0
+atrRunes.updateRate = 1
+
+atrRunes.defaultDB = {
+    ["readyCharacter"] = "*",
+    ["delimiter"] = " ",
+    ["font"] = "Fonts\\FRIZQT__.TTF",
+    ["fontSize"] = 16,
+    ["fontFlags"] = "OUTLINE",
+    ["colors"] = {
+        {1, 0, 0},
+        {0, 0.7, 0},
+        {0, 1, 1},
+        {0.8, 0.1, 1},
+    },
+    ["anchor"] = "CENTER",
+    ["x"] = 0,
+    ["y"] = -200,
+    ["movable"] = false,
+    ["hideOOC"] = false,
+}
+local dDB = atrRunes.defaultDB
+
+atrRunes:SetWidth(100)
+atrRunes:SetHeight(100)
+atrRunes:SetFrameStrata("HIGH")
+
+-- Display text
+atrRunes.text = atrRunes:CreateFontString(nil, 'OVERLAY')
+local t = atrRunes.text
+t:SetPoint("CENTER", 0, 0)
+t:SetJustifyH("CENTER")
+t:SetShadowOffset(1, -1)
+
+-- Functions
+function atrRunes:ColoredText(text, color)
+    local r, g, b = unpack(color)
+    
+	return string.format("|cff%02x%02x%02x%s|r", r*255, g*255, b*255, text)
+end
+
+function atrRunes:UpdateVisible()
+    if(InCombatLockdown()) then
+        atrRunes:Show()
+    else
+        if(atrRunesDB.hideOOC) then
+            atrRunes:Hide()
+        else
+            atrRunes:Show()
+        end
+    end
+end
+
+function atrRunes:UpdateMoveable()
+    atrRunes:SetMovable(atrRunesDB.movable)
+    atrRunes:EnableMouse(atrRunesDB.movable)
+end
+
+function atrRunes:UpdatePosition()
+    atrRunes:SetPoint(atrRunesDB.anchor, atrRunesDB.x, atrRunesDB.y)
+end
+
+function atrRunes:UpdateFont()
+    atrRunes.text:SetFont(atrRunesDB.font, atrRunesDB.fontSize, atrRunesDB.fontFlags)
+end
+
+function atrRunes:UpdateText()
+    local t = ""
+    
+    for i=1, 6 do
+        local start, duration, ready, c = GetRuneCooldown(i)
+        
+        local timeLeft = math.floor(duration-GetTime()-start)
+        if(timeLeft == 10) then timeLeft = " " end
+        c = ready and atrRunesDB.readyCharacter or timeLeft
+        c = c..atrRunesDB.delimiter
+        
+        t = t..atrRunes:ColoredText(c, atrRunesDB.colors[GetRuneType(i)])
+    end
+    
+    atrRunes.text:SetText(t)
+end
+
+-- Register & handle events
+atrRunes:SetScript("OnUpdate", function()
+    local now = GetTime()
+    
+    if(now-atrRunes.lastUpdate >= atrRunes.updateRate) then
+        atrRunes.lastUpdate = now
+        atrRunes:UpdateText()
+    end
+end)
+
+atrRunes:SetScript("OnEvent", function(self, e) if(atrRunes[e]) then atrRunes[e]() end end)
+
+atrRunes:RegisterEvent("ADDON_LOADED")
+function atrRunes:ADDON_LOADED()
+    if(arg1 == "atrRunes") then
+        local localizedClass, englishClass = UnitClass("player")
+        if(englishClass ~= "DEATHKNIGHT") then
+            atrRunes:Hide()
+        end
+    end
+end
+
+atrRunes:RegisterEvent("VARIABLES_LOADED")
+function atrRunes:VARIABLES_LOADED()
+    if(not atrRunesDB) then
+        atrRunesDB = {}
+    end
+    
+    for i, v in pairs(atrRunes.defaultDB) do
+        if(not atrRunesDB[i]) then
+            atrRunesDB[i] = v
+        end
+    end
+end
+
+atrRunes:RegisterEvent("PLAYER_ENTERING_WORLD")
+function atrRunes:PLAYER_ENTERING_WORLD()
+    RuneFrame:Hide()
+    
+    atrRunes:UpdateMoveable()
+    atrRunes:UpdatePosition()
+    atrRunes:UpdateFont()
+    atrRunes:UpdateText()
+    atrRunes:UpdateVisible()
+end
+
+atrRunes:RegisterEvent("RUNE_POWER_UPDATE")
+function atrRunes:RUNE_POWER_UPDATE()
+    atrRunes:UpdateText()
+end
+
+atrRunes:RegisterEvent("RUNE_TYPE_UPDATE")
+function atrRunes:RUNE_TYPE_UPDATE()
+    atrRunes:UpdateText()
+end
+
+atrRunes:RegisterEvent("PLAYER_REGEN_ENABLED")
+function atrRunes:PLAYER_REGEN_ENABLED()
+    atrRunes:UpdateVisible()
+end
+
+atrRunes:RegisterEvent("PLAYER_REGEN_DISABLED")
+function atrRunes:PLAYER_REGEN_DISABLED()
+    atrRunes:Show()
+end
+
+-- Dragging functionality
+atrRunes:SetScript("OnMouseDown",function()
+  atrRunes:StartMoving()
+end)
+atrRunes:SetScript("OnMouseUp",function()
+  atrRunes:StopMovingOrSizing()
+  local _, _, _, x, y = atrRunes:GetPoint()
+  atrRunesDB.x = x
+  atrRunesDB.y = y  
+end)

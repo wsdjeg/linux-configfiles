@@ -1,0 +1,15 @@
+# set keyboard layout options
+xmodmap ~/.xmodmap
+
+# set a background image
+feh --bg-scale /home/tom/Pictures/wallpapers/sky_clouds.jpg &
+
+# set the date and time on the X root window
+while true
+do
+	xsetroot -name "$(date +"%F %R")"
+	sleep 1m
+done &
+
+# finally start the wm
+exec awesome
