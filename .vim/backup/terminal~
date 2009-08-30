@@ -1,1 +1,0 @@
-urxvt +sb -tr -sh 15 -bg black -fg white -fn "xft:Terminus:size=10"

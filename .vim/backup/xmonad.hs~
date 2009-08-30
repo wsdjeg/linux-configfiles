@@ -1,8 +1,0 @@
-import XMonad
-
-main = xmonad $ defaultConfig {
-	borderWidth = 2,
-	terminal = "terminal"
-	normalBorderColor = "#cccccc"
-	focusedBorderColor = "#336699"
-}

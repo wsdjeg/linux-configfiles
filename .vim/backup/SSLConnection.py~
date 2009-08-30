@@ -1,8 +1,0 @@
-import ssl
-from Connection import Connection
-
-class SSLConnection(Connection):
-    def __init(self, host, port):
-        Connection.__init__(self, host, port)
-
-        self.socket = ssl.wrap_socket(self.socket)
