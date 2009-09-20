@@ -7,4 +7,4 @@ PATH=$PATH:/home/tom/bin
 export EDITOR
 export PATH
 
-PS1='\u:\h \W \$ '
+PS1='\h:\u \W \$ '
