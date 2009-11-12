@@ -1,9 +1,13 @@
 alias ls='ls --color=auto'
 alias l='ls -AlF'
 
-export EDITOR='vim'
-export SVN_EDITOR=EDITOR
-export PATH=$PATH:/home/tom/bin
+EDITOR='vim'
+SVN_EDITOR=EDITOR
+PATH=$PATH:/home/tom/bin
+
+export EDITOR
+export SVN_EDITOR
+export PATH
 
 PS1='\$ '
 
