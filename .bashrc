@@ -1,5 +1,6 @@
 alias ls='ls --color=auto'
 alias l='ls -AlF'
+alias ll='ls -lF'
 
 EDITOR='vim'
 SVN_EDITOR=EDITOR
