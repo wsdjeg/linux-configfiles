@@ -68,7 +68,7 @@
 		elseif has('macunix')
 			set guifont=Andale\ Mono:h14
 		else
-			set guifont=Monospace:h9
+			set guifont=DejaVu\ Sans\ Mono\ 14
 		endif
 
 
