@@ -25,10 +25,7 @@
 	set smartindent
 	set smarttab
 	set tabstop=2
-	set softtabstop=2
 	set shiftwidth=2
-	" do not use spaces!
-	set noexpandtab
 
 	" backups
 	set writebackup
@@ -68,7 +65,8 @@
 		elseif has('macunix')
 			set guifont=Andale\ Mono:h14
 		else
-			set guifont=DejaVu\ Sans\ Mono\ 14
+			"set guifont=DejaVu\ Sans\ Mono\ 14
+			set guifont=Terminus\ 8
 		endif
 
 
