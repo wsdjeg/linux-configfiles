@@ -1,6 +1,6 @@
 alias ls='ls --color=auto'
-alias l='ls -AlF'
-alias ll='ls -lF'
+alias ll='ls -lFGh'
+alias l='ll -A'
 
 EDITOR='vim'
 SVN_EDITOR=EDITOR
@@ -10,5 +10,5 @@ export EDITOR
 export SVN_EDITOR
 export PATH
 
-PS1='\$ '
+PS1='\n\h:\u \w\n\$ '
 
