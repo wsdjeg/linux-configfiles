@@ -60,7 +60,7 @@
 
 	" gui
 		" gui options
-		set guioptions=crb
+		set guioptions=
 
 		" font
 		if has('win32')
