@@ -40,6 +40,9 @@
 	set list
 	set listchars=tab:>\ ,trail:+
 
+	" don't show chars on split and fold lines
+	set fillchars=vert:\ ,fold:\ 
+
 	" turn on line numbers
 	set number
 
