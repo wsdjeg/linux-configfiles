@@ -46,9 +46,6 @@
 	" turn on line numbers
 	set number
 
-	" colorscheme
-	colorscheme slate
-
 	" messages and info
 	set showcmd
 	set showmode
@@ -82,14 +79,14 @@
 " maps
 	" normal mode maps
 		" ease of use / typos
-		map :Q :q
-		map :W :w
-		map :E :e
+		map :Q      :q
+		map :W      :w
+		map :E      :e
 
 		" OS register copy pasting
-		map <A-d> "+d
-		map <A-p> "+p
-		map <A-y> "+y
+		map <A-d>   "+d
+		map <A-p>   "+p
+		map <A-y>   "+y
 
 		" mouse selection register copy pasting
 		map <A-S-d> "*d
@@ -97,6 +94,12 @@
 		map <A-S-y> "*y
 
 		" switch buffers
-		map <tab> :bn<cr>
+		map <tab>   :bn<cr>
 		map <S-tab> :bp<cr>
+
+		" NERDTree
+		map <C-t>   :NERDTreeToggle<cr>
+
+		" improved buffer delete
+		map :bd     :Bd
 
