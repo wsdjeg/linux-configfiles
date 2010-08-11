@@ -59,8 +59,11 @@
 	set incsearch
 
 	" gui
+	if has('gui_running')
 		" gui options
 		set guioptions=
+
+		colorscheme fruidle
 
 		" font
 		if has('win32')
@@ -72,6 +75,9 @@
 			set guifont=Terminus\ 8
 		endif
 
+	else
+		colorscheme slate
+	endif
 
 " maps
 	" normal mode maps
