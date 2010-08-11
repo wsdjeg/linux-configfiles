@@ -91,6 +91,11 @@
 		map <A-p> "+p
 		map <A-y> "+y
 
+		" mouse selection register copy pasting
+		map <A-S-d> "*d
+		map <A-S-p> "*p
+		map <A-S-y> "*y
+
 		" switch buffers
 		map <tab> :bn<cr>
 		map <S-tab> :bp<cr>
