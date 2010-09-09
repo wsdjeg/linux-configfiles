@@ -1,10 +1,15 @@
 " functionality
+  " load bundles
+  call pathogen#runtime_append_all_bundles()
+
   " load filetype plugins, indentation and turn syntax highlighting on
   filetype plugin indent on
   syntax on
 
   " run in nocompatible, giving us more options
   set nocompatible
+
+  " on windows ensure we load from ~/.vim
   if has('win32')
     let &runtimepath = substitute(&runtimepath, '\(\~\|'.$USER.'\)/vimfiles\>', '\1/.vim', 'g')
   endif
@@ -56,12 +61,13 @@
   set hlsearch
   set incsearch
 
+  " colorscheme
+  colorscheme paintbox
+
   " gui
   if has('gui_running')
     " gui options
     set guioptions=
-
-    colorscheme gentooish
 
     " font
     if has('win32')
@@ -74,8 +80,6 @@
       "set guifont=Terminus\ 8
       set guifont=ProFont\ 8
     endif
-  else
-    colorscheme slate
   endif
 
 " plugins
@@ -115,4 +119,10 @@
 
     " improved buffer delete
     map :bd        :Bd
+
+    " F keys for quick access to 'stuff'
+    map <f1>       :FufBuffer<cr>
+    map <f5>       :!ruby -w %<cr>
+    map <f11>      :colo pyte<cr>
+    map <f12>      :colo paintbox<cr>
 
