@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/matchit"]
 	path = .vim/bundle/matchit
 	url = http://github.com/vim-scripts/matchit.zip.git
+[submodule ".vim/bundle/minibufexpl"]
+	path = .vim/bundle/minibufexpl
+	url = http://github.com/vim-scripts/minibufexpl.vim.git

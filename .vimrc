@@ -6,6 +6,7 @@
 
   " load bundles
   call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
 
   " load filetype plugins, indentation and turn syntax highlighting on
   filetype plugin indent on
@@ -61,13 +62,13 @@
   set hlsearch
   set incsearch
 
-  " colorscheme
-  colorscheme industrial
-
   " gui
   if has('gui_running')
     " gui options
     set guioptions=
+
+    " colorscheme
+    colorscheme industrial
 
     " font
     if has('win32')
@@ -80,6 +81,9 @@
       "set guifont=Terminus\ 8
       set guifont=ProFont\ 10
     endif
+    else
+    " colorscheme
+    colorscheme slate
   endif
 
 " plugins
