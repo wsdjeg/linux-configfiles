@@ -62,7 +62,7 @@
   set incsearch
 
   " colorscheme
-  colorscheme paintbox
+  colorscheme industrial
 
   " gui
   if has('gui_running')
@@ -71,7 +71,7 @@
 
     " font
     if has('win32')
-      set guifont=Sheldon_Narrow:h9
+      set guifont=ProFontWindows:h8
     elseif has('macunix')
       set guifont=Andale\ Mono:h14
     else
