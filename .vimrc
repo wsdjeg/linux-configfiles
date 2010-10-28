@@ -81,7 +81,7 @@
       "set guifont=Terminus\ 8
       set guifont=ProFont\ 10
     endif
-    else
+  else
     " colorscheme
     colorscheme slate
   endif
