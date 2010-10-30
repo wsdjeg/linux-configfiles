@@ -122,11 +122,9 @@
     map <leader>sy :syntax sync fromstart<cr>
 
     " improved buffer delete
-    map :bd        :Bd
+    map :bd        :SmartBd
 
     " F keys for quick access to 'stuff'
-    map <f1>       :FufBuffer<cr>
-    map <f5>       :!ruby -w %<cr>
     map <f11>      :colo pyte<cr>
-    map <f12>      :colo paintbox<cr>
+    map <f12>      :colo industrial<cr>
 
