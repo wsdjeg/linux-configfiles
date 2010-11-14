@@ -9,4 +9,4 @@
 	url = http://github.com/vim-scripts/minibufexpl.vim.git
 [submodule ".vim/bundle/smartbd"]
 	path = .vim/bundle/smartbd
-	url = http://github.com/vim-scripts/smartbd.git
+	url = git://github.com/Industrial/vim-smartbd.git
