@@ -6,7 +6,7 @@ EDITOR='vim'
 
 SVN_EDITOR=EDITOR
 
-PATH=$PATH:/home/tom/.bin
+PATH=/home/tom/.bin:$PATH
 
 
 export EDITOR
