@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/smartbd"]
 	path = .vim/bundle/smartbd
 	url = git://github.com/Industrial/vim-smartbd.git
+[submodule "SuperTab"]
+	path = SuperTab
+	url = git://github.com/vim-scripts/SuperTab.git
