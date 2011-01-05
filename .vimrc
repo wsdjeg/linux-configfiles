@@ -74,7 +74,7 @@
     if has('win32')
       set guifont=ProFontWindows:h8
     elseif has('macunix')
-      set guifont=Andale\ Mono:h14
+      set guifont=Monaco:h9
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
