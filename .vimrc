@@ -68,7 +68,7 @@
     set guioptions=
 
     " colorscheme
-    colorscheme industrial
+    colorscheme molokai
 
     " font
     if has('win32')
