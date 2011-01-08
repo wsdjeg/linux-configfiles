@@ -92,6 +92,10 @@
   let Tlist_Use_Right_Window = 1
 
 " maps
+  " make the alt key behave as alt on osx
+  if has('macunix')
+    set macmeta
+  endif
   " normal mode maps
     " ease of use / typos
     map :Q         :q
