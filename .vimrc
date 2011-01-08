@@ -27,8 +27,8 @@
 
   " indentation
   set autoindent
-  set tabstop=2
-  set shiftwidth=2
+  set tabstop=4
+  set shiftwidth=4
   set expandtab
 
   " backups
@@ -42,7 +42,7 @@
 " display
   " show "invisible" characters
   set list
-  set listchars=tab:>\ 
+  set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
