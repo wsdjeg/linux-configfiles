@@ -83,7 +83,7 @@
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
       "set guifont=Terminus\ 8
-      set guifont=ProFont\ 10
+      set guifont=Inconsolata\ Medium\ 14
     endif
   else
     " colorscheme
