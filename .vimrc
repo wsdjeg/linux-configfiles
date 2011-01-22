@@ -102,6 +102,8 @@
   endif
 
   " normal mode maps
+    " quick insert of newline
+    nmap <cr> o<esc>
 
   " insert mode maps
     " remap escape to ;;
