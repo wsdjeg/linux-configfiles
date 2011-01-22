@@ -5,8 +5,8 @@ alias l='ll -A'
 PS1='\n\h:\u \w\n\$ '
 
 EDITOR='vim'
-SVN_EDITOR=EDITOR
-GIT_EDITOR=EDITOR
+SVN_EDITOR=$EDITOR
+GIT_EDITOR=$EDITOR
 
 PATH=/home/tom/.bin:$PATH
 
