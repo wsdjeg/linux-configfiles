@@ -111,41 +111,43 @@
 
   " all mode maps
     " ease of use / typos
-    map :Q         :q
-    map :W         :w
-    map :E         :e
+    map :Q :q
+    map :W :w
+    map :E :e
 
     " OS register copy pasting
-    map <A-d>      "+d
-    map <A-p>      "+p
-    map <A-y>      "+y
+    map <leader>d "+d
+    map <leader>p "+p
+    map <leader>y "+y
+    map <leader>Y "+yy
 
     " mouse selection register copy pasting
-    map <A-S-d>    "*d
-    map <A-S-p>    "*p
-    map <A-S-y>    "*y
+    map <leader>dd "*d
+    map <leader>pp "*p
+    map <leader>yy "*y
+    map <leader>YY "*y
 
     " switch buffers
-    map <tab>      :bn<cr>
-    map <S-tab>    :bp<cr>
+    map <tab> :bn<cr>
+    map <S-tab> :bp<cr>
 
     " open and reload .vimrc
     map <leader>v :split ~/.vimrc<cr><c-w>_
     map <leader>V :source ~/.vimrc<cr>:filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
-    map <leader>[  :NERDTreeToggle<cr>
+    map <leader>[ :NERDTreeToggle<cr>
 
     " taglist
-    map <leader>]  :TlistToggle<cr>
+    map <leader>] :TlistToggle<cr>
 
     " resync syntax
     map <leader>sy :syntax sync fromstart<cr>
 
     " improved buffer delete
-    map :bd        :SmartBd
+    map :bd :SmartBd
 
     " F keys for quick access to 'stuff'
-    map <f11>      :colo pyte<cr>
-    map <f12>      :colo industrial<cr>
+    map <f11> :colo pyte<cr>
+    map <f12> :colo industrial<cr>
 
