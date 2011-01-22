@@ -53,6 +53,9 @@
   " turn on a fold column of 1
   set foldcolumn=1
 
+  " mapping settings
+  let mapleader=','
+
   " messages and info
   set showcmd
   set showmode
@@ -112,9 +115,16 @@
     map <A-S-p>    "*p
     map <A-S-y>    "*y
 
+    " remap escape to ;;
+    inoremap jj <esc>
+
     " switch buffers
     map <tab>      :bn<cr>
     map <S-tab>    :bp<cr>
+
+    " open and reload .vimrc
+    map <leader>v :split ~/.vimrc<cr><c-w>_
+    map <leader>V :source ~/.vimrc<cr>:filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
     map <leader>[  :NERDTreeToggle<cr>
