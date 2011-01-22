@@ -100,7 +100,14 @@
   if has('macunix')
     set macmeta
   endif
+
   " normal mode maps
+
+  " insert mode maps
+    " remap escape to ;;
+    inoremap jj <esc>
+
+  " all mode maps
     " ease of use / typos
     map :Q         :q
     map :W         :w
@@ -115,9 +122,6 @@
     map <A-S-d>    "*d
     map <A-S-p>    "*p
     map <A-S-y>    "*y
-
-    " remap escape to ;;
-    inoremap jj <esc>
 
     " switch buffers
     map <tab>      :bn<cr>
