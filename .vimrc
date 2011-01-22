@@ -27,8 +27,8 @@
 
   " indentation
   set autoindent
-  set tabstop=2
-  set shiftwidth=2
+  set tabstop=4
+  set shiftwidth=4
   set expandtab
 
   " backups
@@ -42,7 +42,7 @@
 " display
   " show "invisible" characters
   set list
-  set listchars=tab:>\ 
+  set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -68,13 +68,13 @@
     set guioptions=
 
     " colorscheme
-    colorscheme industrial
+    colorscheme molokai
 
     " font
     if has('win32')
       set guifont=ProFontWindows:h8
     elseif has('macunix')
-      set guifont=Andale\ Mono:h14
+      set guifont=Monaco:h9
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
@@ -92,6 +92,10 @@
   let Tlist_Use_Right_Window = 1
 
 " maps
+  " make the alt key behave as alt on osx
+  if has('macunix')
+    set macmeta
+  endif
   " normal mode maps
     " ease of use / typos
     map :Q         :q

@@ -8,7 +8,7 @@ EDITOR='vim'
 SVN_EDITOR=$EDITOR
 GIT_EDITOR=$EDITOR
 
-PATH=/home/tom/.bin:$PATH
+PATH=~/.bin:$PATH
 
 
 export EDITOR
