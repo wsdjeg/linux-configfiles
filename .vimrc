@@ -62,6 +62,7 @@
   set noerrorbells
   set novisualbell
   set wildmenu
+  set wildmode=list:longest
   set hlsearch
   set incsearch
 
