@@ -40,6 +40,9 @@
   set directory=~/.vim/temp
 
 " display
+  " don't highlight matching parens
+  "NoMatchParen
+
   " show "invisible" characters
   set list
   set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
@@ -78,7 +81,9 @@
     if has('win32')
       set guifont=ProFontWindows:h8
     elseif has('macunix')
-      set guifont=Monaco:h9
+      "set guifont=Andale\ Mono:h14
+      "set guifont=Monaco:h9
+      set guifont=Inconsolata:h14
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
@@ -92,7 +97,7 @@
 
 " plugins
   " taglist
-  let Tlist_Auto_Open = 1
+  "let Tlist_Auto_Open = 1
   let Tlist_Use_Right_Window = 1
 
 " maps
