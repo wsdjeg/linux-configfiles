@@ -12,6 +12,9 @@
   filetype plugin indent on
   syntax on
 
+  " .ctp files (cakephp templates) should be sourced as php
+  autocmd BufEnter *.ctp set syn=php
+
   " run in nocompatible, giving us more options
   set nocompatible
 
@@ -75,14 +78,15 @@
     set guioptions=
 
     " colorscheme
-    colorscheme molokai
+    colorscheme pyte
 
     " font
     if has('win32')
       set guifont=ProFontWindows:h8
     elseif has('macunix')
       "set guifont=Andale\ Mono:h14
-      "set guifont=Monaco:h9
+      "set guifont=Menlo:h18
+      "set guifont=ProggyTiny:h11
       set guifont=Inconsolata:h14
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
@@ -129,7 +133,7 @@
     map <S-tab>    :bp<cr>
 
     " open and reload .vimrc
-    map <leader>v :split ~/.vimrc<cr><c-w>_
+    map <leader>v :vsplit ~/.vimrc<cr>
     map <leader>V :source ~/.vimrc<cr>:filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
