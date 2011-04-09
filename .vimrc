@@ -12,8 +12,12 @@
   filetype plugin indent on
   syntax on
 
-  " .ctp files (cakephp templates) should be sourced as php
-  autocmd BufEnter *.ctp set syn=php
+  " autocommands
+  if !exists('autocommands_loaded')
+    let autocommands_loaded = 1
+    " .ctp files (cakephp templates) should be sourced as php
+    autocmd BufEnter *.ctp set ft=php
+  endif
 
   " run in nocompatible, giving us more options
   set nocompatible
@@ -75,10 +79,10 @@
   " gui
   if has('gui_running')
     " gui options
-    set guioptions=
+    set guioptions=c
 
     " colorscheme
-    colorscheme pyte
+    colorscheme molokai
 
     " font
     if has('win32')
@@ -86,8 +90,8 @@
     elseif has('macunix')
       "set guifont=Andale\ Mono:h14
       "set guifont=Menlo:h18
-      "set guifont=ProggyTiny:h11
-      set guifont=Inconsolata:h14
+      set guifont=ProggyTiny:h11
+      "set guifont=Inconsolata:h14
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
@@ -125,16 +129,13 @@
     map <A-S-p>    "*p
     map <A-S-y>    "*y
 
-    " remap escape to ;;
-    inoremap jj <esc>
-
     " switch buffers
     map <tab>      :bn<cr>
     map <S-tab>    :bp<cr>
 
     " open and reload .vimrc
     map <leader>v :vsplit ~/.vimrc<cr>
-    map <leader>V :source ~/.vimrc<cr>:filetype detect<cr>:echo 'reloaded .vimrc'<cr>
+    map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
     map <leader>[  :NERDTreeToggle<cr>
@@ -151,4 +152,8 @@
     " F keys for quick access to 'stuff'
     map <f11>      :colo pyte<cr>
     map <f12>      :colo industrial<cr>
+
+  " insert mode maps
+    " remap escape to ;;
+    inoremap ;; <esc>
 
