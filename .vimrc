@@ -52,7 +52,7 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
