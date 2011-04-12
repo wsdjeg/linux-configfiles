@@ -4,9 +4,6 @@
 [submodule ".vim/bundle/matchit"]
   path = .vim/bundle/matchit
   url = http://github.com/vim-scripts/matchit.zip.git
-[submodule ".vim/bundle/minibufexpl"]
-  path = .vim/bundle/minibufexpl
-  url = http://github.com/vim-scripts/minibufexpl.vim.git
 [submodule ".vim/bundle/smartbd"]
   path = .vim/bundle/smartbd
   url = git://github.com/Industrial/vim-smartbd.git
@@ -16,3 +13,6 @@
 [submodule ".vim/bundle/nerdtree"]
   path = .vim/bundle/nerdtree
   url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/buftabs"]
+	path = .vim/bundle/buftabs
+	url = https://github.com/vim-scripts/buftabs.git
