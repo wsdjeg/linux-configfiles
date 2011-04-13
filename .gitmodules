@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/minibufexpl"]
 	path = .vim/bundle/minibufexpl
 	url = https://github.com/vim-scripts/minibufexpl.vim.git
+[submodule ".vim/bundle/colorscheme_inkpot"]
+	path = .vim/bundle/colorscheme_inkpot
+	url = https://github.com/ciaranm/inkpot.git
+[submodule ".vim/bundle/colorscheme_github"]
+	path = .vim/bundle/colorscheme_github
+	url = https://github.com/vim-scripts/github-theme.git
