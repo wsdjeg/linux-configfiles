@@ -13,6 +13,3 @@
 [submodule ".vim/bundle/nerdtree"]
   path = .vim/bundle/nerdtree
   url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/buftabs"]
-	path = .vim/bundle/buftabs
-	url = https://github.com/vim-scripts/buftabs.git
