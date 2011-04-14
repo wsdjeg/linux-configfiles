@@ -82,7 +82,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme molokai
+    colorscheme inkpot
 
     " font
     if has('win32')
@@ -95,8 +95,8 @@
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
-      "set guifont=Terminus\ 8
-      set guifont=ProFont\ 10
+      set guifont=Terminus\ 8
+      "set guifont=ProFont\ 10
     endif
   else
     " colorscheme
