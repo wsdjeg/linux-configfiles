@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/colorscheme_github"]
 	path = .vim/bundle/colorscheme_github
 	url = https://github.com/vim-scripts/github-theme.git
+[submodule ".vim/bundle/colorscheme_herald"]
+	path = .vim/bundle/colorscheme_herald
+	url = https://github.com/vim-scripts/herald.vim
