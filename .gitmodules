@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/minibufexpl"]
 	path = .vim/bundle/minibufexpl
 	url = https://github.com/vim-scripts/minibufexpl.vim.git
+[submodule ".vim/bundle/smartbw"]
+	path = .vim/bundle/smartbw
+	url = git://github.com/Industrial/vim-smartbw.git
