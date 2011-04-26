@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/csapprox"]
 	path = .vim/bundle/csapprox
 	url = https://github.com/vim-scripts/CSApprox.git
+[submodule ".vim/bundle/molly"]
+	path = .vim/bundle/molly
+	url = https://github.com/vim-scripts/molly.vim.git
