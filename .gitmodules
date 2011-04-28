@@ -34,6 +34,3 @@
 [submodule ".vim/bundle/molly"]
 	path = .vim/bundle/molly
 	url = https://github.com/vim-scripts/molly.vim.git
-[submodule ".vim/bundle/php_indent"]
-	path = .vim/bundle/php_indent
-	url = https://github.com/2072/PHP-Indenting-for-VIm.git
