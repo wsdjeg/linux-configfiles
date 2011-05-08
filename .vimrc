@@ -98,13 +98,9 @@
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
-<<<<<<< HEAD
-      "set guifont=Terminus\ 8
-      set guifont=Inconsolata\ Medium\ 14
-=======
       set guifont=Terminus\ 8
+      "set guifont=Inconsolata\ Medium\ 14
       "set guifont=ProFont\ 10
->>>>>>> origin
     endif
   else
     " colorscheme
