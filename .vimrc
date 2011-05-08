@@ -136,19 +136,11 @@
     map <leader>d "+d
     map <leader>p "+p
     map <leader>y "+y
-    map <leader>Y "+yy
 
     " mouse selection register copy pasting
-<<<<<<< HEAD
     map <leader>dd "*d
     map <leader>pp "*p
     map <leader>yy "*y
-    map <leader>YY "*y
-=======
-    map <A-S-d>    "*d
-    map <A-S-p>    "*p
-    map <A-S-y>    "*y
->>>>>>> origin
 
     " switch buffers
     map <tab> :bn<cr>
