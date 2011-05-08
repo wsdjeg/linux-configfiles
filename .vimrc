@@ -85,7 +85,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme inkpot
+    colorscheme molokai
 
     " font
     if has('win32')
@@ -108,9 +108,8 @@
   endif
 
 " plugins
-  " taglist
-  "let Tlist_Auto_Open = 1
-  let Tlist_Use_Right_Window = 1
+  " vimpager
+  let vimpager_use_gvim = 1
 
 " maps
   " make the alt key behave as alt on osx
