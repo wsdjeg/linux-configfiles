@@ -12,6 +12,9 @@
   filetype plugin indent on
   syntax on
 
+  " change path do current file directory on buffer change
+  autocmd BufEnter * lcd %:p:h
+
   " run in nocompatible, giving us more options
   set nocompatible
 
