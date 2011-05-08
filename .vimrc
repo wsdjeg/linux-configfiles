@@ -12,8 +12,15 @@
   filetype plugin indent on
   syntax on
 
-  " change path do current file directory on buffer change
-  autocmd BufEnter * lcd %:p:h
+  " autocommands
+  if !exists('autocommands_loaded')
+    let autocommands_loaded = 1
+    " change path do current file directory on buffer change
+    autocmd BufEnter * lcd %:p:h
+
+    " .ctp files (cakephp templates) should be sourced as php
+    autocmd BufEnter *.ctp set ft=php
+  endif
 
   " run in nocompatible, giving us more options
   set nocompatible
@@ -43,9 +50,12 @@
   set directory=~/.vim/temp
 
 " display
+  " don't highlight matching parens
+  "NoMatchParen
+
   " show "invisible" characters
   set list
-  set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -72,21 +82,29 @@
   " gui
   if has('gui_running')
     " gui options
-    set guioptions=
+    set guioptions=c
 
     " colorscheme
-    colorscheme molokai
+    colorscheme inkpot
 
     " font
     if has('win32')
       set guifont=ProFontWindows:h8
     elseif has('macunix')
-      set guifont=Monaco:h9
+      "set guifont=Andale\ Mono:h14
+      "set guifont=Menlo:h18
+      set guifont=ProggyTiny:h11
+      "set guifont=Inconsolata:h14
     else
       "set guifont=DejaVu\ Sans\ Mono\ 14
       "set guifont=Droid\ Sans\ Mono\ 8
+<<<<<<< HEAD
       "set guifont=Terminus\ 8
       set guifont=Inconsolata\ Medium\ 14
+=======
+      set guifont=Terminus\ 8
+      "set guifont=ProFont\ 10
+>>>>>>> origin
     endif
   else
     " colorscheme
@@ -95,7 +113,7 @@
 
 " plugins
   " taglist
-  let Tlist_Auto_Open = 1
+  "let Tlist_Auto_Open = 1
   let Tlist_Use_Right_Window = 1
 
 " maps
@@ -125,18 +143,24 @@
     map <leader>Y "+yy
 
     " mouse selection register copy pasting
+<<<<<<< HEAD
     map <leader>dd "*d
     map <leader>pp "*p
     map <leader>yy "*y
     map <leader>YY "*y
+=======
+    map <A-S-d>    "*d
+    map <A-S-p>    "*p
+    map <A-S-y>    "*y
+>>>>>>> origin
 
     " switch buffers
     map <tab> :bn<cr>
     map <S-tab> :bp<cr>
 
     " open and reload .vimrc
-    map <leader>v :split ~/.vimrc<cr><c-w>_
-    map <leader>V :source ~/.vimrc<cr>:filetype detect<cr>:echo 'reloaded .vimrc'<cr>
+    map <leader>v :vsplit ~/.vimrc<cr>
+    map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
     map <leader>[ :NERDTreeToggle<cr>
@@ -153,4 +177,8 @@
     " F keys for quick access to 'stuff'
     map <f11> :colo pyte<cr>
     map <f12> :colo industrial<cr>
+
+  " insert mode maps
+    " remap escape to ;;
+    inoremap ;; <esc>
 
