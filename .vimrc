@@ -37,9 +37,9 @@
 
   " indentation
   set autoindent
-  set tabstop=4
-  set shiftwidth=4
-  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+  set noexpandtab
 
   " backups
   set writebackup
@@ -85,7 +85,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme molokai
+    colorscheme candycode
 
     " font
     if has('win32')
@@ -152,14 +152,12 @@
     " NERDTree
     map <leader>[ :NERDTreeToggle<cr>
 
-    " taglist
-    map <leader>] :TlistToggle<cr>
-
     " resync syntax
     map <leader>sy :syntax sync fromstart<cr>
 
     " improved buffer delete
-    map :bd :SmartBd
+    map <leader>d :SmartBd<cr>
+    map <leader>c :SmartBw<cr>
 
     " F keys for quick access to 'stuff'
     map <f11> :colo pyte<cr>
