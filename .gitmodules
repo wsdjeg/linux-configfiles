@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/colorscheme_zazen"]
 	path = .vim/bundle/colorscheme_zazen
 	url = https://github.com/vim-scripts/zazen.git
+[submodule ".vim/bundle/rails"]
+	path = .vim/bundle/rails
+	url = https://github.com/tpope/vim-rails.git
