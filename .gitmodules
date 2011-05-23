@@ -40,3 +40,9 @@
 [submodule ".vim/bundle/rails"]
 	path = .vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/vim-scripts/Syntastic.git
+[submodule ".vim/bundle/pairtools"]
+	path = .vim/bundle/pairtools
+	url = https://github.com/vim-scripts/PairTools.git
