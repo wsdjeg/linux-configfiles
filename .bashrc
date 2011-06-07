@@ -1,10 +1,15 @@
-alias ls='ls --color=auto'
-alias ll='ls -lFGh'
-alias l='ll -A'
+alias ls="ls --color=auto"
+alias ll="ls -lFgh"
+alias l="ll -A"
 
-PS1='\n\h:\u \w\n\$ '
+c() {
+  cd "$1";
+  l;
+}
 
-EDITOR='vim'
+PS1="\$ "
+
+EDITOR="vim"
 SVN_EDITOR=$EDITOR
 GIT_EDITOR=$EDITOR
 
