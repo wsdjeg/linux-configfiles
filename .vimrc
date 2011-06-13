@@ -55,7 +55,7 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:Â·\ ,trail:+,extends:Â»,precedes:Â«
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -85,26 +85,19 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme candycode
+    colorscheme molokai
 
     " font
     if has('win32')
-      set guifont=ProFontWindows:h8
+      set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
-      "set guifont=Andale\ Mono:h14
-      "set guifont=Menlo:h18
       set guifont=ProggyTiny:h11
-      "set guifont=Inconsolata:h14
     else
-      "set guifont=DejaVu\ Sans\ Mono\ 14
-      "set guifont=Droid\ Sans\ Mono\ 8
       set guifont=Terminus\ 8
-      "set guifont=Inconsolata\ Medium\ 14
-      "set guifont=ProFont\ 10
     endif
   else
     " colorscheme
-    colorscheme slate
+    colorscheme molokai
   endif
 
 " plugins
