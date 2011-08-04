@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/vim-scripts/Syntastic.git
+[submodule ".vim/bundle/colorscheme_lucius"]
+	path = .vim/bundle/colorscheme_lucius
+	url = https://github.com/vim-scripts/Lucius.git
