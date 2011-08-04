@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/colorscheme_lucius"]
 	path = .vim/bundle/colorscheme_lucius
 	url = https://github.com/vim-scripts/Lucius.git
+[submodule ".vim/bundle/javascript/syntax"]
+	path = .vim/bundle/javascript/syntax
+	url = https://github.com/spencertipping/js-vim-highlighter.git
