@@ -34,9 +34,6 @@
 [submodule ".vim/bundle/rails"]
 	path = .vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/vim-scripts/Syntastic.git
 [submodule ".vim/bundle/colorscheme_lucius"]
 	path = .vim/bundle/colorscheme_lucius
 	url = https://github.com/vim-scripts/Lucius.git
