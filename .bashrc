@@ -9,9 +9,9 @@ c() {
 
 PS1="\$ "
 
-EDITOR="vim"
-SVN_EDITOR=$EDITOR
-GIT_EDITOR=$EDITOR
+export EDITOR="vim"
+export SVN_EDITOR=$EDITOR
+export GIT_EDITOR=$EDITOR
 
 export PAGER=~/.bin/vimpager
 alias less=$PAGER
