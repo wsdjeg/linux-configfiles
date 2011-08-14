@@ -15,11 +15,8 @@
   " autocommands
   if !exists('autocommands_loaded')
     let autocommands_loaded = 1
-    " change path do current file directory on buffer change
-    autocmd BufEnter * lcd %:p:h
-
-    " .ctp files (cakephp templates) should be sourced as php
-    autocmd BufEnter *.ctp set ft=php
+    " .coffee files should be sourced as coffeescript
+    autocmd BufEnter *.coffee set ft=coffee
   endif
 
   " run in nocompatible, giving us more options
@@ -51,7 +48,7 @@
 
 " display
   " don't highlight matching parens
-  "NoMatchParen
+  NoMatchParen
 
   " show "invisible" characters
   set list
@@ -93,11 +90,11 @@
     elseif has('macunix')
       set guifont=ProggyTiny:h11
     else
-      set guifont=Terminus\ 8
+      set guifont=Droid\ Sans\ Mono\ 10
     endif
   else
     " colorscheme
-    colorscheme molokai
+    colorscheme slate
   endif
 
 " plugins
@@ -115,7 +112,7 @@
     nmap <cr> o<esc>
 
   " insert mode maps
-    " remap escape to ;;
+    " remap escape to jj
     inoremap jj <esc>
 
   " all mode maps
@@ -154,9 +151,5 @@
 
     " F keys for quick access to 'stuff'
     map <f11> :colo pyte<cr>
-    map <f12> :colo industrial<cr>
-
-  " insert mode maps
-    " remap escape to ;;
-    inoremap ;; <esc>
+    map <f12> :colo molokai<cr>
 
