@@ -47,8 +47,8 @@
   set directory=~/.vim/temp
 
 " display
-  " don't highlight matching parens
-  NoMatchParen
+  " Don't load the matchparen plugin that's included with vim.
+  let loaded_matchparen = 1
 
   " show "invisible" characters
   set list
