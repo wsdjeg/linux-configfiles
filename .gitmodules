@@ -1,45 +1,33 @@
 [submodule ".vim/bundle/fugitive"]
-  path = .vim/bundle/fugitive
-  url = http://github.com/tpope/vim-fugitive.git
+	path = .vim/bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/matchit"]
-  path = .vim/bundle/matchit
-  url = http://github.com/vim-scripts/matchit.zip.git
+	path = .vim/bundle/matchit
+	url = http://github.com/vim-scripts/matchit.zip.git
 [submodule ".vim/bundle/smartbd"]
-  path = .vim/bundle/smartbd
-  url = git://github.com/Industrial/vim-smartbd.git
-[submodule ".vim/bundle/supertab"]
-  path = .vim/bundle/supertab
-  url = git://github.com/vim-scripts/SuperTab.git
-[submodule ".vim/bundle/nerdtree"]
-  path = .vim/bundle/nerdtree
-  url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/minibufexpl"]
-	path = .vim/bundle/minibufexpl
-	url = https://github.com/vim-scripts/minibufexpl.vim.git
+	path = .vim/bundle/smartbd
+	url = git://github.com/Industrial/vim-smartbd.git
 [submodule ".vim/bundle/smartbw"]
 	path = .vim/bundle/smartbw
 	url = git://github.com/Industrial/vim-smartbw.git
-[submodule ".vim/bundle/colorscheme_inkpot"]
-	path = .vim/bundle/colorscheme_inkpot
-	url = https://github.com/ciaranm/inkpot.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/minibufexpl"]
+	path = .vim/bundle/minibufexpl
+	url = https://github.com/vim-scripts/minibufexpl.vim.git
 [submodule ".vim/bundle/colorscheme_github"]
 	path = .vim/bundle/colorscheme_github
 	url = https://github.com/vim-scripts/github-theme.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/snipmate"]
-	path = .vim/bundle/snipmate
-	url = https://github.com/vim-scripts/snipMate.git
-[submodule ".vim/bundle/autocomplpop"]
-	path = .vim/bundle/autocomplpop
-	url = https://github.com/vim-scripts/AutoComplPop.git
 [submodule ".vim/bundle/colorscheme_zazen"]
 	path = .vim/bundle/colorscheme_zazen
 	url = https://github.com/vim-scripts/zazen.git
-[submodule ".vim/bundle/rails"]
-	path = .vim/bundle/rails
-	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
+	url = https://github.com/vim-scripts/snipMate.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/vim-scripts/Syntastic.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
