@@ -1,4 +1,5 @@
-alias ls="ls --color=auto"
+#alias ls="ls --color=auto"
+export CLICOLOR=1
 alias ll="ls -lFgh"
 alias l="ll -A"
 
