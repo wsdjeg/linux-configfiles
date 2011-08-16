@@ -1,5 +1,5 @@
 #alias ls="ls --color=auto"
-export CLICOLOR=1
+export CLICOLOR=true
 alias ll="ls -lFgh"
 alias l="ll -A"
 
@@ -14,11 +14,13 @@ export EDITOR="vim"
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
 
+export EDITOR
+export SVN_EDITOR
+export GIT_EDITOR
+
 export PAGER=~/.bin/vimpager
 alias less=$PAGER
 
 PATH=~/.bin:$PATH
 export PATH
-
-export NODE_PATH='/usr/local/lib/node'
 

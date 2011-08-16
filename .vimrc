@@ -34,8 +34,8 @@
 
   " indentation
   set autoindent
-  set tabstop=2
-  set shiftwidth=2
+  set tabstop=4
+  set shiftwidth=4
   set noexpandtab
 
   " backups
@@ -52,7 +52,9 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+  "set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+  "set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
+  set listchars=tab:»\ ,trail:·
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -82,7 +84,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme molokai
+    colorscheme lucius
 
     " font
     if has('win32')
@@ -101,6 +103,11 @@
 " plugins
   " vimpager
   let vimpager_use_gvim = 1
+
+  " syntastic
+  let g:syntastic_enable_signs = 1
+  let g:syntastic_auto_jump = 1
+  let g:syntastic_auto_loc_list = 1
 
 " maps
   " make the alt key behave as alt on osx
