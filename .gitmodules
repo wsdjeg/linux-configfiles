@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/ack"]
 	path = .vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/javascript_indent"]
+	path = .vim/bundle/javascript_indent
+	url = https://github.com/jiangmiao/simple-javascript-indenter.git
