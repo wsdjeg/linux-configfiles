@@ -18,6 +18,10 @@ export EDITOR
 export SVN_EDITOR
 export GIT_EDITOR
 
+export EDITOR
+export SVN_EDITOR
+export GIT_EDITOR
+
 export PAGER=~/.bin/vimpager
 alias less=$PAGER
 
