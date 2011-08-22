@@ -91,8 +91,14 @@
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       set guifont=ProFont:h9
       set noantialias
+=======
+      set guifont=Menlo\ Regular:h14
+      "set guifont=ProFont:h9
+      "set noantialias
+>>>>>>> Stashed changes
 =======
       set guifont=Menlo\ Regular:h14
       "set guifont=ProFont:h9
