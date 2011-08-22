@@ -1,4 +1,5 @@
 " functionality
+"
   " on windows ensure we load from ~/.vim
   if has('win32')
     let &runtimepath = substitute(&runtimepath, '\(\~\|'.$USER.'\)/vimfiles\>', '\1/.vim', 'g')
@@ -90,20 +91,8 @@
     if has('win32')
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
       set guifont=ProFont:h9
       set noantialias
-=======
-      set guifont=Menlo\ Regular:h14
-      "set guifont=ProFont:h9
-      "set noantialias
->>>>>>> Stashed changes
-=======
-      set guifont=Menlo\ Regular:h14
-      "set guifont=ProFont:h9
-      "set noantialias
->>>>>>> Stashed changes
     else
       set guifont=Droid\ Sans\ Mono\ 10
     endif
