@@ -25,12 +25,18 @@
 [submodule ".vim/bundle/snipmate"]
 	path = .vim/bundle/snipmate
 	url = https://github.com/vim-scripts/snipMate.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/vim-scripts/Syntastic.git
 [submodule ".vim/bundle/vim-coffee-script"]
 	path = .vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule ".vim/bundle/autocomplpop"]
 	path = .vim/bundle/autocomplpop
 	url = https://github.com/vim-scripts/AutoComplPop.git
+[submodule ".vim/bundle/colorscheme_vividchalk"]
+	path = .vim/bundle/colorscheme_vividchalk
+	url = https://github.com/tpope/vim-vividchalk
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/javascript_indent"]
+	path = .vim/bundle/javascript_indent
+	url = https://github.com/jiangmiao/simple-javascript-indenter.git
