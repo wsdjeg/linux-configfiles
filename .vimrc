@@ -85,7 +85,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme lucius
+    colorscheme Tomorrow
 
     " font
     if has('win32')
