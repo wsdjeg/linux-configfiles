@@ -1,6 +1,8 @@
 #!/usr/bin/env lua
 
-local ls_command = 'ls -A'
+local dir = arg[1] or './'
+
+local ls_command = ('ls -A %s'):format(dir) 
 
 local imap = function(t, fn)
 	local o = {}
@@ -36,7 +38,7 @@ local command_to_table = function(cmd)
 end
 
 local parse_stat = function(file_name)
-	local stat = command_to_string('stat -c "%A %s %U %y %F" ' .. file_name)
+	local stat = command_to_string(('stat -c "%s" %s/%s'):format('%A %s %U %y %F', dir, file_name))
 	-- did I go overboard on the ISO date? :P
 	local permissions, size_in_bytes, owner, last_modification_time, file_type = stat:match('^(.-) (.-) (.-) (%d%d%d%d%-%d%d%-%d%d %d%d:%d%d:%d%d.%d%d%d%d%d%d%d%d%d [+-]%d%d%d%d) (.-)\n$')
 	return {
