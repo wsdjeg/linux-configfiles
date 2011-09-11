@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/javascript_indent"]
 	path = .vim/bundle/javascript_indent
 	url = https://github.com/jiangmiao/simple-javascript-indenter.git
+[submodule "submodules/Tomorrow-Theme"]
+	path = submodules/Tomorrow-Theme
+	url = https://github.com/ChrisKempson/Tomorrow-Theme.git

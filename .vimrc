@@ -49,7 +49,7 @@
 
 " display
   " Don't load the matchparen plugin that's included with vim.
-  let loaded_matchparen = 1
+  "let loaded_matchparen = 1
 
   " show "invisible" characters
   set list
@@ -85,14 +85,16 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme vividchalk
+    colorscheme Tomorrow
 
     " font
     if has('win32')
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
-      set guifont=ProFont:h9
-      set noantialias
+      "set guifont=Droid\ Sans\ Mono:h12
+      set guifont=Menlo\ Bold:h14
+      "set guifont=ProFont:h9
+      "set noantialias
     else
       set guifont=Droid\ Sans\ Mono\ 10
     endif
@@ -102,13 +104,25 @@
   endif
 
 " plugins
+  " minibufexpl
+    let g:miniBufExplVSplit = 40
+
+    " open at 1 buffer
+    let g:miniBufExplorerMoreThanOne = 1
+
+  " NERDTree
+    let g:NERDTreeWinPos = "right"
+
   " vimpager
-  let vimpager_use_gvim = 1
+    let vimpager_use_gvim = 1
 
   " syntastic
-  let g:syntastic_enable_signs = 1
-  let g:syntastic_auto_jump = 1
-  let g:syntastic_auto_loc_list = 1
+    let g:syntastic_enable_signs = 1
+    let g:syntastic_auto_jump = 1
+    let g:syntastic_auto_loc_list = 1
+
+  " javascript indent
+    let g:SimpleJsIndenter_BriefMode = 1
 
 " maps
   " make the alt key behave as alt on osx
@@ -144,12 +158,18 @@
     map <tab> :bn<cr>
     map <S-tab> :bp<cr>
 
+    " move through splits
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+
     " open and reload .vimrc
     map <leader>v :vsplit ~/.vimrc<cr>
     map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
-    map <leader>[ :NERDTreeToggle<cr>
+    map <leader>] :NERDTreeToggle<cr>
 
     " resync syntax
     map <leader>sy :syntax sync fromstart<cr>
