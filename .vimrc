@@ -85,7 +85,7 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme lucius
+    colorscheme vividchalk
 
     " font
     if has('win32')
@@ -98,7 +98,7 @@
     endif
   else
     " colorscheme
-    colorscheme slate
+    colorscheme vividchalk
   endif
 
 " plugins
