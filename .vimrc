@@ -35,8 +35,8 @@
 
   " indentation
   set autoindent
-  set tabstop=4
-  set shiftwidth=4
+  set tabstop=2
+  set shiftwidth=2
   set noexpandtab
 
   " backups
@@ -53,9 +53,9 @@
 
   " show "invisible" characters
   set list
-  "set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
   "set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
-  set listchars=tab:»\ ,trail:·
+  "set listchars=tab:»\ ,trail:·
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -85,14 +85,15 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme Tomorrow
+    "colorscheme Tomorrow-Night-Bright
+    colorscheme molokai
 
     " font
     if has('win32')
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
       "set guifont=Droid\ Sans\ Mono:h12
-      set guifont=Menlo\ Bold:h14
+      set guifont=Menlo\ Bold:h18
       "set guifont=ProFont:h9
       "set noantialias
     else
