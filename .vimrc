@@ -101,7 +101,7 @@
     endif
   else
     " colorscheme
-    colorscheme slate
+    colorscheme vividchalk
   endif
 
 " plugins

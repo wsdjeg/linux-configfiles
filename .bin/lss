@@ -1,0 +1,178 @@
+#!/usr/bin/env lua
+
+local dir = arg[1] or './'
+
+local ls_command = ('ls -A %s'):format(dir) 
+
+local imap = function(t, fn)
+	local o = {}
+	for i, v in ipairs(t) do
+		o[i] = fn(v, i)
+	end
+	return o
+end
+
+local kmap = function(t, fn)
+	local o = {}
+	for k, v in pairs(t) do
+		o[k] = fn(v, k)
+	end
+	return o
+end
+
+local command_to_string = function(cmd)
+	local handle = io.popen(cmd)
+	local out = handle:read('*a')
+	handle:close()
+	return out
+end
+
+local command_to_table = function(cmd)
+	local out = {}
+	local handle = io.popen(cmd)
+	for line in handle:lines() do
+		table.insert(out, line)
+	end
+	handle:close()
+	return out
+end
+
+local parse_stat = function(file_name)
+	local stat = command_to_string(('stat -c "%s" %s/%s'):format('%A %s %U %y %F', dir, file_name))
+	-- did I go overboard on the ISO date? :P
+	local permissions, size_in_bytes, owner, last_modification_time, file_type = stat:match('^(.-) (.-) (.-) (%d%d%d%d%-%d%d%-%d%d %d%d:%d%d:%d%d.%d%d%d%d%d%d%d%d%d [+-]%d%d%d%d) (.-)\n$')
+	return {
+		file_name = file_name,
+		file_type = file_type,
+		last_modification_time = last_modification_time,
+		owner = owner,
+		permissions = permissions,
+		size_in_bytes = tostring(size_in_bytes),
+	}
+end
+
+local is_dir = function(x)
+	return x.file_type == 'directory'
+end
+
+local is_dot = function(x)
+	return x.file_name:match('^%.')
+end
+
+local sort = function(a, b)
+	--[[
+		This is the order I would like
+	
+		.dirs
+		dirs
+		.files
+		files
+		
+		should I have split the list up in 4 instead and sorted 4 times or can
+		this be done with one sort
+	]]
+
+	if is_dir(a) then
+		if is_dir(b) then
+			if is_dot(a) then
+				if is_dot(b) then
+					return a.file_name < b.file_name
+				else
+					return true
+				end
+			else
+				if is_dot(b) then
+					return false
+				else
+					return a.file_name < b.file_name
+				end
+			end
+		else
+			return true
+		end
+	else
+		if is_dir(b) then
+			return false
+		else
+			if is_dot(a) then
+				if is_dot(b) then
+					return a.file_name < b.file_name
+				else
+					return true
+				end
+			else
+				if is_dot(b) then
+					return false
+				else
+					return a.file_name < b.file_name
+				end
+			end
+		end
+	end
+end
+
+local function pad_left(str, max, char)
+	local len = string.len(str)
+	return len < max and string.rep(char, max - len) .. str or str
+end
+
+local function pad_right(str, max, char)
+	local len = string.len(str)
+	return len < max and str .. string.rep(char, max - len) or str
+end
+
+local columns = {
+	file_name = 0,
+	file_type = 0,
+	size_in_bytes = 0,
+	owner = 0,
+	permissions = 0,
+	last_modification_time = 0
+}
+
+local file_stats = imap(command_to_table(ls_command), parse_stat)
+table.sort(file_stats, sort)
+
+-- insert the header
+table.insert(file_stats, 1, {
+	file_name = 'File name',
+	file_type = 'File type',
+	size_in_bytes = 'Size in Bytes',
+	owner = 'Owner',
+	permissions = 'Permissions',
+	last_modification_time = 'Last modified',
+})
+
+-- get the longest value for each column
+for i, s in ipairs(file_stats) do
+	for k, c in pairs(columns) do
+		local s_len = string.len(s[k])
+
+		-- FIXME: Make it so I can have headers and include the header in the
+		--        list of things to pad to the max of.
+
+		if s_len > c then
+			columns[k] = s_len
+		end
+	end
+end
+
+for i, s in ipairs(file_stats) do
+	if s.file_type == 'directory' then
+		s.file_type = '/'
+	elseif s.file_type == 'regular file' then
+		s.file_type = ''
+	elseif s.file_type == 'symbolic link' then
+		s.file_type = '->'
+	end
+
+	local file_name = pad_right(s.file_name, columns.file_name, ' ')
+	local file_type = pad_right(s.file_type, columns.file_type, ' ')
+	local size_in_bytes = pad_left(s.size_in_bytes, columns.size_in_bytes, ' ')
+	local owner = pad_right(s.owner, columns.owner, ' ')
+	local permissions = pad_right(s.permissions, columns.permissions, ' ')
+	local last_modification_time = pad_right(s.last_modification_time, columns.last_modification_time, ' ')
+
+	print(('%s %s %s %s %s %s'):format(file_name, file_type, size_in_bytes, owner, permissions, last_modification_time))
+end
+
