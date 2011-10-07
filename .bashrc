@@ -8,7 +8,7 @@ c() {
   l;
 }
 
-PS1="\$ "
+PS1="\n\h:\u \w\n\$ "
 
 export EDITOR="vim"
 export SVN_EDITOR=$EDITOR
