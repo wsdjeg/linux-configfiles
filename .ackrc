@@ -1,0 +1,9 @@
+--type-set=less=.less
+--type-add=html=.haml,.liquid
+--type-set=sass=.sass
+--type-add=css=.scss
+--type-set=coffee=.coffee
+--type-set=DUMB=.min.js
+--noDUMB
+--ignore-dir=node_modules
+
