@@ -85,15 +85,14 @@
     set guioptions=c
 
     " colorscheme
-    "colorscheme Tomorrow-Night-Bright
-    colorscheme molokai
+    colorscheme pyte
 
     " font
     if has('win32')
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
       "set guifont=Droid\ Sans\ Mono:h12
-      set guifont=Menlo\ Bold:h18
+      set guifont=Menlo\ Bold:h14
       "set guifont=ProFont:h9
       "set noantialias
     else
@@ -106,20 +105,18 @@
 
 " plugins
   " minibufexpl
-    let g:miniBufExplVSplit = 40
-
     " open at 1 buffer
     let g:miniBufExplorerMoreThanOne = 1
 
   " NERDTree
-    let g:NERDTreeWinPos = "right"
+    let g:NERDTreeWinPos = "left"
 
   " vimpager
     let vimpager_use_gvim = 1
 
   " syntastic
     let g:syntastic_enable_signs = 1
-    let g:syntastic_auto_jump = 1
+    let g:syntastic_auto_jump = 0
     let g:syntastic_auto_loc_list = 1
 
   " javascript indent
