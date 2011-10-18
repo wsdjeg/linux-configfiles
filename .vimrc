@@ -53,9 +53,9 @@
 
   " show "invisible" characters
   set list
-  "set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
   "set listchars=tab:\|\ ,trail:·,extends:»,precedes:«
-  set listchars=tab:»\ ,trail:·
+  "set listchars=tab:»\ ,trail:·
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -105,20 +105,14 @@
 
 " plugins
   " minibufexpl
-    let g:miniBufExplVSplit = 40
-
     " open at 1 buffer
     let g:miniBufExplorerMoreThanOne = 1
-
-  " NERDTree
-    let g:NERDTreeWinPos = "right"
 
   " vimpager
     let vimpager_use_gvim = 1
 
   " syntastic
     let g:syntastic_enable_signs = 1
-    let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 1
 
   " javascript indent
