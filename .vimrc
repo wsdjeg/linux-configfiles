@@ -35,9 +35,9 @@
 
   " indentation
   set autoindent
-  set tabstop=4
-  set shiftwidth=4
-  set noexpandtab
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
 
   " backups
   set writebackup
