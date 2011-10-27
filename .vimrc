@@ -106,15 +106,11 @@
     " open at 1 buffer
     let g:miniBufExplorerMoreThanOne = 1
 
-  " NERDTree
-    let g:NERDTreeWinPos = "left"
-
   " vimpager
     let vimpager_use_gvim = 1
 
   " syntastic
     let g:syntastic_enable_signs = 1
-    let g:syntastic_auto_jump = 0
     let g:syntastic_auto_loc_list = 1
 
   " javascript indent
