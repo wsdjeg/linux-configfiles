@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/javascript_indent"]
 	path = .vim/bundle/javascript_indent
 	url = https://github.com/jiangmiao/simple-javascript-indenter.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
