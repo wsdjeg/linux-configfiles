@@ -102,6 +102,9 @@
   endif
 
 " plugins
+  " AutoComplPop
+    " make it case sensitive
+    let g:acp_ignorecaseOption = 0
   " minibufexpl
     " open at 1 buffer
     let g:miniBufExplorerMoreThanOne = 1
