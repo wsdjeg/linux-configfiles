@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+DIFFMERGE_PATH=/Applications/DiffMerge.app
+DIFFMERGE_EXEC=${DIFFMERGE_PATH}/Contents/MacOS/Diffmerge
+${DIFFMERGE_EXEC} --nosplash $6 $7
