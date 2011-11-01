@@ -91,7 +91,7 @@
     if has('win32')
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
-      set guifont=Ubuntu\ Mono:h14
+      set guifont=Droid\ Sans\ Mono:h14
 
     else
       set guifont=Droid\ Sans\ Mono\ 10
