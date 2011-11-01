@@ -8,6 +8,9 @@ c() {
   l;
 }
 
+# vi mode for the commandline
+set -o vi
+
 PS1="\n\h:\u \w\n\$ "
 
 export EDITOR="vim"
