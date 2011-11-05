@@ -92,9 +92,8 @@
       set guifont=Droid_Sans_Mono:h8
     elseif has('macunix')
       set guifont=Droid\ Sans\ Mono:h14
-
     else
-      set guifont=Droid\ Sans\ Mono\ 10
+      set guifont=Monospace\ 10
     endif
   else
     " colorscheme
