@@ -1,9 +1,9 @@
 ll() {
-  ls -FgHl;
+  ls -FgHl $1;
 }
 
 l() {
-  ls -AFgHl;
+  ls -AFgHl $1;
 }
 
 c() {
