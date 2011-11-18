@@ -1,7 +1,10 @@
-#alias ls="ls --color=auto"
-export CLICOLOR=true
-alias ll="ls -lFgh"
-alias l="ll -A"
+ll() {
+  ls -FgHl;
+}
+
+l() {
+  ls -AFgHl;
+}
 
 c() {
   cd "$1";
@@ -22,4 +25,6 @@ alias less=$PAGER
 
 PATH=~/.bin:$PATH
 export PATH
+
+export NODE_PATH="/usr/local/bin/node"
 
