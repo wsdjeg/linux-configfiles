@@ -120,6 +120,14 @@
   " javascript indent
     let g:SimpleJsIndenter_BriefMode = 1
 
+  " taglist
+    let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+    let Tlist_Use_Right_Window = 1
+    let Tlist_File_Fold_Auto_Close = 1
+    let Tlist_Enable_Fold_Column = 0
+    let Tlist_Show_One_File = 1
+    let Tlist_Auto_Open = 1
+
 " maps
   " make the alt key behave as alt on osx
   if has('macunix')
@@ -165,7 +173,8 @@
     map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>:echo 'reloaded .vimrc'<cr>
 
     " NERDTree
-    map <leader>] :NERDTreeToggle<cr>
+    map <leader>[ :NERDTreeToggle<cr>
+    map <leader>] :TlistToggle<cr>
 
     " resync syntax
     map <leader>sy :syntax sync fromstart<cr>
