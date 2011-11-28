@@ -86,7 +86,8 @@
     set guioptions=c
 
     " colorscheme
-    colorscheme pyte
+    colorscheme solarized
+    set background=dark
 
     " font
     if has('win32')
@@ -98,7 +99,7 @@
     endif
   else
     " colorscheme
-    colorscheme vividchalk
+    colorscheme solarized
   endif
 
 " plugins
@@ -174,6 +175,5 @@
     map <leader>c :SmartBw<cr>
 
     " F keys for quick access to 'stuff'
-    map <f11> :colo pyte<cr>
-    map <f12> :colo molokai<cr>
+    map <f12> :let &background = (&background == "dark" ? "light" : "dark")<cr>
 
