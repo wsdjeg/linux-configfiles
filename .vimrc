@@ -18,6 +18,7 @@
     let autocommands_loaded = 1
     " .coffee files should be sourced as coffeescript
     autocmd BufEnter *.coffee set ft=coffee
+    autocmd BufEnter *.json   set ft=javascript
   endif
 
   " run in nocompatible, giving us more options
