@@ -1,1 +1,1 @@
-module('lib', package.seeall)
+module(..., package.seeall)

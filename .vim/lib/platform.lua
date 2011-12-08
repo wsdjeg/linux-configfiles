@@ -1,4 +1,4 @@
-module('lib.platform', package.seeall)
+module(..., package.seeall)
 
 local _G = _G
 local platform
