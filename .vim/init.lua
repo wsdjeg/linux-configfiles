@@ -12,8 +12,9 @@
 --
 -- print()
 
+package.path = '/home/tom/.vim/?.lua;' .. package.path
+package.path = '/home/tom/.vim/?/init.lua;' .. package.path
 package.path = './?/init.lua;' .. package.path
-
 
 -- plumbing
 local commands = {}
@@ -142,7 +143,7 @@ c 'let Tlist_Auto_Open = 0'
 
 -- maps
 -- make the alt key behave as alt on osx
-if vim.eval('has("macunix")') then
+if vim.eval('has("macunix")') == 1 then
   c 'set macmeta'
 end
 
@@ -174,13 +175,16 @@ c 'map <leader>yy "*y'
 c 'map <tab> :tabnext<cr>'
 c 'map <S-tab> :tabprevious<cr>'
 
-if vim.eval('has("macunix")') then
+if vim.eval('has("macunix")') == 1 then
   -- free up keymaps
   c 'macmenu File.New\\ Tab key=<nop>'
   c 'macmenu File.Close    key=<nop>'
 
   c 'map <D-t> :tabedit %<cr>'
   c 'map <D-w> :SmartBw :tabclose<cr>'
+else
+  c 'map <S-t> :tabedit %<cr>'
+  c 'map <S-w> :bw %, tabclose<cr>'
 end
 
 -- move through splits

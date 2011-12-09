@@ -1,12 +1,6 @@
 module(..., package.seeall)
 
-local _G = _G
-
 local platform = require('lib.platform')
-
-for k, v in pairs(platform) do
-  print(k, v)
-end
 
 -- fonts
 local font_size = 'small'
@@ -38,6 +32,6 @@ local switchFont = function()
   setFont(font_size)
 end
 
-_G.getFont = getFont
-_G.setFont = setFont
-_G.switchFont = switchFont
+_M.getFont = getFont
+_M.setFont = setFont
+_M.switchFont = switchFont

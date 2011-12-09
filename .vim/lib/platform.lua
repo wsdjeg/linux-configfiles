@@ -1,8 +1,5 @@
 module(..., package.seeall)
 
-local _G = _G
-local platform
-
 local _getPlatform = function()
   if not platform then
     if vim.eval('has("win32")') ~= 0 then
@@ -17,4 +14,4 @@ local _getPlatform = function()
   return platform
 end
 
-_G.getPlatForm = _getPlatform
+_M.getPlatform = _getPlatform
