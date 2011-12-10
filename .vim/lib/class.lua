@@ -8,8 +8,8 @@ module(..., package.seeall)
       - Figure out what I meant with the above.
 ]]
 
-local function new(class_mt, ...)
-  local o = setmetatable({}, class_mt)
+local function new(c, ...)
+  local o = setmetatable({}, c)
 
   if o.constructor then
     o:constructor(...)
@@ -23,27 +23,61 @@ local function is_a(self, c)
   return getmetatable(self) == c
 end
 
-local function class()
-  local class_mt = {
-    new = new,
-    is_a = is_a,
-  }
-  class_mt.__index = class_mt
-
-  return class_mt
+local function parentSearch(parents, key)
+  for i, parent in ipairs(parents) do
+    local value = parent[key]
+    if value then
+      return value
+    end
+  end
 end
 
-A = class()
-function A:constructor(name)
+local function parentSearchFactory(p)
+  return function(t, k)
+    return parentSearch(p, k)
+  end
+end
+
+local function class(...)
+  local p = {...}
+  local c = {
+    new = new,
+    is_a = is_a
+  }
+  setmetatable(c, {
+    __index = parentSearchFactory(p)
+  })
+  c.__index = c
+
+  return c
+end
+
+Thing = class()
+function Thing:constructor(name)
   self.name = name
 end
 
-function A:getName()
+function Thing:getName()
   return self.name
 end
 
-a = A:new('Yomomma')
+Animal = class(Thing)
+function Animal:constructor(name, sound)
+  self.name = name
+  self.sound = sound
+end
 
-print('Knock, knock. Who\'s there? ' .. a:getName())
+function Animal:getSound()
+  return self.sound
+end
+
+Dog = class(Animal)
+function Dog:constructor(name)
+  self.name = name
+  self.sound = 'Woof'
+end
+
+a = Dog:new('a')
+print(a:getName() .. ' ' .. a:getSound())
 
 _M.class = class

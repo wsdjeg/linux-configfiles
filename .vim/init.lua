@@ -19,7 +19,7 @@ package.path = '/home/tom/.vim/lib/?.lua;' .. package.path
 package.path = '/home/tom/.vim/lib/?/init.lua;' .. package.path
 package.path = './?/init.lua;' .. package.path
 
-local inspect = require('inspector').inspect
+inspect = require('inspector').inspect
 
 local class = require('class')
 
