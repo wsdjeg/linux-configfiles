@@ -12,6 +12,7 @@
 --
 -- print()
 
+-- TODO: os.getenv('HOME') -- Or PWD? Somehow get the vim pwd?
 package.path = '/home/tom/.vim/?.lua;' .. package.path
 package.path = '/home/tom/.vim/?/init.lua;' .. package.path
 package.path = '/home/tom/.vim/lib/?.lua;' .. package.path
@@ -19,6 +20,8 @@ package.path = '/home/tom/.vim/lib/?/init.lua;' .. package.path
 package.path = './?/init.lua;' .. package.path
 
 local inspect = require('inspector').inspect
+
+local class = require('class')
 
 -- TODO: add LibStub
 local config = require('industrial.config').config
