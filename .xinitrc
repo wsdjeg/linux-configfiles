@@ -1,5 +1,8 @@
 # set keyboard layout options
-xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap;
+
+# set a black background
+xsetroot -bg 000000;
 
 # finally start the wm
-exec awesome
+exec xmonad;
