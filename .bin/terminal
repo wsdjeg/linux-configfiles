@@ -1,1 +1,1 @@
-urxvt +sb -bg black -fg grey -fn "xft:Terminus:size=8"
+urxvt +sb -bg black -fg grey -fn "xft:Terminus:size=9"
