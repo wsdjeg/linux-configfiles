@@ -32,52 +32,24 @@ local function parentSearch(parents, key)
   end
 end
 
-local function parentSearchFactory(p)
-  return function(t, k)
-    return parentSearch(p, k)
+local function parentSearchFactory(parent)
+  return function(table, key)
+    return parentSearch(parent, key)
   end
 end
 
 local function class(...)
-  local p = {...}
-  local c = {
+  local parents = {...}
+  local klass = {
     new = new,
     is_a = is_a
   }
-  setmetatable(c, {
-    __index = parentSearchFactory(p)
+  setmetatable(klass, {
+    __index = parentSearchFactory(parents)
   })
-  c.__index = c
+  klass.__index = klass
 
-  return c
+  return klass
 end
-
-Thing = class()
-function Thing:constructor(name)
-  self.name = name
-end
-
-function Thing:getName()
-  return self.name
-end
-
-Animal = class(Thing)
-function Animal:constructor(name, sound)
-  self.name = name
-  self.sound = sound
-end
-
-function Animal:getSound()
-  return self.sound
-end
-
-Dog = class(Animal)
-function Dog:constructor(name)
-  self.name = name
-  self.sound = 'Woof'
-end
-
-a = Dog:new('a')
-print(a:getName() .. ' ' .. a:getSound())
 
 _M.class = class
