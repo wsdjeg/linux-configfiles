@@ -13,10 +13,12 @@
 -- print()
 
 -- TODO: os.getenv('HOME') -- Or PWD? Somehow get the vim pwd?
-package.path = '/home/tom/.vim/?.lua;' .. package.path
-package.path = '/home/tom/.vim/?/init.lua;' .. package.path
-package.path = '/home/tom/.vim/lib/?.lua;' .. package.path
-package.path = '/home/tom/.vim/lib/?/init.lua;' .. package.path
+local homedir = os.getenv('HOME')
+
+package.path = homedir .. '/.vim/?.lua;' .. package.path
+package.path = homedir .. '/.vim/?/init.lua;' .. package.path
+package.path = homedir .. '/.vim/lib/?.lua;' .. package.path
+package.path = homedir .. '/.vim/lib/?/init.lua;' .. package.path
 package.path = './?/init.lua;' .. package.path
 
 inspect = require('inspector').inspect
@@ -105,6 +107,9 @@ config(function()
 
   -- font
   --require('fonts')
+  platform('macunix', function()
+    set('guifont', 'Monaco:h9')
+  end)
 
   -- plugins
   -- AutoComplPop
@@ -137,7 +142,7 @@ config(function()
   -- maps
   -- make the alt key behave as alt on osx
   platform('macunix', function()
-    set('macmeta')
+    set('macmeta', true)
   end)
 
   -- normal mode maps
