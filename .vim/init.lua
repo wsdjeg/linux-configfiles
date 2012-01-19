@@ -35,12 +35,12 @@ config(function()
   set('compatible', false)
 
   -- load plugins
-  call('pathogen#runtime_append_all_bundles()')
-  call('pathogen#helptags()')
+  call('pathogen#infect()')
+  cmd('Helptags')
 
   -- load filetype plugins, indentation and turn syntax highlighting on
-  cmd 'filetype plugin indent on'
-  cmd 'syntax on'
+  cmd('filetype plugin indent on')
+  cmd('syntax on')
 
   -- set up file type detection
   autocmd('BufEnter *.coffee set ft=coffee')
@@ -170,9 +170,10 @@ config(function()
   map('<leader>yy', '"*y')
 
   -- switch buffers
-  map('<tab>', ':tabnext<cr>')
-  map('<S-tab>', ':tabprevious<cr>')
+  map('<tab>', ':bn<cr>')
+  map('<S-tab>', ':bp<cr>')
 
+  --[[
   platform('macunix', function()
     -- free up keymaps
     cmd('macmenu File.New\\ Tab key=<nop>')
@@ -181,11 +182,14 @@ config(function()
     map('<D-t>', ':tabedit %<cr>')
     map('<D-w>', ':SmartBw :tabclose<cr>')
   end)
+  ]]
 
+  --[[
   platform('unix', function()
     map('<S-t>', ':tabedit %<cr>')
     map('<S-w>', ':bw %<cr>:tabclose<cr>')
   end)
+  ]]
 
   -- move through splits
   map('<C-h>', '<C-w>h')
