@@ -73,7 +73,7 @@ config(function()
   -- display
   -- show "invisible" characters
   set('list', true)
-  set('listchars', 'tab:Â·\\ ,trail:+,extends:Â»,precedes:Â«')
+  set('listchars', 'tab:·\\ ,trail:+,extends:»,precedes:«')
 
   -- don't show chars on split and fold lines
   set('fillchars', 'vert:\\ ,fold:\\ ')
