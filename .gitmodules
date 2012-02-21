@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/filetype_jade"]
 	path = .vim/bundle/filetype_jade
 	url = https://github.com/vim-scripts/jade.vim.git
+[submodule ".vim/bundle/colorscheme_skittles_berry"]
+	path = .vim/bundle/colorscheme_skittles_berry
+	url = https://github.com/shawncplus/skittles_berry.git
