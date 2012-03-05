@@ -2,3 +2,5 @@
 .vim/temp/*.swp
 .vim/temp/*.swo
 
+
+.vim/.netrwhist
