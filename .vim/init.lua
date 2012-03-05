@@ -209,7 +209,7 @@ config(function()
   map('<C-l>', '<C-w>l')
 
   -- open and reload .vimrc
-  map('<leader>v', ':vsplit ~/.vimrc<cr>')
+  map('<leader>v', ':vsplit ~/.vim/init.lua<cr>')
   map('<leader>V', ':bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>')
 
   -- NERDTree
