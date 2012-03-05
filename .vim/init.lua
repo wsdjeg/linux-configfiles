@@ -92,8 +92,15 @@ config(function()
   set('showmode', true)
   set('errorbells', false)
   set('visualbell', false)
+
+  local wildignore = function()
+    cmd('set wildignore+=*/.git/*,*/.hg/*,*/.svn/*')
+  end
   set('wildmenu', true)
   set('wildmode', 'list:longest')
+  platform('unix', wildignore)
+  platform('macunix', wildignore)
+
   set('hlsearch', true)
   set('incsearch', true)
 
@@ -102,12 +109,13 @@ config(function()
   set('guioptions', 'emg')
 
   -- colorscheme
-  colorscheme('solarized')
-  set('background', 'light')
+  colorscheme('skittles_berry')
+  set('background', 'dark')
 
   -- font
   --require('fonts')
   platform('macunix', function()
+    --set('guifont', 'Menlo\\ Bold:h14')
     set('guifont', 'Monaco:h9')
   end)
 
@@ -131,12 +139,15 @@ config(function()
   let('g:SimpleJsIndenter_BriefMode', '1')
 
   -- taglist
-  let('Tlist_Ctags_Cmd', '"/usr/local/bin/ctags"')
-  let('Tlist_Use_Right_Window', '1')
-  let('Tlist_File_Fold_Auto_Close', '1')
-  let('Tlist_Enable_Fold_Column', '0')
-  let('Tlist_Show_One_File', '1')
-  let('Tlist_Auto_Open', '0')
+  --let('Tlist_Ctags_Cmd', '"/usr/local/bin/ctags"')
+  --let('Tlist_Use_Right_Window', '1')
+  --let('Tlist_File_Fold_Auto_Close', '1')
+  --let('Tlist_Enable_Fold_Column', '0')
+  --let('Tlist_Show_One_File', '1')
+  --let('Tlist_Auto_Open', '0')
+
+  -- ctrlp
+  let('g:ctrlp_working_path_mode', '0')
 
 
   -- maps
@@ -194,7 +205,7 @@ config(function()
   -- move through splits
   map('<C-h>', '<C-w>h')
   map('<C-j>', '<C-w>j')
-  map('<C-k>', '<C-w>y')
+  map('<C-k>', '<C-w>k')
   map('<C-l>', '<C-w>l')
 
   -- open and reload .vimrc
