@@ -78,12 +78,23 @@ set incsearch
 set guioptions=emg
 
 " colorscheme
-colorscheme skittles_berry
-set background=dark
+"function toggleColorschemeBackground()
+"  if g:lucius_style == 'dark'
+"    set g:lucius_style = 'light'
+"  else
+"    set g:lucius_style = 'dark'
+"  endif
+"
+"  colorscheme lucius
+"endfunction
+
+let g:lucius_style='dark'
+"toggleColorschemeBackground()
+colorscheme lucius
 
 " font
 if has('macunix')
-  set guifont=Monaco:h9
+  set guifont=Menlo:h18
 endif
 
 " plugins
