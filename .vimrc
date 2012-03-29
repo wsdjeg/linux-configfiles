@@ -74,7 +74,12 @@ set incsearch
 set guioptions=emg
 
 " colorscheme
-function l:toggleColorschemeBackground()
+function l:ToggleColorschemeBackground()
+  if !exists('g:lucius_style')
+    " set to light by default, making it dark on the first invocation
+    let g:lucius_style='light'
+  endif
+
   if has('gui')
     if g:lucius_style=='dark'
       let g:lucius_style='light'
@@ -89,7 +94,7 @@ function l:toggleColorschemeBackground()
 endfunction
 
 " Initialize by calling
-call l:toggleColorschemeBackground()
+call l:ToggleColorschemeBackground()
 
 " font
 if has('macunix')
@@ -184,4 +189,4 @@ map <leader>d :SmartBd<cr>
 map <leader>c :SmartBw<cr>
 
 " Toggle background color
-map <f12> :call l:toggleColorschemeBackground()<cr>
+map <f12> :call l:ToggleColorschemeBackground()<cr>
