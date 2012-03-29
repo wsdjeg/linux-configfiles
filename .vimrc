@@ -64,11 +64,7 @@ set novisualbell
 
 set wildmenu
 set wildmode=list:longest
-if has('unix')
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-elseif has('macunix')
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-endif
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 set hlsearch
 set incsearch
