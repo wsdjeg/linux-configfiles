@@ -90,7 +90,8 @@ colorscheme lucius
 
 " font
 if has('macunix')
-  set guifont=Menlo:h18
+  "set guifont=Menlo:h14
+  set guifont=Monaco:h9
 endif
 
 " plugins
