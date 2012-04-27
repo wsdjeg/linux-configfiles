@@ -52,9 +52,6 @@
 [submodule ".vim/bundle/colorscheme_skittles_berry"]
 	path = .vim/bundle/colorscheme_skittles_berry
 	url = https://github.com/shawncplus/skittles_berry.git
-[submodule "colorscheme_lucius"]
-	path = .vim/bundle/colorscheme_lucius
-	url = https://github.com/vim-scripts/Lucius.git
 [submodule ".vim/bundle/colorscheme_lucius"]
 	path = .vim/bundle/colorscheme_lucius
 	url = https://github.com/vim-scripts/Lucius.git
