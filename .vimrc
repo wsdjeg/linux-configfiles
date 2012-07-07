@@ -94,7 +94,12 @@ function l:ToggleColorschemeBackground()
 endfunction
 
 " Initialize by calling
-call l:ToggleColorschemeBackground()
+"call l:ToggleColorschemeBackground()
+if has('gui')
+  colo skittles_berry
+else
+  color slate
+endif
 
 " font
 if has('macunix')
