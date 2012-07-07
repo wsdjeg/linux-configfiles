@@ -100,6 +100,9 @@ call l:ToggleColorschemeBackground()
 if has('macunix')
   "set guifont=Menlo:h14
   set guifont=Monaco:h9
+else
+  " assume linux
+  set guifont=Terminus\ 9
 endif
 
 " plugins
