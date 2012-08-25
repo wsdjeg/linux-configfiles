@@ -185,6 +185,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" run coffeescript files
+map <F5> :!coffee %<cr>
+
 " open and reload .vimrc
 map <leader>v :vsplit ~/.vimrc<cr>
 map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>
