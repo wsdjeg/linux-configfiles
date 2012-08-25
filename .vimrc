@@ -204,4 +204,4 @@ map <leader>d :SmartBd<cr>
 map <leader>c :SmartBw<cr>
 
 " Toggle background color
-map <f12> :call l:ToggleColorschemeBackground()<cr>
+"map <f12> :call l:ToggleColorschemeBackground()<cr>
