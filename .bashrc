@@ -23,6 +23,7 @@ export GIT_EDITOR=$EDITOR
 export PAGER=~/.bin/vimpager
 alias less=$PAGER
 
+PATH=~/bin:$PATH
 PATH=~/.bin:$PATH
 export PATH
 
