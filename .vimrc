@@ -42,7 +42,11 @@ set directory=~/.vim/temp
 " display
 " show "invisible" characters
 set list
-set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+if has('gui')
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+else
+  set listchars=tab:.\ ,trail:+
+endif
 
 " don't show chars on split and fold lines
 set fillchars=vert:\ ,fold:\ 
