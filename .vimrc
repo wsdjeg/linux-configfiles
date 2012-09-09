@@ -42,7 +42,11 @@ set directory=~/.vim/temp
 " display
 " show "invisible" characters
 set list
-set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+if has('gui')
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+else
+  set listchars=tab:.\ ,trail:+
+endif
 
 " don't show chars on split and fold lines
 set fillchars=vert:\ ,fold:\ 
@@ -176,10 +180,13 @@ map <tab> :bn<cr>
 map <S-tab> :bp<cr>
 
 " move through splits
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
+
+" run coffeescript files
+map <F5> :!coffee %<cr>
 
 " open and reload .vimrc
 map <leader>v :vsplit ~/.vimrc<cr>
@@ -197,4 +204,4 @@ map <leader>d :SmartBd<cr>
 map <leader>c :SmartBw<cr>
 
 " Toggle background color
-map <f12> :call l:ToggleColorschemeBackground()<cr>
+"map <f12> :call l:ToggleColorschemeBackground()<cr>
