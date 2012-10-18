@@ -73,9 +73,26 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     ((modm,               xK_l     ), sendMessage Expand),
 
     -- Swap the focused window with the next window
-    ((modm .|. shiftMask, xK_j     ), windows StackSet.swapDown  ),
+    ((modm .|. shiftMask, xK_j), windows StackSet.swapDown),
     -- Swap the focused window with the previous window
-    ((modm .|. shiftMask, xK_k     ), windows StackSet.swapUp    ),
+    ((modm .|. shiftMask, xK_k), windows StackSet.swapUp),
+
+
+    -- Go to the previous workspace
+    ((modm, xK_h), prevWS),
+    -- Go to the next workspace
+    ((modm, xK_l), nextWS),
+
+    -- Move to the previous workspace
+    ((modm .|. shiftMask, xK_h), shiftToPrev >> prevWS),
+    -- Move to the next workspace
+    ((modm .|. shiftMask, xK_l), shiftToNext >> nextWS),
+
+    -- Shrink the master area
+    ((modm .|. controlMask .|. shiftMask, xK_h), sendMessage Shrink),
+    -- Expand the master area
+    ((modm .|. controlMask .|. shiftMask, xK_l), sendMessage Expand),
+
 
     -- Move focus to the master window
     ((modm,               xK_m     ), windows StackSet.focusMaster  ),
