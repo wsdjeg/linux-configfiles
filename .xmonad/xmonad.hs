@@ -18,12 +18,6 @@ myFocusFollowsMouse = True
 -- Width of the window border in pixels.
 --
 myBorderWidth = 1
-
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
---
 myModMask = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
@@ -50,27 +44,24 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     -- launch a terminal
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
     -- launch dmenu
-    ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
+    ((modm, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
 
     -- close focused window
-    ((modm .|. shiftMask, xK_c     ), kill),
+    ((modm .|. shiftMask, xK_c), kill),
 
     -- Rotate through the available layout algorithms
-    ((modm,               xK_space ), sendMessage NextLayout),
+    ((modm, xK_space ), sendMessage NextLayout),
     --  Reset the layouts on the current workspace to default
-    ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf),
+    ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf),
 
     -- Resize viewed windows to the correct size
-    ((modm,               xK_n     ), refresh),
+    ((modm, xK_n), refresh),
 
-    -- Shrink the master area
-    ((modm,               xK_h     ), sendMessage Shrink),
+
     -- Move focus to the next window
-    ((modm,               xK_j     ), windows StackSet.focusDown),
+    ((modm, xK_j), windows StackSet.focusDown),
     -- Move focus to the previous window
-    ((modm,               xK_k     ), windows StackSet.focusUp  ),
-    -- Expand the master area
-    ((modm,               xK_l     ), sendMessage Expand),
+    ((modm, xK_k), windows StackSet.focusUp),
 
     -- Swap the focused window with the next window
     ((modm .|. shiftMask, xK_j), windows StackSet.swapDown),
@@ -95,19 +86,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
 
 
     -- Move focus to the master window
-    ((modm,               xK_m     ), windows StackSet.focusMaster  ),
+    ((modm, xK_m), windows StackSet.focusMaster),
 
     -- Swap the focused window and the master window
-    ((modm,               xK_Return), windows StackSet.swapMaster),
+    ((modm, xK_Return), windows StackSet.swapMaster),
 
     -- Push window back into tiling
-    ((modm,               xK_t     ), withFocused $ windows . StackSet.sink),
+    ((modm, xK_t), withFocused $ windows . StackSet.sink),
 
     -- Increment the number of windows in the master area
-    ((modm              , xK_comma ), sendMessage (IncMasterN 1)),
+    ((modm, xK_comma), sendMessage (IncMasterN 1)),
 
     -- Deincrement the number of windows in the master area
-    ((modm              , xK_period), sendMessage (IncMasterN (-1))),
+    ((modm, xK_period), sendMessage (IncMasterN (-1))),
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -115,9 +106,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     --
     -- ((modm              , xK_b     ), sendMessage ToggleStruts),
     -- Restart xmonad
-    ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart"),
+    ((modm, xK_q), spawn "xmonad --recompile; xmonad --restart"),
     -- Quit xmonad
-    ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
   ]
   ++
 
