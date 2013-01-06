@@ -190,6 +190,7 @@ map <S-tab> :bp<cr>
 
 " run coffeescript files
 map <F5> :!coffee %<cr>
+map <F6> :!grunt<cr>
 
 " open and reload .vimrc
 map <leader>v :vsplit ~/.vimrc<cr>
