@@ -1,9 +1,9 @@
 ll() {
-  ls -FgHl $1;
+  ls -FgHl --color=auto $1;
 }
 
 l() {
-  ls -AFgHl $1;
+  ls -AFgHl --color=auto $1;
 }
 
 c() {
