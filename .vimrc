@@ -24,6 +24,9 @@ set nowrap
 " make it possible to have buffers in the background
 set hidden
 
+" reload changes from disk
+set autoread
+
 " indentation
 set autoindent
 set tabstop=2
