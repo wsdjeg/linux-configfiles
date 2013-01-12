@@ -61,3 +61,9 @@
 [submodule ".vim/bundle/minibufexpl"]
 	path = .vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule ".vim/bundle/filetype_livescript"]
+	path = .vim/bundle/filetype_livescript
+	url = https://github.com/gkz/vim-ls.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
