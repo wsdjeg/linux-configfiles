@@ -52,9 +52,6 @@
 [submodule ".vim/bundle/javascript_syntax"]
 	path = .vim/bundle/javascript_syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
-[submodule ".vim/bundle/colorscheme_tomorrow"]
-	path = .vim/bundle/colorscheme_tomorrow
-	url = https://github.com/chriskempson/tomorrow-theme
 [submodule ".vim/bundle/html5"]
 	path = .vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
