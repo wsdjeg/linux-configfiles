@@ -183,10 +183,10 @@ map <tab> :bn<cr>
 map <S-tab> :bp<cr>
 
 " move through splits
-"map <C-h> <C-w>h
-"map <C-j> <C-w>j
-"map <C-k> <C-w>k
-"map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " run coffeescript files
 map <F5> :!coffee %<cr>
