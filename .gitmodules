@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/filetype_stylus"]
 	path = .vim/bundle/filetype_stylus
 	url = https://github.com/wavded/vim-stylus.git
+[submodule ".vim/bundle/filetype_handlebars"]
+	path = .vim/bundle/filetype_handlebars
+	url = https://github.com/nono/vim-handlebars.git
