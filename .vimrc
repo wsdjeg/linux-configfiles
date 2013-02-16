@@ -79,7 +79,7 @@ set incsearch
 
 
 " gui options
-set guioptions=emg
+set guioptions=
 
 " colorscheme
 function l:ToggleColorschemeBackground()
