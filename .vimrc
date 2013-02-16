@@ -72,6 +72,7 @@ set novisualbell
 set wildmenu
 set wildmode=list:longest
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/node_modules/*
 
 set hlsearch
 set incsearch
