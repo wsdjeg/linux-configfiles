@@ -16,6 +16,10 @@ set -o vi
 
 PS1="\n\h:\u \w\n\$ "
 
+# copy/paste to X clipboard from commandline
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
 export EDITOR="vim"
 export SVN_EDITOR=$EDITOR
 export GIT_EDITOR=$EDITOR
