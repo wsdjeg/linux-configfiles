@@ -3,9 +3,117 @@
 " run in nocompatible, giving us more options. This should be the first command
 set nocompatible
 
-" load plugins
-call pathogen#infect()
-Helptags
+" for Vundle
+filetype off
+
+" Vundle
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" github plugins
+" TODO: Order by type
+
+
+" Dependencies
+" for Rykka/colorv.vim
+Bundle 'mattn/webapi-vim'
+" for aut othree/vim-autocomplpop
+Bundle 'vim-scripts/L9'
+
+
+" Buffers / Files
+Bundle 'fholgado/minibufexpl.vim'
+  " open at 1 buffer
+  let g:miniBufExplorerMoreThanOne=1
+
+Bundle 'kien/ctrlp.vim'
+  let g:ctrlp_working_path_mode=0
+
+Bundle 'scrooloose/nerdtree'
+  map <leader>[ :NERDTreeToggle<cr>
+  map <leader>] :TlistToggle<cr>
+
+Bundle 'scratch.vim'
+
+Bundle 'Industrial/vim-smartbd'
+Bundle 'Industrial/vim-smartbw'
+
+
+" Movement
+Bundle 'Lokaltog/vim-easymotion'
+
+  " switch buffers
+  map <tab> :bn<cr>
+  map <S-tab> :bp<cr>
+
+  " move through splits
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+
+
+" Finding / Searching
+" TODO: this one screws up
+"Bundle 'ervandew/ag'
+Bundle 'Spaceghost/vim-matchit'
+Bundle 'vim-scripts/IndexedSearch'
+
+" Cut, Copy and Paste
+Bundle 'maxbrunsfeld/vim-yankstack'
+
+" Syntax
+Bundle 'scrooloose/syntastic'
+  let g:syntastic_check_on_open=1
+  let g:syntastic_auto_loc_list=1
+
+
+" Completion
+Bundle 'othree/vim-autocomplpop'
+Bundle 'ervandew/supertab'
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'msanders/snipmate.vim'
+
+
+" Version Control
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'mattn/gist-vim'
+  " If you want to detect filetype from the filename:
+  let g:gist_detect_filetype = 1
+  " If you want your gist to be private by default:
+  let g:gist_post_private = 1
+  " If you want to manipulate multiple files in a gist:
+  let g:gist_get_multiplefile = 1
+
+Bundle 'gregsexton/gitv'
+
+"Bundle 'svndiff'
+
+
+" File Types
+Bundle 'othree/html5.vim'
+Bundle 'leshill/vim-json'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wavded/vim-stylus'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'tpope/vim-git'
+
+
+" Colors
+Bundle 'Rykka/colorv.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+
+" Color Schemes
+Bundle 'w0ng/vim-hybrid'
+Bundle 'tomasr/molokai'
+Bundle 'altercation/vim-colors-solarized'
+
 
 " load filetype plugins, indentation and turn syntax highlighting on
 filetype plugin indent on
@@ -61,7 +169,7 @@ set number
 set foldcolumn=1
 
 " mapping settings
-let mapleader=","
+let mapleader=','
 
 " messages and info
 set showcmd
@@ -119,34 +227,9 @@ else
 endif
 
 " plugins
-" AutoComplPop
-" make it case sensitive
-let g:acp_ignorecaseOption=0
-
-" minibufexpl
-" open at 1 buffer
-let g:miniBufExplorerMoreThanOne=1
-
-" vimpager
-let vimpager_use_gvim=1
-
-" syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-
-" javascript indent
-let g:SimpleJsIndenter_BriefMode=1
-
-" taglist
-"let('Tlist_Ctags_Cmd', '"/usr/local/bin/ctags"')
-"let('Tlist_Use_Right_Window', '1')
-"let('Tlist_File_Fold_Auto_Close', '1')
-"let('Tlist_Enable_Fold_Column', '0')
-"let('Tlist_Show_One_File', '1')
-"let('Tlist_Auto_Open', '0')
-
-" ctrlp
-let g:ctrlp_working_path_mode=0
+" Ack.vim
+" use ag instead of ack in the background
+"let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
 " maps
@@ -179,27 +262,9 @@ map <leader>dd '"*d'
 map <leader>pp '"*p'
 map <leader>yy '"*y'
 
-" switch buffers
-map <tab> :bn<cr>
-map <S-tab> :bp<cr>
-
-" move through splits
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" run coffeescript files
-map <F5> :!coffee %<cr>
-map <F6> :!grunt<cr>
-
 " open and reload .vimrc
 map <leader>v :vsplit ~/.vimrc<cr>
 map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>
-
-" NERDTree
-map <leader>[ :NERDTreeToggle<cr>
-map <leader>] :TlistToggle<cr>
 
 " resync syntax
 map <leader>sy :syntax sync fromstart<cr>
@@ -210,3 +275,4 @@ map <leader>c :SmartBw<cr>
 
 " Toggle background color
 "map <f12> :call l:ToggleColorschemeBackground()<cr>
+
