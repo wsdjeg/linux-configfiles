@@ -14,7 +14,7 @@ c() {
 # vi mode for the commandline
 set -o vi
 
-PS1="\n\#/\j \d \t\n\u@\H:\w\n\$ "
+PS1='\n$(date +"%F %X")\n|-- \u@\H:\w\n'\''-> '
 
 # copy/paste to X clipboard from commandline
 alias pbcopy='xsel --clipboard --input'
