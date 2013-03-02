@@ -1,10 +1,5 @@
-/.xmonad/xmonad.o
-/.xmonad/xmonad.hi
-/.xmonad/xmonad.errors
-/.xmonad/xmonad-i386-linux
 .vim/backup/*~
 .vim/temp/*.swp
 .vim/temp/*.swo
-
-
 .vim/.netrwhist
+.vim/bundle
