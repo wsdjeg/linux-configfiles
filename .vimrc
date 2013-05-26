@@ -7,7 +7,6 @@
   syntax on
 
   " set up file type detection
-  autocmd BufEnter *.coffee set ft=coffee
   autocmd BufEnter *.json   set ft=javascript
 
 " - Functionality
@@ -59,34 +58,6 @@
     " gui options
     set guioptions=
 
-  " - Colorscheme
-    function l:ToggleColorschemeBackground()
-      if !exists('g:lucius_style')
-        " set to light by default, making it dark on the first invocation
-        let g:lucius_style='light'
-      endif
-
-      if has('gui')
-        if g:lucius_style=='dark'
-          let g:lucius_style='light'
-        else
-          let g:lucius_style='dark'
-        endif
-
-        colorscheme lucius
-      else
-        colorscheme desert
-      endif
-    endfunction
-
-    " Initialize by calling
-    "call l:ToggleColorschemeBackground()
-    if has('gui')
-      colo hybrid
-    else
-      color slate
-    endif
-
   " - Font
     if has('macunix')
       "set guifont=Menlo:h14
@@ -95,10 +66,11 @@
       " assume linux
       set guifont=Terminus\ 9
     endif
+
   " - Other
     " show "invisible" characters
     set list
-    if has('gui')
+    if has('gui_running')
       set listchars=tab:·\ ,trail:+,extends:»,precedes:«
     else
       set listchars=tab:.\ ,trail:+
@@ -113,12 +85,10 @@
     " turn on a fold column of 1
     set foldcolumn=1
 
-
 " - Plugins
   " - Ack.vim
     " use ag instead of ack in the background
     "let g:ackprg = 'ag --nogroup --nocolor --column'
-
 
 " - Maps
   " make the alt key behave as alt on osx
@@ -153,9 +123,6 @@
     map <leader>d :SmartBd<cr>
     map <leader>c :SmartBw<cr>
 
-    " Toggle background color
-    "map <f12> :call l:ToggleColorschemeBackground()<cr>
-
   " - Normal Mode
     " quick insert of newline
     nmap <cr> o<esc>
@@ -170,11 +137,13 @@
   call vundle#rc()
 
   Bundle 'gmarik/vundle'
+
   " - Dependencies
     " - Rykka/colorv.vim
       Bundle 'mattn/webapi-vim'
     " - othree/vim-autocomplpop
       Bundle 'vim-scripts/L9'
+
   " - Buffers / Files
     Bundle 'fholgado/minibufexpl.vim'
       " open at 1 buffer
@@ -191,6 +160,7 @@
 
     Bundle 'Industrial/vim-smartbd'
     Bundle 'Industrial/vim-smartbw'
+
   " - Movement
     Bundle 'Lokaltog/vim-easymotion'
 
@@ -203,17 +173,21 @@
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
+
   " - Finding / Searching
     " TODO: this one screws up
     "Bundle 'ervandew/ag'
     Bundle 'Spaceghost/vim-matchit'
     Bundle 'vim-scripts/IndexedSearch'
+
   " - Cut, Copy and Paste
     Bundle 'maxbrunsfeld/vim-yankstack'
+
   " - Syntax
     Bundle 'scrooloose/syntastic'
       let g:syntastic_check_on_open=1
       let g:syntastic_auto_loc_list=1
+
   " - Completion
     Bundle 'othree/vim-autocomplpop'
     Bundle 'ervandew/supertab'
@@ -221,6 +195,7 @@
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-endwise'
     Bundle 'msanders/snipmate.vim'
+
   " - Version Control
     Bundle 'tpope/vim-fugitive'
 
@@ -235,18 +210,47 @@
     Bundle 'gregsexton/gitv'
 
     "Bundle 'svndiff'
-" - File Types
-  Bundle 'othree/html5.vim'
-  Bundle 'leshill/vim-json'
-  Bundle 'pangloss/vim-javascript'
-  Bundle 'wavded/vim-stylus'
-  Bundle 'digitaltoad/vim-jade'
-  Bundle 'tpope/vim-git'
-" - Colors
-  Bundle 'Rykka/colorv.vim'
-  Bundle 'nathanaelkane/vim-indent-guides'
-" - Color Schemes
-  Bundle 'w0ng/vim-hybrid'
-  Bundle 'tomasr/molokai'
-  Bundle 'altercation/vim-colors-solarized'
+
+  " - File Types
+    Bundle 'digitaltoad/vim-jade'
+    Bundle 'gkz/vim-ls'
+    Bundle 'leshill/vim-json'
+    Bundle 'othree/html5.vim'
+    Bundle 'pangloss/vim-javascript'
+    Bundle 'tpope/vim-git'
+    Bundle 'wavded/vim-stylus'
+'
+
+  " - Colors
+    Bundle 'Rykka/colorv.vim'
+    Bundle 'nathanaelkane/vim-indent-guides'
+
+  " - Color Schemes
+    Bundle 'w0ng/vim-hybrid'
+    Bundle 'tomasr/molokai'
+    Bundle 'altercation/vim-colors-solarized'
+
+    function l:ToggleColorschemeBackground()
+      if has('gui_running')
+        if g:colors_name == 'hybrid'
+          colorscheme hybrid-light
+        else
+          colorscheme hybrid
+        endif
+      else
+        colorscheme desert
+      endif
+    endfunction
+
+    " prepare the first call (set values to what we don't want)
+    colorscheme hybrid-light
+
+    " then call
+    call l:ToggleColorschemeBackground()
+
+    " - Maps
+      " Toggle background color
+      map <f12> :call l:ToggleColorschemeBackground()<cr>
+
   filetype on
+
