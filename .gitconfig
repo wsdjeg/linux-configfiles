@@ -12,3 +12,36 @@
 
 [github]
   user = Industrial
+
+[alias]
+  a   = add
+  ad  = add
+  b   = branch
+  br  = branch
+  c   = checkout
+  cb  = checkout -b
+  cm  = commit -m
+  co  = checkout
+  cob = checkout -b
+  d   = diff
+  di  = diff
+  f   = fetch
+  fe  = fetch
+  l   = log --all --oneline --graph --decorate=full
+  lg  = log
+  m   = merge
+  mg  = merge
+  p   = pull
+  pa  = pull -a
+  pl  = pull
+  pla = pull -a
+  ps  = push
+  rs  = reset
+  rb  = rebase
+  rbi = rebase -i
+  rt  = remote
+  ru  = remote update -p
+  s   = status
+  sh  = stash
+  st  = status
+  t   = tag
