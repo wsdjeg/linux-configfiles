@@ -5,4 +5,4 @@ xmodmap ~/.Xmodmap;
 xsetroot -bg 000000;
 
 # finally start the wm
-#exec xmonad;
+exec xfce4-session;
