@@ -163,6 +163,7 @@
 
   " - Movement
     Bundle 'Lokaltog/vim-easymotion'
+    let g:EasyMotion_leader_key = '<Leader>'
 
     " switch buffers
     map <tab> :bn<cr>
