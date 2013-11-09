@@ -45,3 +45,6 @@
   sh  = stash
   st  = status
   t   = tag
+
+[push]
+  default = simple
