@@ -230,21 +230,20 @@
     Bundle 'w0ng/vim-hybrid'
     Bundle 'tomasr/molokai'
     Bundle 'altercation/vim-colors-solarized'
+    Bundle 'chriskempson/base16-vim'
+
+    colorscheme base16-default
 
     function l:ToggleColorschemeBackground()
-      if has('gui_running')
-        if g:colors_name == 'hybrid'
-          colorscheme hybrid-light
-        else
-          colorscheme hybrid
-        endif
+      if &background == 'light'
+        set background=dark
       else
-        colorscheme desert
+        set background=light
       endif
     endfunction
 
     " prepare the first call (set values to what we don't want)
-    colorscheme hybrid-light
+    set background=light
 
     " then call
     call l:ToggleColorschemeBackground()
