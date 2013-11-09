@@ -191,7 +191,7 @@
 
   " - Completion
     Bundle 'othree/vim-autocomplpop'
-    Bundle 'ervandew/supertab'
+    "Bundle 'ervandew/supertab'
     "Bundle 'Valloric/YouCompleteMe'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-endwise'
