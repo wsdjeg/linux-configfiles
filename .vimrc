@@ -1,4 +1,6 @@
-" - Initial
+" vim:foldmethod=marker:foldmarker=[[,]]
+
+" Initialization [[
   " run in nocompatible, giving us more options. This should be the first command
   set nocompatible
 
@@ -7,27 +9,28 @@
   syntax on
 
   " set up file type detection
-  autocmd BufEnter *.json   set ft=javascript
-
-" - Functionality
-  " - Indentation
+  autocmd BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufNewFile,BufRead *.ejs  set filetype=html
+" ]]
+" Functionality [[
+  " Indentation [[
     set autoindent
     set tabstop=2
     set shiftwidth=2
     set expandtab
-
-  " - Backups
+  " ]]
+  " Backups [[
     set writebackup
     set backup
     set swapfile
     set backupcopy=auto
     set backupdir=~/.vim/backup
     set directory=~/.vim/temp
-
-  " - Mapping
+  " ]]
+  " Mapping [[
     let mapleader=','
-
-  " - Other
+  " ]]
+  " Other [[
     " make movement keys wrap to the next/previous line
     set whichwrap=b,s,h,l,<,>,[,]
 
@@ -39,9 +42,10 @@
 
     " reload changes from disk
     set autoread
-
-" - Display
-  " - Visual Information
+  " ]]
+" ]]
+" Display [[
+  " Visual Information [[
     set showcmd
     set showmode
     set noerrorbells
@@ -57,17 +61,17 @@
 
     " gui options
     set guioptions=
-
-  " - Font
+  " ]]
+  " Font [[
     if has('macunix')
       "set guifont=Menlo:h14
       set guifont=Monaco:h9
     else
       " assume linux
-      set guifont=Terminus\ 9
+      set guifont=DejaVu\ Sans\ Mono\ 9
     endif
-
-  " - Other
+  " ]]
+  " Other [[
     " show "invisible" characters
     set list
     if has('gui_running')
@@ -84,19 +88,10 @@
 
     " turn on a fold column of 1
     set foldcolumn=1
-
-" - Plugins
-  " - Ack.vim
-    " use ag instead of ack in the background
-    "let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" - Maps
-  " make the alt key behave as alt on osx
-  if has('macunix')
-    set macmeta
-  endif
-
-  " - All Modes
+  " ]]
+" ]]
+" Maps [[
+  " All Modes [[
     " ease of use / typos
     map :Q :q
     map :W :w
@@ -122,29 +117,30 @@
     " improved buffer delete
     map <leader>d :SmartBd<cr>
     map <leader>c :SmartBw<cr>
-
-  " - Normal Mode
+  " ]]
+  " Normal Mode [[
     " quick insert of newline
     nmap <cr> o<esc>
-
-  " - Insert Mode
+  " ]]
+  " Insert Mode [[
     " remap escape to jj
     inoremap jj <esc>
-
-" - Vundle
+  " ]]
+" ]]
+" Plugins [[
   filetype off
   set runtimepath+=~/.vim/bundle/vundle/
   call vundle#rc()
 
   Bundle 'gmarik/vundle'
 
-  " - Dependencies
+  " Dependencies [[
     " - Rykka/colorv.vim
       Bundle 'mattn/webapi-vim'
     " - othree/vim-autocomplpop
       Bundle 'vim-scripts/L9'
-
-  " - Buffers / Files
+  " ]]
+  " Buffers / Files [[
     Bundle 'fholgado/minibufexpl.vim'
       " open at 1 buffer
       let g:miniBufExplorerMoreThanOne=1
@@ -160,8 +156,8 @@
 
     Bundle 'Industrial/vim-smartbd'
     Bundle 'Industrial/vim-smartbw'
-
-  " - Movement
+  " ]]
+  " Movement [[
     Bundle 'Lokaltog/vim-easymotion'
     let g:EasyMotion_leader_key = '<Leader>'
 
@@ -174,30 +170,30 @@
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
-
-  " - Finding / Searching
+  " ]]
+  " Finding / Searching [[
     " TODO: this one screws up
     "Bundle 'ervandew/ag'
     Bundle 'Spaceghost/vim-matchit'
     Bundle 'vim-scripts/IndexedSearch'
-
-  " - Cut, Copy and Paste
+  " ]]
+  " Cut, Copy and Paste [[
     Bundle 'maxbrunsfeld/vim-yankstack'
-
-  " - Syntax
+  " ]]
+  " Syntax [[
     Bundle 'scrooloose/syntastic'
       let g:syntastic_check_on_open=1
       let g:syntastic_auto_loc_list=1
-
-  " - Completion
+  " ]]
+  " Completion [[
     Bundle 'othree/vim-autocomplpop'
     "Bundle 'ervandew/supertab'
     "Bundle 'Valloric/YouCompleteMe'
     Bundle 'tpope/vim-surround'
     Bundle 'tpope/vim-endwise'
     Bundle 'msanders/snipmate.vim'
-
-  " - Version Control
+  " ]]
+  " Version Control [[
     Bundle 'tpope/vim-fugitive'
 
     Bundle 'mattn/gist-vim'
@@ -211,8 +207,8 @@
     Bundle 'gregsexton/gitv'
 
     "Bundle 'svndiff'
-
-  " - File Types
+  " ]]
+  " File Types [[
     Bundle 'digitaltoad/vim-jade'
     Bundle 'gkz/vim-ls'
     Bundle 'leshill/vim-json'
@@ -220,19 +216,18 @@
     Bundle 'pangloss/vim-javascript'
     Bundle 'tpope/vim-git'
     Bundle 'wavded/vim-stylus'
-'
-
-  " - Colors
+  " ]]
+  " Colors [[
     Bundle 'Rykka/colorv.vim'
     Bundle 'nathanaelkane/vim-indent-guides'
-
-  " - Color Schemes
+  " ]]
+  " Color Schemes [[
     Bundle 'w0ng/vim-hybrid'
     Bundle 'tomasr/molokai'
     Bundle 'altercation/vim-colors-solarized'
     Bundle 'chriskempson/base16-vim'
 
-    colorscheme base16-default
+    colorscheme base16-pop
 
     function l:ToggleColorschemeBackground()
       if &background == 'light'
@@ -251,6 +246,8 @@
     " - Maps
       " Toggle background color
       map <f12> :call l:ToggleColorschemeBackground()<cr>
-
-  filetype on
-
+  " ]]
+" ]]
+" Finalization [[
+filetype on
+" ]]
