@@ -22,11 +22,7 @@ g() {
 # vi mode for the commandline
 set -o vi
 
-if [ $(id -u) -eq 0 ]; then
-  PS1="\n\W \e[31m$\e[0m "
-else
-  PS1="\n\W \e[32m$\e[0m "
-fi
+PS1="\n\$ "
 
 # copy/paste to X clipboard from commandline
 alias pbcopy='xsel --clipboard --input'
