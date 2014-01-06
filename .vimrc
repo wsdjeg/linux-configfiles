@@ -1,8 +1,5 @@
 " vim:foldmethod=marker:foldmarker=[[,]]
 
-" TODO:
-"  - Bundle "vim-scripts/Gundo"
-
 " Initialization [[
   " run in nocompatible, giving us more options. This should be the first command
   set nocompatible
@@ -93,23 +90,33 @@
     "    \ 'S'  : 'S',
     "    \ '' : 'S',
     "    \ }
+
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
     endif
 
     " unicode symbols
-    let g:airline_left_sep = '»'
-    let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '«'
-    let g:airline_right_sep = '◀'
-    let g:airline_symbols.linenr = '␊'
-    let g:airline_symbols.linenr = '␤'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    let g:airline_symbols.paste = 'Þ'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
+    if has('gui')
+      "let g:airline_left_sep = '»'
+      let g:airline_left_sep = '▶'
+      "let g:airline_right_sep = '«'
+      let g:airline_right_sep = '◀'
+      "let g:airline_symbols.linenr = '␊'
+      "let g:airline_symbols.linenr = '␤'
+      let g:airline_symbols.linenr = '¶'
+      let g:airline_symbols.branch = '⎇'
+      "let g:airline_symbols.paste = 'ρ'
+      "let g:airline_symbols.paste = 'Þ'
+      let g:airline_symbols.paste = '∥'
+      let g:airline_symbols.whitespace = 'Ξ'
+    else
+      let g:airline_left_sep = '>'
+      let g:airline_right_sep = '<'
+      let g:airline_symbols.linenr = 'L'
+      let g:airline_symbols.branch = 'B'
+      let g:airline_symbols.paste = 'P'
+      let g:airline_symbols.whitespace = 'W'
+    endif
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -166,7 +173,10 @@
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 2
-    let g:syntastic_error_symbol = '✗'
+
+    if has('gui_running')
+      let g:syntastic_error_symbol = '✗'
+    endif
 " ]]
 " Completion [[
   "Bundle 'vim-scripts/L9'
