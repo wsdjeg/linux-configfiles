@@ -41,3 +41,5 @@ export PATH
 
 export NODE_PATH="/usr/local/bin/node"
 
+export LC_ALL=en_US.utf-8
+export LANG="$LC_ALL"
