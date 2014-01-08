@@ -266,7 +266,11 @@
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'chriskempson/base16-vim'
 
-  colorscheme base16-tomorrow
+  if has('gui_running')
+    colorscheme base16-tomorrow
+  else
+    colorscheme slate
+  endif
 
   function l:ToggleColorschemeBackground()
     if &background == 'light'
