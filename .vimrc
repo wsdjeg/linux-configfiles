@@ -134,8 +134,8 @@
 
   " when vim opens, open NERDTree to the left, tagbar to the right and select
   " the file split on the right of NERDTree.
-  autocmd vimenter * NERDTree | wincmd l
-  autocmd vimenter * Tagbar
+  "autocmd vimenter * NERDTree | wincmd l
+  "autocmd vimenter * Tagbar
 " ]]
 " Movement [[
   " make movement keys wrap to the next/previous line
