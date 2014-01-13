@@ -96,27 +96,12 @@
     endif
 
     " unicode symbols
-    if has('gui_running')
-      "let g:airline_left_sep = '»'
-      let g:airline_left_sep = '▶'
-      "let g:airline_right_sep = '«'
-      let g:airline_right_sep = '◀'
-      "let g:airline_symbols.linenr = '␊'
-      "let g:airline_symbols.linenr = '␤'
-      let g:airline_symbols.linenr = '¶'
-      let g:airline_symbols.branch = '⎇'
-      "let g:airline_symbols.paste = 'ρ'
-      "let g:airline_symbols.paste = 'Þ'
-      let g:airline_symbols.paste = '∥'
-      let g:airline_symbols.whitespace = 'Ξ'
-    else
-      let g:airline_left_sep = '>'
-      let g:airline_right_sep = '<'
-      let g:airline_symbols.linenr = 'L'
-      let g:airline_symbols.branch = 'B'
-      let g:airline_symbols.paste = 'P'
-      let g:airline_symbols.whitespace = 'W'
-    endif
+    let g:airline_left_sep = '»'
+    let g:airline_right_sep = '«'
+    let g:airline_symbols.linenr = '¶'
+    "let g:airline_symbols.branch = 'B'
+    let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.whitespace = 'Ξ'
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -176,10 +161,7 @@
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 2
-
-    if has('gui_running')
-      let g:syntastic_error_symbol = '✗'
-    endif
+    let g:syntastic_error_symbol = '✗'
 " ]]
 " Completion [[
   "Bundle 'vim-scripts/L9'
@@ -266,11 +248,7 @@
 
   " show "invisible" characters
   set list
-  if has('gui_running')
-    set listchars=tab:·\ ,trail:+,extends:»,precedes:«
-  else
-    set listchars=tab:.\ ,trail:+
-  endif
+  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
