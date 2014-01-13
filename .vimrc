@@ -96,7 +96,7 @@
     endif
 
     " unicode symbols
-    if has('gui')
+    if has('gui_running')
       "let g:airline_left_sep = '»'
       let g:airline_left_sep = '▶'
       "let g:airline_right_sep = '«'
