@@ -96,12 +96,12 @@
     endif
 
     " unicode symbols
-    let g:airline_left_sep = '»'
-    let g:airline_right_sep = '«'
-    let g:airline_symbols.linenr = '¶'
+    "let g:airline_left_sep = '»'
+    "let g:airline_right_sep = '«'
+    "let g:airline_symbols.linenr = '¶'
     "let g:airline_symbols.branch = 'B'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
+    "let g:airline_symbols.paste = '∥'
+    "let g:airline_symbols.whitespace = 'Ξ'
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -161,7 +161,8 @@
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 2
-    let g:syntastic_error_symbol = '✗'
+    "let g:syntastic_error_symbol = '✗'
+    let g:syntastic_error_symbol = '!'
 " ]]
 " Completion [[
   "Bundle 'vim-scripts/L9'
@@ -248,7 +249,7 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:·\ ,trail:+,extends:»,precedes:«
+  set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
