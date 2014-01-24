@@ -259,6 +259,7 @@
 
   " turn on a fold column of 1
   set foldcolumn=1
+  set foldmethod=manual
 " ]]
 " Font [[
   if has('macunix')
