@@ -250,7 +250,7 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+  set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:%
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
