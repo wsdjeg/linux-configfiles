@@ -279,15 +279,19 @@
   Bundle 'chriskempson/base16-vim'
 
   if has('gui_running')
-    colorscheme base16-tomorrow
+    let w:lightscheme = 'base16-solarized'
+    let w:darkscheme = 'base16-bright'
   else
-    colorscheme slate
+    let w:lightscheme = 'desert'
+    let w:darkscheme = 'slate'
   endif
 
   function l:ToggleColorschemeBackground()
     if &background == 'light'
+      execute 'colorscheme' w:darkscheme
       set background=dark
     else
+      execute 'colorscheme' w:lightscheme
       set background=light
     endif
   endfunction
