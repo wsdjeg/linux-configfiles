@@ -225,6 +225,7 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'tpope/vim-git'
   Bundle 'wavded/vim-stylus'
+  Bundle 'kchmck/vim-coffee-script'
 " ]]
 " Visual Information [[
   Bundle 'mattn/webapi-vim'
