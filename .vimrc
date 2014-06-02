@@ -1,4 +1,4 @@
-" vim:foldmethod=marker:foldmarker=[[,]]
+" vim:foldmethod=marker:foldmarker=[[,]]:expandtab
 
 " Initialization [[
   " run in nocompatible, giving us more options. This should be the first command
@@ -19,12 +19,13 @@
   autocmd BufNewFile,BufRead *.json set filetype=javascript
   autocmd BufNewFile,BufRead *.ejs  set filetype=html
   autocmd BufNewFile,BufRead *.hbs  set filetype=html
+  autocmd BufNewFile,BufRead *.eex  set expandtab
 " ]]
   " Indentation [[
     set autoindent
     set tabstop=2
     set shiftwidth=2
-    set expandtab
+    set noexpandtab
   " ]]
   " Backups [[
     set writebackup
@@ -46,9 +47,13 @@
   "  let g:miniBufExplorerMoreThanOne=1
 
   Bundle 'kien/ctrlp.vim'
+    let g:ctrlp_by_filename=0
+    let g:ctrlp_match_window='top,order:ttb,min:1,max:10,results:50'
     let g:ctrlp_working_path_mode=0
+    let g:ctrlp_custom_ignore = { 'dir': 'build/' }
 
   Bundle 'scrooloose/nerdtree'
+    "let g:NERDTreeWinPos='right'
     map <leader>[ :NERDTreeToggle<cr>
 
   Bundle 'majutsushi/tagbar'
@@ -96,12 +101,12 @@
     endif
 
     " unicode symbols
-    "let g:airline_left_sep = '»'
-    "let g:airline_right_sep = '«'
-    "let g:airline_symbols.linenr = '¶'
-    "let g:airline_symbols.branch = 'B'
-    "let g:airline_symbols.paste = '∥'
-    "let g:airline_symbols.whitespace = 'Ξ'
+    let g:airline_left_sep = '»'
+    let g:airline_right_sep = '«'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = 'B'
+    let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.whitespace = 'Ξ'
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -130,7 +135,7 @@
   set nowrap
 
   Bundle 'Lokaltog/vim-easymotion'
-  let g:EasyMotion_leader_key = '<Leader>'
+  let g:EasyMotion_leader_key = '<leader>'
 
   " switch buffers
   map <tab> :bn<cr>
@@ -145,29 +150,39 @@
   " keep a certain number of lines visible
   set scrolloff=50
 " ]]
-" Finding / Searching [[
+" Finding / Searching / Restructuring [[
+  set noignorecase
+
   " TODO: this one screws up
   "Bundle 'ervandew/ag'
   Bundle 'Spaceghost/vim-matchit'
   Bundle 'vim-scripts/IndexedSearch'
   Bundle 'vim-scripts/grep.vim'
+
   map <C-f> :Rgrep<cr>
+
+  map <leader>c :sort<cr>
 " ]]
 " Cut, Copy and Paste [[
-  Bundle 'maxbrunsfeld/vim-yankstack'
+  "Bundle 'maxbrunsfeld/vim-yankstack'
 " ]]
 " Syntax [[
   Bundle 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
-    let g:syntastic_auto_jump = 1
+    let g:syntastic_auto_jump = 0
     let g:syntastic_auto_loc_list = 2
-    "let g:syntastic_error_symbol = '✗'
-    let g:syntastic_error_symbol = '!'
+    "let g:syntastic_error_symbol = '!'
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_warning_symbol = '⚠'
 " ]]
 " Completion [[
   "Bundle 'vim-scripts/L9'
-  "  Bundle 'othree/vim-autocomplpop'
+  Bundle 'vim-scripts/AutoComplPop'
+    let g:acp_ignorecaseOption = 1
+
   Bundle 'ervandew/supertab'
+
+  Bundle 'vim-scripts/SearchComplete'
 
   "Bundle 'Valloric/YouCompleteMe'
   "Bundle 'Shougo/neocomplete.vim'
@@ -177,7 +192,7 @@
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
-  vnoremap <silent> <Leader>a :Align<CR>
+  vnoremap <silent> <leader>a :Align<CR>
   function! AlignSection(regex) range
     let extra = 1
     let sep = empty(a:regex) ? '=' : a:regex
@@ -215,17 +230,26 @@
 
   "Bundle 'vim-scripts/vim-signify'
 
+  " Nice git integration.
   Bundle 'gregsexton/gitv'
+
+  " Visualize the undo history as a tree.
+  Bundle 'sjl/gundo.vim'
+    map <leader>u :GundoToggle<cr>
 " ]]
 " File Types [[
   Bundle 'digitaltoad/vim-jade'
   Bundle 'gkz/vim-ls'
+  Bundle 'groenewege/vim-less'
+  Bundle 'kchmck/vim-coffee-script'
   Bundle 'leshill/vim-json'
+  Bundle 'mintplant/vim-literate-coffeescript'
   Bundle 'othree/html5.vim'
   Bundle 'pangloss/vim-javascript'
   Bundle 'tpope/vim-git'
+  Bundle 'tpope/vim-markdown'
   Bundle 'wavded/vim-stylus'
-  Bundle 'kchmck/vim-coffee-script'
+  Bundle 'elixir-lang/vim-elixir'
 " ]]
 " Visual Information [[
   Bundle 'mattn/webapi-vim'
@@ -250,7 +274,8 @@
 
   " show "invisible" characters
   set list
-  set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:%
+  "set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:%
+  set listchars=tab:·\ ,trail:-,extends:>,precedes:<,nbsp:%
 
   " don't show chars on split and fold lines
   set fillchars=vert:\ ,fold:\ 
@@ -260,38 +285,91 @@
 
   " turn on a fold column of 1
   set foldcolumn=1
-  set foldmethod=manual
+
+  " Set the fold method to indentation.
+  set foldmethod=indent
+
+  " Set the fold level to 0
+  set foldlevel=0
+
+  " But open all folds at level 1 when opening the file
+  set foldlevelstart=1
+
+  " And do not allow folds below this level
+  set foldnestmax=2
+
+  " Allow one line folds.
+  set foldminlines=0
+
+  " Don't ignore anything (e.g. comments) when making folds
+  set foldignore=
+
+  " highlight the line the cursor is on
+  set cursorline
 " ]]
 " Font [[
-  if has('macunix')
-    "set guifont=Menlo:h14
-    set guifont=Monaco:h9
-  else
-    " assume linux
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-    "set guifont=Terminess\ Powerline\ 9
-  endif
+  function! s:ToggleFontSize()
+    if w:font_size == 'small'
+      if has('macunix')
+        set guifont=Menlo:h14
+      else
+        " assume linux
+        set guifont=Terminus\ 12
+        "set guifont=Ubuntu\ Mono\ 16
+      endif
+
+      let w:font_size = 'large'
+
+    else
+      if has('macunix')
+        set guifont=Monaco:h9
+      else
+        " assume linux
+        set guifont=Terminus\ 9
+        "set guifont=Ubuntu\ Mono\ 12
+      endif
+
+      let w:font_size = 'small'
+
+    endif
+  endfunction
+
+  " prepare the first call (set values to what we don't want)
+  let w:font_size = 'large'
+
+  " then call
+  call s:ToggleFontSize()
+
+  " - Maps
+    " Toggle font size
+    map <f11> :call s:ToggleFontSize()<cr>
 " ]]
 " Color Schemes [[
   Bundle 'w0ng/vim-hybrid'
   Bundle 'tomasr/molokai'
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'chriskempson/base16-vim'
+  Bundle 'pyte'
+  Bundle 'inkpot'
+  Bundle 'jellybeans.vim'
+  Bundle 'vim-scripts/github-theme'
+  Bundle 'xterm16.vim'
+  Bundle 'flazz/vim-colorschemes'
 
   if has('gui_running')
-    let w:lightscheme = 'base16-solarized'
-    let w:darkscheme = 'base16-bright'
+    let s:lightscheme = 'base16-solarized'
+    let s:darkscheme = 'base16-default'
   else
-    let w:lightscheme = 'desert'
-    let w:darkscheme = 'slate'
+    let s:lightscheme = 'desert'
+    let s:darkscheme = 'slate'
   endif
 
-  function l:ToggleColorschemeBackground()
+  function! s:ToggleColorschemeBackground()
     if &background == 'light'
-      execute 'colorscheme' w:darkscheme
+      execute 'colorscheme' s:darkscheme
       set background=dark
     else
-      execute 'colorscheme' w:lightscheme
+      execute 'colorscheme' s:lightscheme
       set background=light
     endif
   endfunction
@@ -300,11 +378,11 @@
   set background=light
 
   " then call
-  call l:ToggleColorschemeBackground()
+  call s:ToggleColorschemeBackground()
 
   " - Maps
     " Toggle background color
-    map <f12> :call l:ToggleColorschemeBackground()<cr>
+    map <f12> :call s:ToggleColorschemeBackground()<cr>
 " ]]
 " Maps [[
   " All Modes [[
@@ -330,6 +408,9 @@
     " resync syntax
     map <leader>sy :syntax sync fromstart<cr>
 
+    " coffeescript folds
+    "map <leader>ff :normal 
+
     " improved buffer delete
     map <leader>d :SmartBd<cr>
     map <leader>c :SmartBw<cr>
@@ -337,10 +418,15 @@
   " Normal Mode [[
     " quick insert of newline
     "nmap <cr> o<esc>
+
+    " select word under cursor
+    nmap <space> viw
   " ]]
   " Insert Mode [[
     " remap escape to jj
     inoremap jj <esc>
+  " ]]
+  " Select Mode [[
   " ]]
 " ]]
 " Finalization [[
