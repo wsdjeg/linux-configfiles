@@ -1,18 +1,25 @@
+import Data.Monoid
+import System.Exit
+import System.IO(hPutStrLn)
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
-import Data.Monoid
-import System.Exit
+import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Accordion
+import XMonad.Layout.Tabbed
+import XMonad.Layout.Grid
+import XMonad.Layout.Reflect
+import XMonad.Util.Run(spawnPipe)
 
-import qualified XMonad.StackSet as StackSet
 import qualified Data.Map        as Map
+import qualified XMonad.StackSet as StackSet
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
   [
     -- launch a terminal
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
     -- launch dmenu
-    ((modm, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
+    ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
 
     -- close focused window
     ((modm .|. shiftMask, xK_c), kill),
@@ -94,12 +101,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
   ++
 
   --
-  -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-  -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+  -- mod-{w,e}, Switch to physical/Xinerama screens 1, 2
+  -- mod-shift-{w,e}, Move client to screen 1, 2
   --
   [
     ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+      | (key, sc) <- zip [xK_m, xK_n] [0..]
       , (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]
   ]
 
@@ -117,43 +124,22 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = Map.fromList $
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
 
-myLayout = tiled ||| Mirror tiled ||| Full
-  where
-    -- default tiling algorithm partitions the screen into two panes
-    tiled = Tall nmaster delta ratio
-    -- The default number of windows in the master pane
-    nmaster = 1
-    -- Default proportion of screen occupied by master pane
-    ratio = 2/3
-    -- Percent of screen to increment by when resizing panes
-    delta = 1/9
+myLayout = tiled ||| reflectHoriz tiled ||| Mirror tiled ||| Grid ||| Accordion ||| Full ||| simpleTabbed
+           where
+             tiled = Tall tiledNmaster tiledDelta tiledRatio
+             tiledNmaster = 1
+             tiledDelta = 1/18
+             tiledRatio = 2/3
 
-myManageHook = composeAll
-  [
-    className =? "MPlayer"        --> doFloat,
-    className =? "Gimp"           --> doFloat,
-    resource  =? "desktop_window" --> doIgnore,
-    resource  =? "kdesktop"       --> doIgnore
-  ]
-
-myEventHook = mempty
-
-myLogHook = return ()
-
-myStartupHook = return ()
-
-myBar = "xmobar"
-myPP  = xmobarPP { ppCurrent = xmobarColor "#336699" "" . wrap "<" ">" }
--- Key binding to toggle the gap for the bar.
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
-
-myConfig = defaultConfig {
+main = do
+  xmproc <- spawnPipe "/usr/bin/xmobar /home/tom/.xmonad/xmobarrc"
+  xmonad defaultConfig {
   -- simple stuff
   terminal           = "~/.bin/terminal",
   focusFollowsMouse  = True,
   borderWidth        = 1,
-  modMask            = mod4Mask,
-  workspaces         = map show [1..9],
+  modMask            = mod1Mask,
+  workspaces         = ["1:www", "2:dev", "3:term", "4:doc", "5:ops", "6:media", "7:mixed", "8:social", "9:scratch"],
   normalBorderColor  = "#666666",
   focusedBorderColor = "#336699",
 
@@ -162,12 +148,10 @@ myConfig = defaultConfig {
   mouseBindings      = myMouseBindings,
 
   -- hooks, layouts
-  layoutHook         = myLayout,
-  manageHook         = myManageHook,
-  handleEventHook    = myEventHook,
-  logHook            = myLogHook,
-  startupHook        = myStartupHook
-}
+  layoutHook = avoidStruts $ myLayout,
 
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+  manageHook = manageDocks <+> manageHook defaultConfig,
 
+  logHook = dynamicLogWithPP $ xmobarPP { ppOutput  = hPutStrLn xmproc,
+                                          ppCurrent = xmobarColor "#336699" "" . wrap "<" ">",
+                                          ppTitle   = xmobarColor "#669933" "" . shorten 50 } }
