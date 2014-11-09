@@ -47,10 +47,10 @@
   "  let g:miniBufExplorerMoreThanOne=1
 
   Bundle 'kien/ctrlp.vim'
-    let g:ctrlp_by_filename=0
-    let g:ctrlp_match_window='top,order:ttb,min:1,max:10,results:50'
-    let g:ctrlp_working_path_mode=0
-    let g:ctrlp_custom_ignore = { 'dir': 'build/' }
+    let g:ctrlp_use_caching=1
+    let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](\.git|\.svn|\.hg|node_modules|bower_components|build|docs)'
+      \ }
 
   Bundle 'scrooloose/nerdtree'
     "let g:NERDTreeWinPos='right'
