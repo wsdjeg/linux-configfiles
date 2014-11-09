@@ -48,7 +48,7 @@
 
 [merge]
 	#tool          = gvimdiff
-	conflictstyle = diff3
+	#conflictstyle = diff3
 
 [github]
 	user = Industrial
