@@ -1,9 +1,9 @@
 ll() {
-  ls -FgHl --color=auto "$@";
+  ls -FhHlX --color=auto --group-directories-first "$@";
 }
 
 l() {
-  ls -AFgHl --color=auto "$@";
+  ls -AFhHlX --color=auto --group-directories-first "$@";
 }
 
 c() {
