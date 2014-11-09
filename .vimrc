@@ -349,7 +349,7 @@
     map <f9> :call ToggleFoldMode()<cr>
 " ]]
 " Font [[
-  function! s:ToggleFontSize()
+  function! ToggleFontSize()
     if w:font_size == 'small'
       if has('macunix')
         set guifont=Menlo:h14
@@ -386,31 +386,34 @@
     map <f11> :call ToggleFontSize()<cr>
 " ]]
 " Color Schemes [[
-  Bundle 'w0ng/vim-hybrid'
-  Bundle 'tomasr/molokai'
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'chriskempson/base16-vim'
-  Bundle 'pyte'
   Bundle 'inkpot'
   Bundle 'jellybeans.vim'
+  Bundle 'pyte'
+  Bundle 'romainl/Apprentice'
+  Bundle 'romainl/Disciple'
+  Bundle 'tomasr/molokai'
   Bundle 'vim-scripts/github-theme'
+  Bundle 'w0ng/vim-hybrid'
   Bundle 'xterm16.vim'
-  Bundle 'flazz/vim-colorschemes'
 
   if has('gui_running')
-    let s:lightscheme = 'base16-solarized'
-    let s:darkscheme = 'base16-default'
+    let w:lightscheme = 'base16-solarized'
+    "let w:lightscheme = 'disciple'
+    "let w:darkscheme = 'base16-railscasts'
+    let w:darkscheme = 'apprentice'
   else
-    let s:lightscheme = 'desert'
-    let s:darkscheme = 'slate'
+    let w:lightscheme = 'desert'
+    let w:darkscheme = 'slate'
   endif
 
-  function! s:ToggleColorschemeBackground()
+  function! ToggleColorschemeBackground()
     if &background == 'light'
-      execute 'colorscheme' s:darkscheme
+      execute 'colorscheme' w:darkscheme
       set background=dark
     else
-      execute 'colorscheme' s:lightscheme
+      execute 'colorscheme' w:lightscheme
       set background=light
     endif
   endfunction
@@ -419,11 +422,11 @@
   set background=light
 
   " then call
-  call s:ToggleColorschemeBackground()
+  call ToggleColorschemeBackground()
 
   " - Maps
     " Toggle background color
-    map <f12> :call s:ToggleColorschemeBackground()<cr>
+    map <f12> :call ToggleColorschemeBackground()<cr>
 " ]]
 " Maps [[
   " All Modes [[
