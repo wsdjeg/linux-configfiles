@@ -355,8 +355,8 @@
         set guifont=Menlo:h14
       else
         " assume linux
-        set guifont=Terminus\ 12
-        "set guifont=Ubuntu\ Mono\ 16
+        "set guifont=Ubuntu\ Mono\ 12
+        set guifont=Droid\ Sans\ Mono\ 12
       endif
 
       let w:font_size = 'large'
@@ -379,11 +379,11 @@
   let w:font_size = 'large'
 
   " then call
-  call s:ToggleFontSize()
+  call ToggleFontSize()
 
   " - Maps
     " Toggle font size
-    map <f11> :call s:ToggleFontSize()<cr>
+    map <f11> :call ToggleFontSize()<cr>
 " ]]
 " Color Schemes [[
   Bundle 'w0ng/vim-hybrid'
