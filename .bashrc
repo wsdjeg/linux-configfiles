@@ -52,3 +52,7 @@ alias gitk='gitk --all'
 # Source files in ~/.sh
 source ~/.sh/bash-completion-git.sh
 source ~/.sh/bash-completion-gitflow.sh
+
+# Fleet (Docker)
+export FLEETCTL_TUNNEL=127.0.0.1:2222
+#ssh-add ~/.vagrant.d/insecure_private_key
