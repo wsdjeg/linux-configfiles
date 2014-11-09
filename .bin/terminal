@@ -1,2 +1,3 @@
-urxvt +sb -bg black -fg grey -fn "xft:Terminus:size=9"
-#urxvt +sb -bg black -fg grey -fn "xft:Ubuntu\ Mono:size=12"
+xfce4-terminal
+#urxvt -si -sw -sb -bg black -fg grey -fn "xft:Terminus:size=9"
+#urxvt -si -sw +sb -bg black -fg grey -fn "xft:Ubuntu\ Mono:size=12"
