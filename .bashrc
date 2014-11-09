@@ -11,7 +11,7 @@ c() {
   pwd;
   echo "";
   l;
-  echo "";
+  l .;
   pwd;
 }
 
