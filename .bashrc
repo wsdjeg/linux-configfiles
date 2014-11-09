@@ -16,6 +16,10 @@ c() {
 #  git "$@";
 #}
 
+g() {
+  DEBUGGING=1 gulp;
+}
+
 # vi mode for the commandline
 set -o vi
 
