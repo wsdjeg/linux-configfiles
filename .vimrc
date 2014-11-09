@@ -282,29 +282,71 @@
   " turn on line numbers
   set number
 
-  " turn on a fold column of 1
-  set foldcolumn=1
-
-  " Set the fold method to indentation.
-  set foldmethod=indent
-
-  " Set the fold level to 0
-  set foldlevel=0
-
-  " But open all folds at level 1 when opening the file
-  set foldlevelstart=1
-
-  " And do not allow folds below this level
-  set foldnestmax=2
-
-  " Allow one line folds.
-  set foldminlines=0
+  " highlight the line the cursor is on
+  set cursorline
 
   " Don't ignore anything (e.g. comments) when making folds
   set foldignore=
 
-  " highlight the line the cursor is on
-  set cursorline
+  function! ToggleFoldMode()
+    if &foldmethod == 'indent'
+      " set the fold method to indent
+      setlocal foldmethod=manual
+
+      " Remove all folds made by the other fold method.
+      normal zE<cr>
+
+      " Set the fold level to 0.
+      setlocal foldlevel=0
+
+      " But open all folds at level 1 when opening the file
+      setlocal foldlevelstart=-1
+
+      " And do not allow folds below this level
+      setlocal foldnestmax=20
+
+      " Allow one line folds.
+      setlocal foldminlines=1
+
+      " turn on a fold column of 1
+      setlocal foldcolumn=1
+
+    else
+      " setlocal the fold method to indent
+      setlocal foldmethod=indent
+
+      " Set the fold level to 0
+      setlocal foldlevel=0
+
+      " But open all folds at level 1 when opening the file
+      setlocal foldlevelstart=1
+
+      " And do not allow folds below this level
+      setlocal foldnestmax=2
+
+      " Allow one line folds.
+      setlocal foldminlines=0
+
+      " turn on a fold column of 3
+      setlocal foldcolumn=3
+    endif
+  endfunction
+
+  " TODO: Can't get this to work. For now, just set the properties in the
+  "       function to the default values that I want.
+  setlocal foldmethod=manual
+  normal zE<cr>
+  setlocal foldlevel=0
+  setlocal foldlevelstart=-1
+  setlocal foldnestmax=20
+  setlocal foldminlines=1
+  setlocal foldcolumn=1
+
+  "call ToggleFoldMode()
+
+  " - Maps
+    " Toggle fold mode
+    map <f9> :call ToggleFoldMode()<cr>
 " ]]
 " Font [[
   function! s:ToggleFontSize()
