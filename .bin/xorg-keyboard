@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+# Increase the keyboard speed
+xset r rate 200 50;
+
+# Swap Caps Lock and Left Control
+xmodmap ~/.Xmodmap
