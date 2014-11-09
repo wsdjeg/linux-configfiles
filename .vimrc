@@ -179,6 +179,7 @@
   "Bundle 'vim-scripts/L9'
   Bundle 'vim-scripts/AutoComplPop'
     let g:acp_ignorecaseOption = 1
+    let g:acp_behaviorKeywordCommand = "\<C-p>"
 
   Bundle 'ervandew/supertab'
 
