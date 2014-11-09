@@ -47,8 +47,7 @@ export NODE_PATH="/usr/bin/node"
 alias npm='npm --python=python2'
 #alias npi='npm --python=python2'
 
-#export LC_ALL=en_US.utf-8
-#export LANG="$LC_ALL"
+alias gitk='gitk --all'
 
 # Source files in ~/.sh
 source ~/.sh/bash-completion-git.sh
