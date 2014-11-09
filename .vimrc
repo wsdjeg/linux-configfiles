@@ -183,8 +183,6 @@
 
   Bundle 'ervandew/supertab'
 
-  Bundle 'vim-scripts/SearchComplete'
-
   "Bundle 'Valloric/YouCompleteMe'
   "Bundle 'Shougo/neocomplete.vim'
   "  let g:neocomplete#enable_at_startup = 1
