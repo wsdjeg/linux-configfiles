@@ -8,11 +8,7 @@ l() {
 
 c() {
   cd "$1";
-  pwd;
-  echo "";
-  l;
   l .;
-  pwd;
 }
 
 # TODO: Find a way for this to work with bash-completion-git
