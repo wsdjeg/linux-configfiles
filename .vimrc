@@ -16,7 +16,7 @@
 
   " set up file type detection
   " TODO: put with File Types
-  autocmd BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufNewFile,BufRead *.json set filetype=javascript et ts=2 sts=2 sw=2
   autocmd BufNewFile,BufRead *.ejs  set filetype=html
   autocmd BufNewFile,BufRead *.hbs  set filetype=html
   autocmd BufNewFile,BufRead *.eex  set expandtab
@@ -30,7 +30,7 @@
   " Backups [[
     set writebackup
     set backup
-    set swapfile
+    set noswapfile
     set backupcopy=auto
     set backupdir=~/.vim/backup
     set directory=~/.vim/temp
