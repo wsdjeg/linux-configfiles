@@ -23,8 +23,8 @@ g() {
 # vi mode for the commandline
 set -o vi
 
-#PS1="\n\u@\h \w\n\D{%Y-%M-%d %H:%M:%S} λ "
-PS1="\n\u@\h \w\n\D{%Y-%M-%d %H:%M:%S} ⚡ "
+PS1="\n\D{%Y-%M-%d %H:%M:%S} \w\nλ "
+#PS1="\n\u@\h \w\n\D{%Y-%M-%d %H:%M:%S} ⚡ "
 
 # copy/paste to X clipboard from commandline
 alias pbcopy='xsel --clipboard --input'
