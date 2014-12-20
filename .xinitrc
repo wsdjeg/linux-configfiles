@@ -14,13 +14,4 @@ then
         xinput set-int-prop $DEVICE_ID "Device Enabled" 8 0
 fi
 
-# set keyboard layout options
-xmodmap ~/.Xmodmap;
-
-# set a black background
-#xsetroot -bg 000000;
-
-# finally start the wm
-exec xfce4-session;
-#exec xmonad;
-#exec gnome-session;
+startxfce4;
