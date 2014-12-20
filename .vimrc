@@ -25,7 +25,7 @@
     set autoindent
     set tabstop=2
     set shiftwidth=2
-    set noexpandtab
+    set expandtab
   " ]]
   " Backups [[
     set writebackup
@@ -130,6 +130,9 @@
 " Movement [[
   " make movement keys wrap to the next/previous line
   set whichwrap=b,s,h,l,<,>,[,]
+
+  " Fix backspace behaviour
+  set backspace=indent,eol,start
 
   " don't wrap lines
   set nowrap
@@ -251,9 +254,7 @@
   Bundle 'elixir-lang/vim-elixir'
 " ]]
 " Visual Information [[
-  Bundle 'mattn/webapi-vim'
-    Bundle 'Rykka/colorv.vim'
-  Bundle 'nathanaelkane/vim-indent-guides'
+  "Bundle 'nathanaelkane/vim-indent-guides'
 
   set showcmd
   set showmode
@@ -356,7 +357,8 @@
       else
         " assume linux
         "set guifont=Ubuntu\ Mono\ 12
-        set guifont=Droid\ Sans\ Mono\ 12
+        "set guifont=Droid\ Sans\ Mono\ 12
+        set guifont=Inconsolata\ Medium\ 12
       endif
 
       let w:font_size = 'large'
@@ -386,6 +388,11 @@
     map <f11> :call ToggleFontSize()<cr>
 " ]]
 " Color Schemes [[
+  " Make colorschemes work in the terminal
+  Bundle 'CSApprox'
+
+  set t_Co=256
+
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'chriskempson/base16-vim'
   Bundle 'inkpot'
@@ -402,10 +409,10 @@
     let w:lightscheme = 'base16-solarized'
     "let w:lightscheme = 'disciple'
     "let w:darkscheme = 'base16-railscasts'
-    let w:darkscheme = 'apprentice'
+    let w:darkscheme = 'base16-monokai'
   else
-    let w:lightscheme = 'desert'
-    let w:darkscheme = 'slate'
+    let w:lightscheme = 'disciple'
+    let w:darkscheme = 'apprentice'
   endif
 
   function! ToggleColorschemeBackground()
