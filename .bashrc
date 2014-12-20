@@ -41,6 +41,7 @@ export GIT_EDITOR=$EDITOR
 PATH=~/bin:$PATH
 PATH=~/.bin:$PATH
 PATH=~/.cabal/bin:$PATH
+PATH=~/npm/bin:$PATH
 export PATH
 
 export NODE_PATH="/usr/bin/node"
