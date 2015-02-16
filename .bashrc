@@ -60,3 +60,6 @@ export MAKEFLAGS="-j"
 # Fleet (Docker)
 export FLEETCTL_TUNNEL=127.0.0.1:2222
 #ssh-add ~/.vagrant.d/insecure_private_key
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

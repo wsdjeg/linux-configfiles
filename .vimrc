@@ -16,10 +16,11 @@
 
   " set up file type detection
   " TODO: put with File Types
-  autocmd BufNewFile,BufRead *.json set filetype=javascript et ts=2 sts=2 sw=2
-  autocmd BufNewFile,BufRead *.ejs  set filetype=html
-  autocmd BufNewFile,BufRead *.hbs  set filetype=html
-  autocmd BufNewFile,BufRead *.eex  set expandtab
+  autocmd BufNewFile,BufRead *.json    setlocal filetype=javascript et ts=2 sts=2 sw=2
+  autocmd BufNewFile,BufRead *.ejs     setlocal filetype=html
+  autocmd BufNewFile,BufRead *.hbs     setlocal filetype=html
+  autocmd BufNewFile,BufRead *.eex     setlocal expandtab
+  autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
 " ]]
   " Indentation [[
     set autoindent
@@ -152,6 +153,7 @@
 
   " keep a certain number of lines visible
   set scrolloff=50
+
 " ]]
 " Finding / Searching / Restructuring [[
   set noignorecase
@@ -172,25 +174,39 @@
 " Syntax [[
   Bundle 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
-    let g:syntastic_auto_jump = 0
-    let g:syntastic_auto_loc_list = 2
+    let g:syntastic_auto_jump = 1
+    let g:syntastic_auto_loc_list = 1
     "let g:syntastic_error_symbol = '!'
     let g:syntastic_error_symbol = '✗'
     let g:syntastic_warning_symbol = '⚠'
+    let g:syntastic_javascript_checkers = ['eslint']
 " ]]
 " Completion [[
   "Bundle 'vim-scripts/L9'
-  Bundle 'vim-scripts/AutoComplPop'
-    let g:acp_ignorecaseOption = 1
-    let g:acp_behaviorKeywordCommand = "\<C-p>"
+  "Bundle 'vim-scripts/AutoComplPop'
+  "  let g:acp_ignorecaseOption = 1
+  "  let g:acp_behaviorKeywordCommand = "\<C-p>"
 
-  Bundle 'ervandew/supertab'
+  "Bundle 'ervandew/supertab'
 
-  "Bundle 'Valloric/YouCompleteMe'
-  "Bundle 'Shougo/neocomplete.vim'
-  "  let g:neocomplete#enable_at_startup = 1
-  "  let g:neocomplete#enable_smart_case = 1
-  "  let g:neocomplete#sources#syntax#min_keyword_length = 1
+  " JavaScript context-sensitive completion
+  "Bundle 'marijnh/tern_for_vim'
+
+  Bundle 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 1
+
+    autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
+
+    " Don't know exactly what this does. See neocomplete github.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
@@ -406,10 +422,10 @@
   Bundle 'xterm16.vim'
 
   if has('gui_running')
-    let w:lightscheme = 'base16-solarized'
-    "let w:lightscheme = 'disciple'
-    "let w:darkscheme = 'base16-railscasts'
-    let w:darkscheme = 'base16-monokai'
+    let w:lightscheme = 'disciple'
+    let w:darkscheme = 'apprentice'
+    "let w:lightscheme = 'base16-brewer'
+    "let w:darkscheme = 'base16-brewer'
   else
     let w:lightscheme = 'disciple'
     let w:darkscheme = 'apprentice'

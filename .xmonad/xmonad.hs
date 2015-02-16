@@ -19,7 +19,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     -- launch a terminal
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
     -- launch dmenu
-    ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\""),
+    -- ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_run` && eval \"exec $exe\""),
+    ((modm .|. shiftMask, xK_p), spawn "~/.bin/dmenu_run"),
 
     -- close focused window
     ((modm .|. shiftMask, xK_c), kill),
@@ -106,7 +107,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
   --
   [
     ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_n, xK_m] [0..]
+      | (key, sc) <- zip [xK_m, xK_n] [0..]
       , (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]
   ]
 
