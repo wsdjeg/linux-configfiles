@@ -422,10 +422,8 @@
   Bundle 'xterm16.vim'
 
   if has('gui_running')
-    let w:lightscheme = 'disciple'
-    let w:darkscheme = 'apprentice'
-    "let w:lightscheme = 'base16-brewer'
-    "let w:darkscheme = 'base16-brewer'
+    let w:lightscheme = 'base16-solarized'
+    let w:darkscheme = 'base16-railscasts'
   else
     let w:lightscheme = 'disciple'
     let w:darkscheme = 'apprentice'
