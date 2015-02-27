@@ -1,5 +1,9 @@
-.vim/backup/*~
-.vim/temp/*.swp
-.vim/temp/*.swo
 .vim/.netrwhist
+.vim/backup/*~
 .vim/bundle
+.vim/temp/*.swo
+.vim/temp/*.swp
+.xmonad/xmonad-x86_64-linux
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.o
