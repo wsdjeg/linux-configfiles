@@ -43,12 +43,7 @@
 	ui          = true
 
 [diff]
-	external = diff-meld
-	tool     = diff-meld
-
-[merge]
-	#tool          = gvimdiff
-	#conflictstyle = diff3
+	tool = gvimdiff
 
 [github]
 	user = Industrial
@@ -59,6 +54,5 @@
 [user]
 	email = tom.wieland@gmail.com
 	name  = Tom Wieland
-
-[mergetool]
-	keepBackup = false
+[difftool]
+	prompt = false
