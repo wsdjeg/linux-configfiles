@@ -1,6 +1,4 @@
-" vim:foldmethod=marker:foldmarker=[[,]]:expandtab
-
-" Initialization [[
+" Initialization 
   " run in nocompatible, giving us more options. This should be the first command
   set nocompatible
 
@@ -10,9 +8,9 @@
 
   " load vundle
   filetype off
-  set runtimepath+=~/.vim/bundle/vundle/
+  set runtimepath+=~/.vim/bundle/Vundle.vim
   call vundle#rc()
-  Bundle 'gmarik/vundle'
+  Plugin 'gmarik/Vundle.vim'
 
   " set up file type detection
   " TODO: put with File Types
@@ -21,47 +19,47 @@
   autocmd BufNewFile,BufRead *.hbs     setlocal filetype=html
   autocmd BufNewFile,BufRead *.eex     setlocal expandtab
   autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
-" ]]
-  " Indentation [[
+" 
+  " Indentation 
     set autoindent
     set tabstop=2
     set shiftwidth=2
     set expandtab
-  " ]]
-  " Backups [[
+  " 
+  " Backups 
     set writebackup
     set backup
     set noswapfile
     set backupcopy=auto
     set backupdir=~/.vim/backup
     set directory=~/.vim/temp
-  " ]]
-  " Mapping [[
+  " 
+  " Mapping 
     let mapleader=','
-  " ]]
-" Buffers / Files [[
-  Bundle 'Industrial/vim-smartbd'
-  Bundle 'Industrial/vim-smartbw'
+  " 
+" Buffers / Files 
+  Plugin 'Industrial/vim-smartbd'
+  Plugin 'Industrial/vim-smartbw'
 
-  "Bundle 'fholgado/minibufexpl.vim'
+  "Plugin 'fholgado/minibufexpl.vim'
   "  " open at 1 buffer
   "  let g:miniBufExplorerMoreThanOne=1
 
-  Bundle 'kien/ctrlp.vim'
+  Plugin 'kien/ctrlp.vim'
     let g:ctrlp_use_caching=1
     let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](\.git|\.svn|\.hg|node_modules|bower_components|build|docs)'
       \ }
 
-  Bundle 'scrooloose/nerdtree'
+  Plugin 'scrooloose/nerdtree'
     "let g:NERDTreeWinPos='right'
     map <leader>[ :NERDTreeToggle<cr>
 
-  Bundle 'majutsushi/tagbar'
+  Plugin 'majutsushi/tagbar'
     map <leader>] :TagbarToggle<cr>
     let g:tagbar_compact = 1
 
-  "Bundle 'vim-scripts/taglist.vim'
+  "Plugin 'vim-scripts/taglist.vim'
   "  "let g:Tlist_Show_One_File=1
   "  let g:Tlist_Auto_Update=1
   "  let g:Tlist_Enable_Fold_Column=0
@@ -72,9 +70,9 @@
   "  map <leader>] :TlistToggle<cr>
 
   " Display signs for the quickfix window
-  "Bundle 'tomtom/quickfixsigns_vim'
+  "Plugin 'tomtom/quickfixsigns_vim'
 
-  Bundle "bling/vim-airline"
+  Plugin 'bling/vim-airline'
     let g:airline_left_sep='>'
     let g:airline_right_sep='<'
     let g:airline_detect_modified=1
@@ -127,8 +125,8 @@
   " the file split on the right of NERDTree.
   "autocmd vimenter * NERDTree | wincmd l
   "autocmd vimenter * Tagbar
-" ]]
-" Movement [[
+" 
+" Movement 
   " make movement keys wrap to the next/previous line
   set whichwrap=b,s,h,l,<,>,[,]
 
@@ -138,7 +136,7 @@
   " don't wrap lines
   set nowrap
 
-  Bundle 'Lokaltog/vim-easymotion'
+  Plugin 'Lokaltog/vim-easymotion'
   let g:EasyMotion_leader_key = '<leader>'
 
   " switch buffers
@@ -154,25 +152,25 @@
   " keep a certain number of lines visible
   set scrolloff=50
 
-" ]]
-" Finding / Searching / Restructuring [[
+" 
+" Finding / Searching / Restructuring 
   set noignorecase
 
   " TODO: this one screws up
-  "Bundle 'ervandew/ag'
-  Bundle 'Spaceghost/vim-matchit'
-  Bundle 'vim-scripts/IndexedSearch'
-  Bundle 'vim-scripts/grep.vim'
+  "Plugin 'ervandew/ag'
+  Plugin 'Spaceghost/vim-matchit'
+  Plugin 'vim-scripts/IndexedSearch'
+  Plugin 'vim-scripts/grep.vim'
 
   map <C-f> :Rgrep<cr>
 
   map <leader>c :sort<cr>
-" ]]
-" Cut, Copy and Paste [[
-  "Bundle 'maxbrunsfeld/vim-yankstack'
-" ]]
-" Syntax [[
-  Bundle 'scrooloose/syntastic'
+" 
+" Cut, Copy and Paste 
+  "Plugin 'maxbrunsfeld/vim-yankstack'
+" 
+" Syntax 
+  Plugin 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 1
@@ -180,33 +178,13 @@
     let g:syntastic_error_symbol = '✗'
     let g:syntastic_warning_symbol = '⚠'
     let g:syntastic_javascript_checkers = ['eslint']
-" ]]
-" Completion [[
-  "Bundle 'vim-scripts/L9'
-  "Bundle 'vim-scripts/AutoComplPop'
-  "  let g:acp_ignorecaseOption = 1
-  "  let g:acp_behaviorKeywordCommand = "\<C-p>"
+" 
+" Completion 
+  Plugin 'vim-scripts/AutoComplPop'
+    let g:acp_ignorecaseOption = 1
+    let g:acp_behaviorKeywordCommand = "\<C-p>"
 
-  "Bundle 'ervandew/supertab'
-
-  " JavaScript context-sensitive completion
-  "Bundle 'marijnh/tern_for_vim'
-
-  Bundle 'Shougo/neocomplete.vim'
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 1
-
-    autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-
-    " Don't know exactly what this does. See neocomplete github.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
-    endif
+  Plugin 'ervandew/supertab'
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
@@ -234,11 +212,11 @@
     let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
     return m[1] . spaces . m[2]
   endfunction
-" ]]
-" Version Control [[
-  Bundle 'tpope/vim-fugitive'
+" 
+" Version Control 
+  Plugin 'tpope/vim-fugitive'
 
-  Bundle 'mattn/gist-vim'
+  Plugin 'mattn/gist-vim'
     " If you want to detect filetype from the filename:
     let g:gist_detect_filetype = 1
     " If you want your gist to be private by default:
@@ -246,31 +224,31 @@
     " If you want to manipulate multiple files in a gist:
     let g:gist_get_multiplefile = 1
 
-  "Bundle 'vim-scripts/vim-signify'
+  "Plugin 'vim-scripts/vim-signify'
 
   " Nice git integration.
-  Bundle 'gregsexton/gitv'
+  Plugin 'gregsexton/gitv'
 
   " Visualize the undo history as a tree.
-  Bundle 'sjl/gundo.vim'
+  Plugin 'sjl/gundo.vim'
     map <leader>u :GundoToggle<cr>
-" ]]
-" File Types [[
-  Bundle 'digitaltoad/vim-jade'
-  Bundle 'gkz/vim-ls'
-  Bundle 'groenewege/vim-less'
-  Bundle 'kchmck/vim-coffee-script'
-  Bundle 'leshill/vim-json'
-  Bundle 'mintplant/vim-literate-coffeescript'
-  Bundle 'othree/html5.vim'
-  Bundle 'pangloss/vim-javascript'
-  Bundle 'tpope/vim-git'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'wavded/vim-stylus'
-  Bundle 'elixir-lang/vim-elixir'
-" ]]
-" Visual Information [[
-  "Bundle 'nathanaelkane/vim-indent-guides'
+" 
+" File Types 
+  Plugin 'digitaltoad/vim-jade'
+  Plugin 'gkz/vim-ls'
+  Plugin 'groenewege/vim-less'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'leshill/vim-json'
+  Plugin 'mintplant/vim-literate-coffeescript'
+  Plugin 'othree/html5.vim'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'tpope/vim-git'
+  Plugin 'tpope/vim-markdown'
+  Plugin 'wavded/vim-stylus'
+  Plugin 'elixir-lang/vim-elixir'
+" 
+" Visual Information 
+  "Plugin 'nathanaelkane/vim-indent-guides'
 
   set showcmd
   set showmode
@@ -305,67 +283,101 @@
   " Don't ignore anything (e.g. comments) when making folds
   set foldignore=
 
-  function! ToggleFoldMode()
+  " Manual fold mode, the default.
+  function! SetDefaultFoldMode()
+    " set the fold method to manual
+    setlocal foldmethod=manual
+
+    " Remove all folds made by the other fold method.
+    normal zE<cr>
+
+    " Set the fold level to 0.
+    setlocal foldlevel=0
+
+    " But open all folds at level 1 when opening the file
+    setlocal foldlevelstart=-1
+
+    " And do not allow folds below this level
+    setlocal foldnestmax=20
+
+    " Allow one line folds.
+    setlocal foldminlines=1
+
+    " turn on a fold column of 1
+    " TODO: This does not apply correctly.
+    setlocal foldcolumn=1
+  endfunction
+
+  " For files that have classes. Will fold all classes and their methods (2
+  " levels).
+  function! SetClassFoldMode()
+    " setlocal the fold method to indent
+    setlocal foldmethod=indent
+
+    " Set the fold level to 0
+    setlocal foldlevel=0
+
+    " But open all folds at level 1 when opening the file
+    setlocal foldlevelstart=1
+
+    " And do not allow folds below this level
+    setlocal foldnestmax=2
+
+    " Allow one line folds.
+    setlocal foldminlines=0
+
+    " turn on a fold column of 3
+    " TODO: This does not apply correctly.
+    setlocal foldcolumn=3
+  endfunction
+
+  " For files that have functions directly in the file scope. Will fold all
+  " level 1 functions.
+  function! SetFunctionFoldMode()
+    " setlocal the fold method to indent
+    setlocal foldmethod=indent
+
+    " Set the fold level to 0
+    setlocal foldlevel=0
+
+    " But open all folds at level 1 when opening the file
+    setlocal foldlevelstart=1
+
+    " And do not allow folds below this level
+    setlocal foldnestmax=1
+
+    " Allow one line folds.
+    setlocal foldminlines=0
+
+    " turn on a fold column of 3
+    " TODO: This does not apply correctly.
+    setlocal foldcolumn=1
+  endfunction
+
+  function! ToggleClassFoldMode()
     if &foldmethod == 'indent'
-      " set the fold method to indent
-      setlocal foldmethod=manual
-
-      " Remove all folds made by the other fold method.
-      normal zE<cr>
-
-      " Set the fold level to 0.
-      setlocal foldlevel=0
-
-      " But open all folds at level 1 when opening the file
-      setlocal foldlevelstart=-1
-
-      " And do not allow folds below this level
-      setlocal foldnestmax=20
-
-      " Allow one line folds.
-      setlocal foldminlines=1
-
-      " turn on a fold column of 1
-      setlocal foldcolumn=1
-
+      call SetDefaultFoldMode()
     else
-      " setlocal the fold method to indent
-      setlocal foldmethod=indent
-
-      " Set the fold level to 0
-      setlocal foldlevel=0
-
-      " But open all folds at level 1 when opening the file
-      setlocal foldlevelstart=1
-
-      " And do not allow folds below this level
-      setlocal foldnestmax=2
-
-      " Allow one line folds.
-      setlocal foldminlines=0
-
-      " turn on a fold column of 3
-      setlocal foldcolumn=3
+      call SetClassFoldMode()
     endif
   endfunction
 
-  " TODO: Can't get this to work. For now, just set the properties in the
-  "       function to the default values that I want.
-  setlocal foldmethod=manual
-  normal zE<cr>
-  setlocal foldlevel=0
-  setlocal foldlevelstart=-1
-  setlocal foldnestmax=20
-  setlocal foldminlines=1
-  setlocal foldcolumn=1
+  function! ToggleFunctionFoldMode()
+    if &foldmethod == 'indent'
+      call SetDefaultFoldMode()
+    else
+      call SetFunctionFoldMode()
+    endif
+  endfunction
 
-  "call ToggleFoldMode()
+  call SetDefaultFoldMode()
 
   " - Maps
     " Toggle fold mode
-    map <f9> :call ToggleFoldMode()<cr>
-" ]]
-" Font [[
+    map <f8> :call ToggleClassFoldMode()<cr>
+    map <f9> :call ToggleFunctionFoldMode()<cr>
+" 
+" Font 
   function! ToggleFontSize()
     if w:font_size == 'small'
       if has('macunix')
@@ -394,7 +406,7 @@
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  let w:font_size = 'large'
+  let w:font_size = 'small'
 
   " then call
   call ToggleFontSize()
@@ -402,28 +414,19 @@
   " - Maps
     " Toggle font size
     map <f11> :call ToggleFontSize()<cr>
-" ]]
-" Color Schemes [[
-  " Make colorschemes work in the terminal
-  Bundle 'CSApprox'
+" 
+" Color Schemes 
+  if has('gui_running')
+    " Make colorschemes work in the terminal
+    Plugin 'CSApprox'
+    set t_Co=256
+  endif
 
-  set t_Co=256
-
-  Bundle 'altercation/vim-colors-solarized'
-  Bundle 'chriskempson/base16-vim'
-  Bundle 'inkpot'
-  Bundle 'jellybeans.vim'
-  Bundle 'pyte'
-  Bundle 'romainl/Apprentice'
-  Bundle 'romainl/Disciple'
-  Bundle 'tomasr/molokai'
-  Bundle 'vim-scripts/github-theme'
-  Bundle 'w0ng/vim-hybrid'
-  Bundle 'xterm16.vim'
+  Plugin 'chriskempson/base16-vim'
 
   if has('gui_running')
-    let w:lightscheme = 'base16-solarized'
-    let w:darkscheme = 'base16-railscasts'
+    let w:lightscheme = 'base16-atelierforest'
+    let w:darkscheme = 'base16-atelierdune'
   else
     let w:lightscheme = 'disciple'
     let w:darkscheme = 'apprentice'
@@ -440,7 +443,7 @@
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  set background=light
+  set background=dark
 
   " then call
   call ToggleColorschemeBackground()
@@ -448,9 +451,9 @@
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
-" ]]
-" Maps [[
-  " All Modes [[
+" 
+" Maps 
+  " All Modes 
     " ease of use / typos
     map :Q :q
     map :W :w
@@ -479,21 +482,21 @@
     " improved buffer delete
     map <leader>d :SmartBd<cr>
     map <leader>c :SmartBw<cr>
-  " ]]
-  " Normal Mode [[
+  " 
+  " Normal Mode 
     " quick insert of newline
     "nmap <cr> o<esc>
 
     " select word under cursor
     nmap <space> viw
-  " ]]
-  " Insert Mode [[
+  " 
+  " Insert Mode 
     " remap escape to jj
     inoremap jj <esc>
-  " ]]
-  " Select Mode [[
-  " ]]
-" ]]
-" Finalization [[
+  " 
+  " Select Mode 
+  " 
+" 
+" Finalization 
 filetype on
-" ]]
+" 
