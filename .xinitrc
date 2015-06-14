@@ -14,4 +14,7 @@ then
         xinput set-int-prop $DEVICE_ID "Device Enabled" 8 0
 fi
 
+~/.bin/xorg-keyboard;
+
 startxfce4;
+#xmonad;
