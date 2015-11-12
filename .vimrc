@@ -216,6 +216,7 @@
 " Version Control 
   Plugin 'tpope/vim-fugitive'
 
+  Plugin 'mattn/webapi-vim'
   Plugin 'mattn/gist-vim'
     " If you want to detect filetype from the filename:
     let g:gist_detect_filetype = 1
