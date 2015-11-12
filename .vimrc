@@ -428,8 +428,8 @@
     let w:lightscheme = 'base16-atelierforest'
     let w:darkscheme = 'base16-atelierdune'
   else
-    let w:lightscheme = 'disciple'
-    let w:darkscheme = 'apprentice'
+    let w:lightscheme = 'desert'
+    let w:darkscheme = 'desert'
   endif
 
   function! ToggleColorschemeBackground()
