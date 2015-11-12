@@ -1,21 +1,16 @@
-zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename '/Users/rcuser/.zshrc'
+export ZSH=/home/tom/.oh-my-zsh
 
-autoload -Uz compinit
-compinit
+# TODO: pick a theme from ~/.oh-my-zsh/themes
+#ZSH_THEME="bureau"
+ZSH_THEME="bureau"
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+# TODO: pick plugins from ~/.oh-my-zsh/plugins
+plugins=(git git-extras git_remote_branch git-flow github docker jsontools npm redis-cli urltools vagrant)
 
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+PATH="/home/tom/npm/bin:$PATH"
+PATH="/home/tom/.bin:$PATH"
+export PATH
 
-setopt autocd
-setopt extendedglob
-setopt nomatch
-setopt notify
-
-unsetopt appendhistory
-unsetopt beep
-
-# VIM keybinds
-bindkey -v
-
+source $ZSH/oh-my-zsh.sh
