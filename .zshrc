@@ -9,8 +9,50 @@ HIST_STAMPS="yyyy-mm-dd"
 # TODO: pick plugins from ~/.oh-my-zsh/plugins
 plugins=(git git-extras git_remote_branch git-flow github docker jsontools npm redis-cli urltools vagrant)
 
-PATH="/home/tom/npm/bin:$PATH"
-PATH="/home/tom/.bin:$PATH"
-export PATH
-
 source $ZSH/oh-my-zsh.sh
+
+# Variables
+EDITOR="vim";
+GIT_EDITOR=$EDITOR;
+MAKEFLAGS="-j";
+PATH="~/.bin:$PATH";
+
+# Remove aliases set by Oh My ZSH
+unalias l;
+unalias la;
+unalias ll;
+unalias ls;
+unalias lsa;
+unalias md;
+unalias please;
+unalias po;
+unalias pu;
+unalias rd;
+
+# Aliase functions
+ll() {
+  ls -FhHlX --color=auto --group-directories-first "$@";
+}
+
+l() {
+  ls -AFhHlX --color=auto --group-directories-first "$@";
+}
+
+c() {
+  cd "$1";
+  l .;
+}
+
+r() {
+  rm -rf "$@";
+}
+
+n() {
+  npm "$@";
+}
+
+# Exports
+export PATH;
+export EDITOR;
+export GIT_EDITOR;
+export MAKEFLAGS;
