@@ -1,1 +1,1 @@
-My conig files and setup.
+My config files and setup.
