@@ -1,4 +1,6 @@
-" Initialization 
+" vim: set foldmethod=marker foldmarker={{,}} :
+
+" Initialization {{
   " run in nocompatible, giving us more options. This should be the first command
   set nocompatible
 
@@ -19,25 +21,25 @@
   autocmd BufNewFile,BufRead *.hbs     setlocal filetype=html
   autocmd BufNewFile,BufRead *.eex     setlocal expandtab
   autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
-" 
-  " Indentation 
+" }}
+  " Indentation {{
     set autoindent
     set tabstop=2
     set shiftwidth=2
     set expandtab
-  " 
-  " Backups 
+  " }}
+  " Backups {{
     set writebackup
     set backup
     set noswapfile
     set backupcopy=auto
     set backupdir=~/.vim/backup
     set directory=~/.vim/temp
-  " 
-  " Mapping 
+  " }}
+  " Mapping {{
     let mapleader=','
-  " 
-" Buffers / Files 
+  " }}
+" Buffers / Files {{
   Plugin 'Industrial/vim-smartbd'
   Plugin 'Industrial/vim-smartbw'
 
@@ -125,8 +127,8 @@
   " the file split on the right of NERDTree.
   "autocmd vimenter * NERDTree | wincmd l
   "autocmd vimenter * Tagbar
-" 
-" Movement 
+" }}
+" Movement {{
   " make movement keys wrap to the next/previous line
   set whichwrap=b,s,h,l,<,>,[,]
 
@@ -152,8 +154,8 @@
   " keep a certain number of lines visible
   set scrolloff=50
 
-" 
-" Finding / Searching / Restructuring 
+" }}
+" Finding / Searching / Restructuring {{
   set noignorecase
 
   " TODO: this one screws up
@@ -165,11 +167,11 @@
   map <C-f> :Rgrep<cr>
 
   map <leader>c :sort<cr>
-" 
-" Cut, Copy and Paste 
+" }}
+" Cut, Copy and Paste {{
   "Plugin 'maxbrunsfeld/vim-yankstack'
-" 
-" Syntax 
+" }}
+" Syntax {{
   Plugin 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
@@ -178,8 +180,8 @@
     let g:syntastic_error_symbol = '✗'
     let g:syntastic_warning_symbol = '⚠'
     let g:syntastic_javascript_checkers = ['eslint']
-" 
-" Completion 
+" }}
+" Completion {{
   Plugin 'vim-scripts/AutoComplPop'
     let g:acp_ignorecaseOption = 1
     let g:acp_behaviorKeywordCommand = "\<C-p>"
@@ -212,8 +214,8 @@
     let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
     return m[1] . spaces . m[2]
   endfunction
-" 
-" Version Control 
+" }}
+" Version Control {{
   Plugin 'tpope/vim-fugitive'
 
   Plugin 'mattn/webapi-vim'
@@ -233,8 +235,8 @@
   " Visualize the undo history as a tree.
   Plugin 'sjl/gundo.vim'
     map <leader>u :GundoToggle<cr>
-" 
-" File Types 
+" }}
+" File Types {{
   Plugin 'digitaltoad/vim-jade'
   Plugin 'gkz/vim-ls'
   Plugin 'groenewege/vim-less'
@@ -247,8 +249,8 @@
   Plugin 'tpope/vim-markdown'
   Plugin 'wavded/vim-stylus'
   Plugin 'elixir-lang/vim-elixir'
-" 
-" Visual Information 
+" }}
+" Visual Information {{
   "Plugin 'nathanaelkane/vim-indent-guides'
 
   set showcmd
@@ -377,8 +379,8 @@
     " Toggle fold mode
     map <f8> :call ToggleClassFoldMode()<cr>
     map <f9> :call ToggleFunctionFoldMode()<cr>
-" 
-" Font 
+" }}
+" Font {{
   function! ToggleFontSize()
     if w:font_size == 'small'
       if has('macunix')
@@ -415,8 +417,8 @@
   " - Maps
     " Toggle font size
     map <f11> :call ToggleFontSize()<cr>
-" 
-" Color Schemes 
+" }}
+" Color Schemes {{
   if has('gui_running')
     " Make colorschemes work in the terminal
     Plugin 'CSApprox'
@@ -452,9 +454,9 @@
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
-" 
-" Maps 
-  " All Modes 
+" }}
+" Maps {{
+  " All Modes {{
     " ease of use / typos
     map :Q :q
     map :W :w
@@ -483,21 +485,21 @@
     " improved buffer delete
     map <leader>d :SmartBd<cr>
     map <leader>c :SmartBw<cr>
-  " 
-  " Normal Mode 
+  " }}
+  " Normal Mode {{
     " quick insert of newline
     "nmap <cr> o<esc>
 
     " select word under cursor
     nmap <space> viw
-  " 
-  " Insert Mode 
+  " }}
+  " Insert Mode {{
     " remap escape to jj
     inoremap jj <esc>
-  " 
-  " Select Mode 
-  " 
-" 
-" Finalization 
+  " }}
+  " Select Mode {{
+  " }}
+" }}
+" Finalization {{
 filetype on
-" 
+" }}
