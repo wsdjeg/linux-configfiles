@@ -446,7 +446,7 @@
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  set background=dark
+  set background=light
 
   " then call
   call ToggleColorschemeBackground()
