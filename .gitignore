@@ -1,8 +1,6 @@
-.vim/.netrwhist
-.vim/backup/*~
-.vim/bundle
-.vim/temp/*.swo
-.vim/temp/*.swp
+.config/nvim/backup/*
+.config/nvim/plugged/*
+.config/nvim/temp/*
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
