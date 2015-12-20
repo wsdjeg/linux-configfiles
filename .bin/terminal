@@ -1,4 +1,4 @@
 #xfce4-terminal
-gnome-terminal
-#urxvt -si -sw +sb -bg black -fg grey -fn "xft:Terminus:size=9"
+#gnome-terminal
+urxvt -si -sw +sb -bg black -fg grey -fn "xft:Terminus:size=9"
 #urxvt -si -sw +sb -bg black -fg grey -fn "xft:Ubuntu\ Mono:size=12"

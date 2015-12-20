@@ -20,7 +20,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
     -- launch dmenu
     -- ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_run` && eval \"exec $exe\""),
-    ((modm .|. shiftMask, xK_p), spawn "~/.bin/dmenu_run"),
+    ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_run -fn 'Terminus:size=9'` && eval \"exec $exe\""),
+    -- ((modm .|. shiftMask, xK_p), spawn "dmenu_run"),
 
     -- close focused window
     ((modm .|. shiftMask, xK_c), kill),
@@ -125,7 +126,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = Map.fromList $
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
   ]
 
-myLayout = tiled ||| reflectHoriz tiled ||| Mirror tiled ||| Grid ||| Accordion ||| Full ||| simpleTabbed
+myLayout = avoidStruts ( tiled ||| reflectHoriz tiled ||| Mirror tiled ||| Grid ||| Full ||| simpleTabbed )
            where
              tiled = Tall tiledNmaster tiledDelta tiledRatio
              tiledNmaster = 1
@@ -133,26 +134,22 @@ myLayout = tiled ||| reflectHoriz tiled ||| Mirror tiled ||| Grid ||| Accordion 
              tiledRatio = 2/3
 
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar /home/tom/.xmonad/xmobarrc"
   xmonad defaultConfig {
-  -- simple stuff
-  terminal           = "~/.bin/terminal",
-  focusFollowsMouse  = True,
-  borderWidth        = 1,
-  modMask            = mod1Mask,
-  workspaces         = ["1:www", "2:dev", "3:term", "4:doc", "5:ops", "6:media", "7:mixed", "8:social", "9:scratch"],
-  normalBorderColor  = "#666666",
-  focusedBorderColor = "#336699",
+    -- simple stuff
+    terminal           = "~/.bin/terminal",
+    focusFollowsMouse  = True,
+    borderWidth        = 1,
+    modMask            = mod4Mask,
+    workspaces         = ["1:www", "2:dev", "3:term", "4:doc", "5:ops", "6:media", "7:mixed", "8:social", "9:scratch"],
+    normalBorderColor  = "#666666",
+    focusedBorderColor = "#336699",
 
-  -- key bindings
-  keys               = myKeys,
-  mouseBindings      = myMouseBindings,
+    -- key bindings
+    keys               = myKeys,
+    mouseBindings      = myMouseBindings,
 
-  -- hooks, layouts
-  layoutHook = avoidStruts $ myLayout,
-
-  manageHook = manageDocks <+> manageHook defaultConfig,
-
-  logHook = dynamicLogWithPP $ xmobarPP { ppOutput  = hPutStrLn xmproc,
-                                          ppCurrent = xmobarColor "#336699" "" . wrap "<" ">",
-                                          ppTitle   = xmobarColor "#669933" "" . shorten 50 } }
+    -- hooks, layouts
+    layoutHook         = avoidStruts $ myLayout,
+    manageHook         = manageDocks <+> manageHook defaultConfig,
+    logHook            = dynamicLogWithPP dzenPP
+  }
