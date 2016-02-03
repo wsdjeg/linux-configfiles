@@ -76,14 +76,14 @@
   "Plug 'tomtom/quickfixsigns_vim'
 
   Plug 'bling/vim-airline'
-    let g:airline_left_sep='>'
-    let g:airline_right_sep='<'
+    "let g:airline_left_sep='>'
+    "let g:airline_right_sep='<'
     let g:airline_detect_modified=1
     let g:airline_detect_paste=1
     let g:airline_detect_iminsert=1
     let g:airline_inactive_collapse=1
     "let g:airline_theme=
-    let g:airline_powerline_fonts=0
+    let g:airline_powerline_fonts=1
     "let g:airline_mode_map = {
     "    \ '__' : '-',
     "    \ 'n'  : 'N',
@@ -103,12 +103,12 @@
     endif
 
     " unicode symbols
-    let g:airline_left_sep = '»'
-    let g:airline_right_sep = '«'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = 'B'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
+    "let g:airline_left_sep = '»'
+    "let g:airline_right_sep = '«'
+    "let g:airline_symbols.linenr = '¶'
+    "let g:airline_symbols.branch = 'B'
+    "let g:airline_symbols.paste = '∥'
+    "let g:airline_symbols.whitespace = 'Ξ'
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -191,9 +191,10 @@
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 1
-    "let g:syntastic_error_symbol = '!'
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_warning_symbol = '⚠'
+    let g:syntastic_error_symbol = '!'
+    let g:syntastic_warning_symbol = '?'
+    "let g:syntastic_error_symbol = '✗'
+    "let g:syntastic_warning_symbol = '⚠'
     let g:syntastic_javascript_checkers = ['eslint']
 " }}
 " Completion {{
@@ -219,6 +220,7 @@
     let g:UltiSnipsExpandTrigger = "<tab>"
     let g:UltiSnipsJumpForwardTrigger = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+    let g:UltiSnipsUsePythonVersion = 2
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
@@ -307,7 +309,7 @@
   set number
 
   " highlight the line the cursor is on
-  set cursorline
+  "set cursorline
 
   " Don't ignore anything (e.g. comments) when making folds
   set foldignore=
@@ -445,10 +447,12 @@
     map <f11> :call ToggleFontSize()<cr>
 " }}
 " Color Schemes {{
-  if has('gui_running')
-    " Make colorschemes work in the terminal
-    Plug 'CSApprox'
-    set t_Co=256
+  Plug 'chriskempson/base16-vim'
+  Plug 'altercation/vim-colors-solarized'
+
+  " Make colorschemes work in the terminal
+  Plug 'CSApprox'
+  "set t_Co=256
   endif
 
   Plug 'chriskempson/base16-vim'
@@ -457,8 +461,10 @@
     let w:lightscheme = 'base16-atelierforest'
     let w:darkscheme = 'base16-atelierdune'
   else
-    let w:lightscheme = 'desert'
-    let w:darkscheme = 'desert'
+    let w:lightscheme = 'slate'
+    let w:darkscheme = 'slate'
+    "let w:lightscheme = 'desert'
+    "let w:darkscheme = 'desert'
   endif
 
   function! ToggleColorschemeBackground()
