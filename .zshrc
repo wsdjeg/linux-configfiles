@@ -2,7 +2,7 @@ export ZSH=/home/tom/.oh-my-zsh
 
 # TODO: pick a theme from ~/.oh-my-zsh/themes
 #ZSH_THEME="bureau"
-ZSH_THEME="bureau"
+ZSH_THEME="agnoster"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -14,10 +14,10 @@ source $ZSH/oh-my-zsh.sh
 # Variables
 EDITOR="vim";
 GIT_EDITOR=$EDITOR;
-MAKEFLAGS="-j";
+MAKEFLAGS="-j 7";
 PATH="~/.bin:$PATH";
 
-# Remove aliases set by Oh My ZSH
+# Remove things set by Oh My ZSH
 unalias l;
 unalias la;
 unalias ll;
@@ -29,7 +29,9 @@ unalias po;
 unalias pu;
 unalias rd;
 
-# Aliase functions
+unsetopt share_history;
+
+# Alias functions
 ll() {
   ls -FhHlX --color=auto --group-directories-first "$@";
 }
@@ -44,7 +46,7 @@ c() {
 }
 
 r() {
-  rm -rf "$@";
+  rm -rf "$1";
 }
 
 n() {

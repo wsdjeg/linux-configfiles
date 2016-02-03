@@ -453,9 +453,6 @@
   " Make colorschemes work in the terminal
   Plug 'CSApprox'
   "set t_Co=256
-  endif
-
-  Plug 'chriskempson/base16-vim'
 
   if has('gui_running')
     let w:lightscheme = 'base16-atelierforest'
