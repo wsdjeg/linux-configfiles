@@ -7,7 +7,7 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 # TODO: pick plugins from ~/.oh-my-zsh/plugins
-plugins=(git git-extras git_remote_branch git-flow github docker jsontools npm redis-cli urltools vagrant)
+plugins=(git git-extras git_remote_branch git-flow github docker jsontools npm urltools)
 
 source $ZSH/oh-my-zsh.sh
 
