@@ -31,6 +31,11 @@ unalias rd;
 
 unsetopt share_history;
 
+c() {
+  cd "$1";
+  l .;
+}
+
 # Exports
 export PATH;
 export EDITOR;
