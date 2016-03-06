@@ -271,7 +271,13 @@
     map <leader>u :GundoToggle<cr>
 " }}
 " File Types {{
+  " Many languages
   Plug 'sheerun/vim-polyglot'
+
+  " Livescript
+  Plug 'gkz/vim-ls'
+
+  " JSX
   Plug 'mxw/vim-jsx'
     let g:jsx_ext_required = 0
 " }}
