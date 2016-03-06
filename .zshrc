@@ -19,6 +19,8 @@ PATH="/home/tom/.bin:$PATH";
 
 # Remove things set by Oh My ZSH
 unalias l;
+unalias r;
+unalias d;
 unalias la;
 unalias ll;
 unalias ls;
