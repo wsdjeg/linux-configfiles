@@ -15,7 +15,7 @@ source $ZSH/oh-my-zsh.sh
 EDITOR="vim";
 GIT_EDITOR=$EDITOR;
 MAKEFLAGS="-j 7";
-PATH="~/.bin:$PATH";
+PATH="/home/tom/.bin:$PATH";
 
 # Remove things set by Oh My ZSH
 unalias l;
