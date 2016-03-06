@@ -407,8 +407,6 @@
     endif
   endfunction
 
-  call SetDefaultFoldMode()
-
   " - Maps
     " Toggle fold mode
     map <f8> :call ToggleClassFoldMode()<cr>
@@ -446,7 +444,6 @@
   let w:font_size = 'small'
 
   " then call
-  call ToggleFontSize()
 
   " - Maps
     " Toggle font size
@@ -458,16 +455,14 @@
 
   " Make colorschemes work in the terminal
   Plug 'CSApprox'
-  "set t_Co=256
+  set t_Co=256
 
   if has('gui_running')
     let w:lightscheme = 'base16-atelierforest'
     let w:darkscheme = 'base16-atelierdune'
   else
-    let w:lightscheme = 'slate'
-    let w:darkscheme = 'slate'
-    "let w:lightscheme = 'desert'
-    "let w:darkscheme = 'desert'
+    let w:lightscheme = 'base16-atelierforest'
+    let w:darkscheme = 'base16-atelierdune'
   endif
 
   function! ToggleColorschemeBackground()
@@ -483,13 +478,14 @@
   " prepare the first call (set values to what we don't want)
   set background=light
 
-  " then call
-  call ToggleColorschemeBackground()
-
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
 " }}
 " Finalization {{
   call plug#end()
+
+  call SetDefaultFoldMode()
+  call ToggleFontSize()
+  call ToggleColorschemeBackground()
 " }}
