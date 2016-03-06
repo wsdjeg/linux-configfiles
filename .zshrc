@@ -31,28 +31,6 @@ unalias rd;
 
 unsetopt share_history;
 
-# Alias functions
-ll() {
-  ls -FhHlX --color=auto --group-directories-first "$@";
-}
-
-l() {
-  ls -AFhHlX --color=auto --group-directories-first "$@";
-}
-
-c() {
-  cd "$1";
-  l .;
-}
-
-r() {
-  rm -rf "$1";
-}
-
-n() {
-  npm "$@";
-}
-
 # Exports
 export PATH;
 export EDITOR;
