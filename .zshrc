@@ -19,7 +19,6 @@ PATH="/home/tom/.bin:$PATH";
 
 # Remove things set by Oh My ZSH
 unalias l;
-unalias r;
 unalias d;
 unalias la;
 unalias ll;
@@ -33,6 +32,11 @@ unalias rd;
 
 unsetopt share_history;
 
+# Set vi mode
+bindkey -v
+
+# This one is an alias because putting it in it's own executable won't work
+# (different shell instance?).
 c() {
   cd "$1";
   l .;
