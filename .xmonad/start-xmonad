@@ -1,12 +1,11 @@
-# Xorg compositing
-xcompmgr -n &
+# Xorg Compositor
+compton &
 
 # Xorg config
 ~/.bin/xorg-keyboard &
-~/.bin/xorg-monitors-two &
 
 # Wallpaper
 nitrogen --restore &
 
 # Finally, start xmonad
-exec xmonad
+exec xmonad-session
