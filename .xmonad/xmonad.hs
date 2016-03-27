@@ -1,14 +1,94 @@
-import Data.Monoid
+-- XMonad itself.
 import XMonad
 
-import XMonad.Actions.CycleWS
+-- XMobar
+import System.IO
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Run(spawnPipe)
 
+-- Layouts
+import XMonad.Layout.Circle
+import XMonad.Layout.Grid
+import XMonad.Layout.Reflect(reflectHoriz)
+import XMonad.Layout.Tabbed
+
+-- Used for quitting the X session.
 import System.Exit
 
+-- Puspose unknown.
+import Data.Monoid
+import XMonad.Actions.CycleWS
 import qualified Data.Map        as Map
 import qualified XMonad.StackSet as StackSet
+
+main = do
+  xmproc <- spawnPipe "/usr/bin/xmobar --bottom /home/tom/.xmonad/.xmobarrc"
+  xmonad $ defaultConfig {
+    -- simple stuff
+    terminal = "~/.bin/terminal",
+
+    focusFollowsMouse = True,
+    clickJustFocuses = False,
+
+    borderWidth = 1,
+
+    modMask = mod4Mask,
+
+    workspaces = [
+      "1:www",
+      "2:dev",
+      "3:term",
+      "4:doc",
+      "5:ops",
+      "6:media",
+      "7:mixed",
+      "8:social",
+      "9:scratch"
+    ],
+
+    normalBorderColor = "#666666",
+    focusedBorderColor = "#336699",
+
+    -- key bindings
+    keys = myKeys,
+    mouseBindings = myMouseBindings,
+
+    -- hooks, layouts
+    layoutHook = avoidStruts $ myLayout,
+    manageHook = manageDocks <+> manageHook defaultConfig,
+
+    -- TODO: Find out what this does
+    handleEventHook = mempty,
+
+    logHook = dynamicLogWithPP xmobarPP {
+      ppOutput = hPutStrLn xmproc
+    },
+
+    startupHook = return ()
+  }
+
+myLayout = avoidStruts $ tiled ||| reflectHoriz tiled ||| Circle ||| Grid ||| simpleTabbed ||| Full
+  where
+    tiled        = Tall tiledNmaster tiledDelta tiledRatio
+    tiledNmaster = 1
+    tiledDelta   = 1/100
+    tiledRatio   = 1/2
+
+myMouseBindings (XConfig {XMonad.modMask = modm}) = Map.fromList $
+  [
+    -- mod-button1, Set the window to floating mode and move by dragging
+    ((modm, button1), (\w -> focus w >> mouseMoveWindow w
+                                     >> windows StackSet.shiftMaster)),
+
+    -- mod-button2, Raise the window to the top of the stack
+    ((modm, button2), (\w -> focus w >> windows StackSet.shiftMaster)),
+
+    -- mod-button3, Set the window to floating mode and resize by dragging
+    ((modm, button3), (\w -> focus w >> mouseResizeWindow w
+                                     >> windows StackSet.shiftMaster))
+  ]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
   [
@@ -88,62 +168,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
   ++
 
   --
-  -- mod-{w,e}, Switch to physical/Xinerama screens 1, 2
-  -- mod-shift-{w,e}, Move client to screen 1, 2
+  -- mod-{u,i,o}, Switch to physical/Xinerama screens 1, 2, 3
+  -- mod-shift-{u,i, o}, Move client to screen 1, 2, 3
   --
   [
     ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_m, xK_n] [0..],
+      | (key, sc) <- zip [xK_i, xK_o, xK_u] [0..],
         (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]
   ]
-
-myMouseBindings (XConfig {XMonad.modMask = modm}) = Map.fromList $
-  [
-    -- mod-button1, Set the window to floating mode and move by dragging
-    ((modm, button1), (\w -> focus w >> mouseMoveWindow w
-                                     >> windows StackSet.shiftMaster)),
-
-    -- mod-button2, Raise the window to the top of the stack
-    ((modm, button2), (\w -> focus w >> windows StackSet.shiftMaster)),
-
-    -- mod-button3, Set the window to floating mode and resize by dragging
-    ((modm, button3), (\w -> focus w >> mouseResizeWindow w
-                                     >> windows StackSet.shiftMaster))
-  ]
-
-myLayout = avoidStruts tiled
-  where
-    tiled        = Tall tiledNmaster tiledDelta tiledRatio
-    tiledNmaster = 1
-    tiledDelta   = 1/100
-    tiledRatio   = 1/2
-
-myLayoutHook  = avoidStruts $ myLayout
-myManageHook  = manageDocks <+> manageHook defaultConfig
-myEventHook   = mempty
-myLogHook     = return ()
-myStartupHook = return ()
-
-main = do
-  xmonad defaultConfig {
-    -- simple stuff
-    terminal           = "~/.bin/terminal",
-    focusFollowsMouse  = True,
-    clickJustFocuses   = False,
-    borderWidth        = 1,
-    modMask            = mod4Mask,
-    workspaces         = ["1:www", "2:dev", "3:term", "4:doc", "5:ops", "6:media", "7:mixed", "8:social", "9:scratch"],
-    normalBorderColor  = "#666666",
-    focusedBorderColor = "#336699",
-
-    -- key bindings
-    keys               = myKeys,
-    mouseBindings      = myMouseBindings,
-
-    -- hooks, layouts
-    layoutHook         = myLayoutHook,
-    manageHook         = myManageHook,
-    handleEventHook    = myEventHook,
-    logHook            = myLogHook,
-    startupHook        = myStartupHook
-  }

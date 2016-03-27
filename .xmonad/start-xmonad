@@ -3,6 +3,8 @@ compton &
 
 # Xorg config
 ~/.bin/xorg-keyboard &
+~/.bin/xorg-touchpad-off &
+~/.bin/xorg-monitors-two &
 
 # Wallpaper
 nitrogen --restore &
