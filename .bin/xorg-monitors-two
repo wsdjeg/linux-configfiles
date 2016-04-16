@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-xrandr --output VGA-1   --mode 1920x1080 --rotate normal --right-of DVI-I-1 --primary
-xrandr --output DVI-I-1 --mode 1920x1080 --rotate normal --left-of  VGA-1
+xrandr --output DP-0   --mode 1920x1080 --rotate normal --right-of DP-3 --primary
+xrandr --output HDMI-0 --mode 1920x1080 --rotate normal --left-of  DP-0
+#xrandr --output DP-3 --mode 1920x1080 --rotate normal --left-of  DP-0

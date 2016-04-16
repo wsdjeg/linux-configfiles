@@ -1,67 +1,68 @@
 " vim: set foldmethod=marker foldmarker={{,}} :
 
 " Initialization {{
-  " run in nocompatible, giving us more options. This should be the first command
-  set nocompatible
-
   " load filetype plugins, indentation and turn syntax highlighting on
   filetype plugin indent on
   syntax on
 
   " load vundle
-  filetype off
-  set runtimepath+=~/.vim/bundle/Vundle.vim
-  call vundle#rc()
-  Plugin 'gmarik/Vundle.vim'
+  call plug#begin()
 
-  " set up file type detection
-  " TODO: put with File Types
-  autocmd BufNewFile,BufRead *.json    setlocal filetype=javascript et ts=2 sts=2 sw=2
-  autocmd BufNewFile,BufRead *.ejs     setlocal filetype=html
-  autocmd BufNewFile,BufRead *.hbs     setlocal filetype=html
-  autocmd BufNewFile,BufRead *.eex     setlocal expandtab
-  autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
+  " Support for python plugins
+  let g:python_host_prog = '/usr/bin/python2.7'
+
+  " Set the map leader key
+  let mapleader=','
+
+  " ease of use / typos
+  map :Q :q
+  map :W :w
+  map :E :e
+
+  " resync syntax
+  map <leader>sy :syntax sync fromstart<cr>
+
+  " open and reload init.vim
+  map <leader>v :edit ~/.config/nvim/init.vim<cr>
+  map <leader>V :bufdo :source ~/.config/nvim/init.vim<cr>:bufdo :filetype detect<cr>
 " }}
-  " Indentation {{
-    set autoindent
-    set tabstop=2
-    set shiftwidth=2
-    set expandtab
-  " }}
-  " Backups {{
-    set writebackup
-    set backup
-    set noswapfile
-    set backupcopy=auto
-    set backupdir=~/.vim/backup
-    set directory=~/.vim/temp
-  " }}
-  " Mapping {{
-    let mapleader=','
-  " }}
+" Indentation {{
+  set autoindent
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
+" }}
+" Backups {{
+  set writebackup
+  set backup
+  set noswapfile
+  set backupcopy=auto
+  set backupdir=~/.config/nvim/backup
+  set directory=~/.config/nvim/temp
+" }}
 " Buffers / Files {{
-  Plugin 'Industrial/vim-smartbd'
-  Plugin 'Industrial/vim-smartbw'
+  Plug 'Industrial/vim-smartbd'
+  Plug 'Industrial/vim-smartbw'
 
-  "Plugin 'fholgado/minibufexpl.vim'
+  "Plug 'fholgado/minibufexpl.vim'
   "  " open at 1 buffer
   "  let g:miniBufExplorerMoreThanOne=1
 
-  Plugin 'kien/ctrlp.vim'
+  Plug 'kien/ctrlp.vim'
     let g:ctrlp_use_caching=1
     let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](\.git|\.svn|\.hg|node_modules|bower_components|build|docs)'
       \ }
 
-  Plugin 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree'
     "let g:NERDTreeWinPos='right'
     map <leader>[ :NERDTreeToggle<cr>
 
-  Plugin 'majutsushi/tagbar'
+  Plug 'majutsushi/tagbar'
     map <leader>] :TagbarToggle<cr>
     let g:tagbar_compact = 1
 
-  "Plugin 'vim-scripts/taglist.vim'
+  "Plug 'vim-scripts/taglist.vim'
   "  "let g:Tlist_Show_One_File=1
   "  let g:Tlist_Auto_Update=1
   "  let g:Tlist_Enable_Fold_Column=0
@@ -72,17 +73,17 @@
   "  map <leader>] :TlistToggle<cr>
 
   " Display signs for the quickfix window
-  "Plugin 'tomtom/quickfixsigns_vim'
+  "Plug 'tomtom/quickfixsigns_vim'
 
-  Plugin 'bling/vim-airline'
-    let g:airline_left_sep='>'
-    let g:airline_right_sep='<'
+  Plug 'bling/vim-airline'
+    "let g:airline_left_sep='>'
+    "let g:airline_right_sep='<'
     let g:airline_detect_modified=1
     let g:airline_detect_paste=1
     let g:airline_detect_iminsert=1
     let g:airline_inactive_collapse=1
     "let g:airline_theme=
-    let g:airline_powerline_fonts=0
+    let g:airline_powerline_fonts=1
     "let g:airline_mode_map = {
     "    \ '__' : '-',
     "    \ 'n'  : 'N',
@@ -102,12 +103,12 @@
     endif
 
     " unicode symbols
-    let g:airline_left_sep = '»'
-    let g:airline_right_sep = '«'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = 'B'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
+    "let g:airline_left_sep = '»'
+    "let g:airline_right_sep = '«'
+    "let g:airline_symbols.linenr = '¶'
+    "let g:airline_symbols.branch = 'B'
+    "let g:airline_symbols.paste = '∥'
+    "let g:airline_symbols.whitespace = 'Ξ'
 
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#hunks#enabled = 0
@@ -138,7 +139,7 @@
   " don't wrap lines
   set nowrap
 
-  Plugin 'Lokaltog/vim-easymotion'
+  Plug 'Lokaltog/vim-easymotion'
   let g:EasyMotion_leader_key = '<leader>'
 
   " switch buffers
@@ -154,39 +155,72 @@
   " keep a certain number of lines visible
   set scrolloff=50
 
+  " improved buffer delete
+  map <leader>d :SmartBd<cr>
+  map <leader>c :SmartBw<cr>
+
+  " select word under cursor
+  nmap <space> viw
 " }}
 " Finding / Searching / Restructuring {{
   set noignorecase
 
   " TODO: this one screws up
-  "Plugin 'ervandew/ag'
-  Plugin 'Spaceghost/vim-matchit'
-  Plugin 'vim-scripts/IndexedSearch'
-  Plugin 'vim-scripts/grep.vim'
+  "Plug 'ervandew/ag'
+  Plug 'Spaceghost/vim-matchit'
+  Plug 'vim-scripts/IndexedSearch'
+  Plug 'vim-scripts/grep.vim'
 
   map <C-f> :Rgrep<cr>
 
-  map <leader>c :sort<cr>
+  map <leader>s :sort<cr>
 " }}
 " Cut, Copy and Paste {{
-  "Plugin 'maxbrunsfeld/vim-yankstack'
+  "Plug 'maxbrunsfeld/vim-yankstack'
+
+  map <leader>d "+d
+  map <leader>y "+y
+  map <leader>p "+p
+
+  map <leader>D "*d
+  map <leader>Y "*y
+  map <leader>P "*p
 " }}
 " Syntax {{
-  Plugin 'scrooloose/syntastic'
+  Plug 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
     let g:syntastic_auto_jump = 1
     let g:syntastic_auto_loc_list = 1
-    "let g:syntastic_error_symbol = '!'
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_warning_symbol = '⚠'
+    let g:syntastic_error_symbol = '!'
+    let g:syntastic_warning_symbol = '?'
+    "let g:syntastic_error_symbol = '✗'
+    "let g:syntastic_warning_symbol = '⚠'
     let g:syntastic_javascript_checkers = ['eslint']
 " }}
 " Completion {{
-  Plugin 'vim-scripts/AutoComplPop'
-    let g:acp_ignorecaseOption = 1
-    let g:acp_behaviorKeywordCommand = "\<C-p>"
+  "Plug 'vim-scripts/AutoComplPop'
+  "  let g:acp_ignorecaseOption = 1
+  "  let g:acp_behaviorKeywordCommand = "\<C-p>"
 
-  Plugin 'ervandew/supertab'
+  " complete brackets / pairs
+  Plug 'Raimondi/delimitMate'
+
+  " if you use Vundle, load plugins:
+  Plug 'ervandew/supertab'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+
+    " make YCM compatible with UltiSnips (using supertab)
+    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    let g:SuperTabDefaultCompletionType = '<C-n>'
+
+    " better key bindings for UltiSnipsExpandTrigger
+    let g:UltiSnipsExpandTrigger = "<tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+    let g:UltiSnipsUsePythonVersion = 2
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
@@ -216,10 +250,10 @@
   endfunction
 " }}
 " Version Control {{
-  Plugin 'tpope/vim-fugitive'
+  Plug 'tpope/vim-fugitive'
 
-  Plugin 'mattn/webapi-vim'
-  Plugin 'mattn/gist-vim'
+  Plug 'mattn/webapi-vim'
+  Plug 'mattn/gist-vim'
     " If you want to detect filetype from the filename:
     let g:gist_detect_filetype = 1
     " If you want your gist to be private by default:
@@ -227,31 +261,28 @@
     " If you want to manipulate multiple files in a gist:
     let g:gist_get_multiplefile = 1
 
-  "Plugin 'vim-scripts/vim-signify'
+  "Plug 'vim-scripts/vim-signify'
 
   " Nice git integration.
-  Plugin 'gregsexton/gitv'
+  Plug 'gregsexton/gitv'
 
   " Visualize the undo history as a tree.
-  Plugin 'sjl/gundo.vim'
+  Plug 'sjl/gundo.vim'
     map <leader>u :GundoToggle<cr>
 " }}
 " File Types {{
-  Plugin 'digitaltoad/vim-jade'
-  Plugin 'gkz/vim-ls'
-  Plugin 'groenewege/vim-less'
-  Plugin 'kchmck/vim-coffee-script'
-  Plugin 'leshill/vim-json'
-  Plugin 'mintplant/vim-literate-coffeescript'
-  Plugin 'othree/html5.vim'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'tpope/vim-git'
-  Plugin 'tpope/vim-markdown'
-  Plugin 'wavded/vim-stylus'
-  Plugin 'elixir-lang/vim-elixir'
+  " Many languages
+  Plug 'sheerun/vim-polyglot'
+
+  " Livescript
+  Plug 'gkz/vim-ls'
+
+  " JSX
+  Plug 'mxw/vim-jsx'
+    let g:jsx_ext_required = 0
 " }}
 " Visual Information {{
-  "Plugin 'nathanaelkane/vim-indent-guides'
+  "Plug 'nathanaelkane/vim-indent-guides'
 
   set showcmd
   set showmode
@@ -265,6 +296,9 @@
 
   set hlsearch
   set incsearch
+
+  " Indent guide
+  Plug 'nathanaelkane/vim-indent-guides'
 
   " gui options
   set guioptions=
@@ -281,7 +315,7 @@
   set number
 
   " highlight the line the cursor is on
-  set cursorline
+  "set cursorline
 
   " Don't ignore anything (e.g. comments) when making folds
   set foldignore=
@@ -373,8 +407,6 @@
     endif
   endfunction
 
-  call SetDefaultFoldMode()
-
   " - Maps
     " Toggle fold mode
     map <f8> :call ToggleClassFoldMode()<cr>
@@ -412,27 +444,25 @@
   let w:font_size = 'small'
 
   " then call
-  call ToggleFontSize()
 
   " - Maps
     " Toggle font size
     map <f11> :call ToggleFontSize()<cr>
 " }}
 " Color Schemes {{
-  if has('gui_running')
-    " Make colorschemes work in the terminal
-    Plugin 'CSApprox'
-    set t_Co=256
-  endif
+  Plug 'chriskempson/base16-vim'
+  Plug 'altercation/vim-colors-solarized'
 
-  Plugin 'chriskempson/base16-vim'
+  " Make colorschemes work in the terminal
+  Plug 'CSApprox'
+  set t_Co=256
 
   if has('gui_running')
     let w:lightscheme = 'base16-atelierforest'
     let w:darkscheme = 'base16-atelierdune'
   else
-    let w:lightscheme = 'desert'
-    let w:darkscheme = 'desert'
+    let w:lightscheme = 'base16-atelierforest'
+    let w:darkscheme = 'base16-atelierdune'
   endif
 
   function! ToggleColorschemeBackground()
@@ -448,58 +478,14 @@
   " prepare the first call (set values to what we don't want)
   set background=light
 
-  " then call
-  call ToggleColorschemeBackground()
-
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
 " }}
-" Maps {{
-  " All Modes {{
-    " ease of use / typos
-    map :Q :q
-    map :W :w
-    map :E :e
-
-    " OS register copy pasting
-    map <leader>d "+d
-    map <leader>p "+p
-    map <leader>y "+y
-
-    " mouse selection register copy pasting
-    map <leader>dd '"*d'
-    map <leader>pp '"*p'
-    map <leader>yy '"*y'
-
-    " open and reload .vimrc
-    map <leader>v :edit ~/.vimrc<cr>
-    map <leader>V :bufdo :source ~/.vimrc<cr>:bufdo :filetype detect<cr>
-
-    " resync syntax
-    map <leader>sy :syntax sync fromstart<cr>
-
-    " coffeescript folds
-    "map <leader>ff :normal 
-
-    " improved buffer delete
-    map <leader>d :SmartBd<cr>
-    map <leader>c :SmartBw<cr>
-  " }}
-  " Normal Mode {{
-    " quick insert of newline
-    "nmap <cr> o<esc>
-
-    " select word under cursor
-    nmap <space> viw
-  " }}
-  " Insert Mode {{
-    " remap escape to jj
-    inoremap jj <esc>
-  " }}
-  " Select Mode {{
-  " }}
-" }}
 " Finalization {{
-filetype on
+  call plug#end()
+
+  call SetDefaultFoldMode()
+  call ToggleFontSize()
+  call ToggleColorschemeBackground()
 " }}

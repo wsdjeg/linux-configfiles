@@ -56,3 +56,5 @@
 	name  = Tom Wieland
 [difftool]
 	prompt = false
+[pull]
+	rebase = true

@@ -1,1 +1,2 @@
+#!/usr/bin/env bash
 ssh -l tom -p 22 185.14.184.116
