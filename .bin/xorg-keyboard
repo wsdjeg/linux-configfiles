@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Increase the keyboard speed
-xset r rate 200 50;
+xset r rate 200 60;
 
 # Swap Caps Lock and Left Control
-xmodmap ~/.Xmodmap
+# Disabled for now, ubuntu seems to do it by default in 16.04
+#xmodmap ~/.Xmodmap
