@@ -15,9 +15,9 @@
   let mapleader=','
 
   " ease of use / typos
-  map :Q :q
-  map :W :w
-  map :E :e
+  "map :Q :q
+  "map :W :w
+  "map :E :e
 
   " resync syntax
   map <leader>sy :syntax sync fromstart<cr>
@@ -161,6 +161,10 @@
 
   " select word under cursor
   nmap <space> viw
+
+  " TODO: Disables the grep.vim enter functionality.
+  " Solution: Do not do it for quickfix windows?
+  "nmap <cr> o<esc>
 " }}
 " Finding / Searching / Restructuring {{
   set noignorecase
@@ -170,6 +174,7 @@
   Plug 'Spaceghost/vim-matchit'
   Plug 'vim-scripts/IndexedSearch'
   Plug 'vim-scripts/grep.vim'
+    let g:Grep_Default_Options="--exclude-dir=node_modules"
 
   map <C-f> :Rgrep<cr>
 
@@ -186,11 +191,20 @@
   map <leader>Y "*y
   map <leader>P "*p
 " }}
+" Save, Close, Quit {{
+  map <c-s> :write<cr>
+  "map <c-w> :SmartBw<cr>
+  map <c-q> :qa!<cr>
+
+  imap <c-s> <esc>:write<cr>a
+  "imap <c-w> <esc>:SmartBw<cr>a
+  imap <c-q> <esc>:qa!<cr>
+" }}
 " Syntax {{
   Plug 'scrooloose/syntastic'
     let g:syntastic_check_on_open = 1
-    let g:syntastic_auto_jump = 1
-    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_auto_jump = 0
+    let g:syntastic_auto_loc_list = 0
     let g:syntastic_error_symbol = '!'
     let g:syntastic_warning_symbol = '?'
     "let g:syntastic_error_symbol = '✗'
@@ -224,7 +238,6 @@
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
-  vnoremap <silent> <leader>a :Align<CR>
   function! AlignSection(regex) range
     let extra = 1
     let sep = empty(a:regex) ? '=' : a:regex
@@ -248,6 +261,9 @@
     let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
     return m[1] . spaces . m[2]
   endfunction
+
+  vnoremap <silent> <leader>a :Align<cr>
+  vnoremap <silent> <leader>A :'<,'>sort<cr>:'<,'>Align<cr>
 " }}
 " Version Control {{
   Plug 'tpope/vim-fugitive'
@@ -284,21 +300,28 @@
 " Visual Information {{
   "Plug 'nathanaelkane/vim-indent-guides'
 
+  " Show the command being executed
   set showcmd
+
+  " Show the mode you are in
   set showmode
+
+  " No annoying things.
   set noerrorbells
   set novisualbell
 
+  " No wildmenu.
   set wildmenu
   set wildmode=list:longest
   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
   set wildignore+=*/node_modules/*
 
+  " Highlight searches as you type.
   set hlsearch
   set incsearch
 
-  " Indent guide
-  Plug 'nathanaelkane/vim-indent-guides'
+  " No "matchparen" plugin.
+  let loaded_matchparen = 1
 
   " gui options
   set guioptions=
@@ -461,8 +484,9 @@
     let w:lightscheme = 'base16-atelierforest'
     let w:darkscheme = 'base16-atelierdune'
   else
-    let w:lightscheme = 'base16-atelierforest'
-    let w:darkscheme = 'base16-atelierdune'
+    "let w:lightscheme = 'base16-flat'
+    let w:lightscheme = 'base16-google'
+    let w:darkscheme = 'base16-atelierforest'
   endif
 
   function! ToggleColorschemeBackground()
@@ -476,11 +500,17 @@
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  set background=light
+  set background=dark
 
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
+" }}
+" NyaoVim {{
+  Plug 'rhysd/nyaovim-popup-tooltip'
+  Plug 'rhysd/nyaovim-mini-browser'
+  Plug 'rhysd/nyaovim-markdown-preview'
+  Plug 'rhysd/nyaovim-tree-view'
 " }}
 " Finalization {{
   call plug#end()
