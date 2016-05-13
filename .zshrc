@@ -1,8 +1,9 @@
 export ZSH=/home/tom/.oh-my-zsh
 
 # TODO: pick a theme from ~/.oh-my-zsh/themes
-#ZSH_THEME="bureau"
-ZSH_THEME="agnoster"
+ZSH_THEME="bureau"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="sunrise"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -51,3 +52,5 @@ export MAKEFLAGS;
 # NVM
 export NVM_DIR="/home/tom/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source /home/tom/.gulp-autocompletion-zsh/gulp-autocompletion.zsh
+source /home/tom/.gulp-autocompletion-zsh/gulp-autocompletion.zsh
