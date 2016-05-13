@@ -1,5 +1,6 @@
 [alias]
 	a   = add
+	A   = add -A
 	b   = branch
 	ba  = branch --all
 	bd  = branch -d
