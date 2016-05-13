@@ -5,11 +5,10 @@ import XMonad
 import System.IO
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig
 import XMonad.Util.Run(spawnPipe)
 
 -- Layouts
-import XMonad.Layout.Circle
 import XMonad.Layout.Grid
 import XMonad.Layout.Reflect(reflectHoriz)
 import XMonad.Layout.Tabbed
@@ -24,73 +23,91 @@ import qualified Data.Map        as Map
 import qualified XMonad.StackSet as StackSet
 
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar --bottom /home/tom/.xmonad/.xmobarrc"
-  xmonad $ defaultConfig {
-    -- simple stuff
-    terminal = "~/.bin/terminal",
+  xmproc <- spawnPipe "/home/tom/.cabal/bin/xmobar --bottom /home/tom/.xmonad/.xmobarrc"
+  xmonad $ myConfig xmproc
 
-    focusFollowsMouse = True,
-    clickJustFocuses = False,
+myTheme = defaultTheme {
+  activeColor       = "#336699",
+  activeBorderColor = "#336699",
+  activeTextColor   = "#336699",
 
-    borderWidth = 1,
+  inactiveColor       = "#333333",
+  inactiveBorderColor = "#333333",
+  inactiveTextColor   = "#333333",
 
-    modMask = mod4Mask,
+  urgentColor       = "#ff0000",
+  urgentBorderColor = "#ff0000",
+  urgentTextColor   = "#ff0000"
+}
 
-    workspaces = [
-      "1:www",
-      "2:dev",
-      "3:term",
-      "4:doc",
-      "5:ops",
-      "6:media",
-      "7:mixed",
-      "8:social",
-      "9:scratch"
-    ],
+myConfig xmproc = defaultConfig {
+  -- simple stuff
+  terminal = "~/.bin/terminal",
 
-    normalBorderColor = "#666666",
-    focusedBorderColor = "#336699",
+  focusFollowsMouse = True,
+  clickJustFocuses = False,
 
-    -- key bindings
-    keys = myKeys,
-    mouseBindings = myMouseBindings,
+  modMask = mod4Mask,
 
-    -- hooks, layouts
-    layoutHook = avoidStruts $ myLayout,
-    manageHook = manageDocks <+> manageHook defaultConfig,
+  workspaces = [
+    "1:www",
+    "2:dev",
+    "3:term",
+    "4:doc",
+    "5:ops",
+    "6:media",
+    "7:mixed",
+    "8:social",
+    "9:scratch"
+  ],
 
-    -- TODO: Find out what this does
-    handleEventHook = mempty,
+  borderWidth = 1,
 
-    logHook = dynamicLogWithPP xmobarPP {
-      ppOutput = hPutStrLn xmproc
-    },
+  normalBorderColor = "#000000",
+  --focusedBorderColor = "#336699",
+  focusedBorderColor = "#339966",
 
-    startupHook = return ()
-  }
+  -- key bindings
+  keys = myKeys,
+  mouseBindings = myMouseBindings,
 
-myLayout = avoidStruts $ tiled ||| reflectHoriz tiled ||| Circle ||| Grid ||| simpleTabbed ||| Full
+  -- hooks, layouts
+  layoutHook = avoidStruts myLayout,
+  manageHook = manageDocks <+> manageHook defaultConfig,
+
+  -- TODO: Find out what this does
+  handleEventHook = mempty,
+
+  logHook = dynamicLogWithPP xmobarPP {
+    ppOutput = hPutStrLn xmproc
+  },
+
+  startupHook = return ()
+}
+
+--myLayout = avoidStruts $ tiled ||| reflectHoriz tiled ||| Grid ||| tabbed shrinkText myTheme ||| Full
+myLayout = avoidStruts $ tiled ||| reflectHoriz tiled ||| Grid ||| simpleTabbed ||| Full
   where
     tiled        = Tall tiledNmaster tiledDelta tiledRatio
     tiledNmaster = 1
     tiledDelta   = 1/100
     tiledRatio   = 1/2
 
-myMouseBindings (XConfig {XMonad.modMask = modm}) = Map.fromList $
+myMouseBindings XConfig {XMonad.modMask = modm} = Map.fromList
   [
     -- mod-button1, Set the window to floating mode and move by dragging
-    ((modm, button1), (\w -> focus w >> mouseMoveWindow w
-                                     >> windows StackSet.shiftMaster)),
+    ((modm, button1), \w -> focus w >> mouseMoveWindow w
+                                    >> windows StackSet.shiftMaster),
 
     -- mod-button2, Raise the window to the top of the stack
-    ((modm, button2), (\w -> focus w >> windows StackSet.shiftMaster)),
+    ((modm, button2), \w -> focus w >> windows StackSet.shiftMaster),
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    ((modm, button3), (\w -> focus w >> mouseResizeWindow w
-                                     >> windows StackSet.shiftMaster))
+    ((modm, button3), \w -> focus w >> mouseResizeWindow w
+                                     >> windows StackSet.shiftMaster)
   ]
 
-myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
+myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
   [
     -- launch a terminal
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
@@ -150,7 +167,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = Map.fromList $
     ((modm, xK_q), spawn "xmonad --recompile; xmonad --restart"),
 
     -- Quit xmonad
-    ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
+    ((modm .|. shiftMask, xK_q), io exitSuccess)
   ]
   ++
 

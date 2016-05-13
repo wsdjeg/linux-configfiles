@@ -1,12 +1,10 @@
-# Xorg Compositor
-compton &
-
 # Xorg config
 ~/.bin/xorg-keyboard &
 ~/.bin/xorg-touchpad-off &
-~/.bin/xorg-monitors-two &
+~/.bin/xorg-monitors-one &
 
 # Wallpaper
+# TODO: Get a solid color.
 nitrogen --restore &
 
 # Finally, start xmonad
