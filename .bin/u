@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-git up; git push;
+git up;
+git push --all --set-upstream
+git push --tags;

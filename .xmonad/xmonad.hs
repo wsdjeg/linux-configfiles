@@ -168,6 +168,9 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
 
     -- Quit xmonad
     ((modm .|. shiftMask, xK_q), io exitSuccess)
+
+    -- WoW HAXXXX
+    --((0, xK_grave), spawn "wine /home/tom/Applications/AutoHotKey/bin/AutoHotKey.exe ")
   ]
   ++
 

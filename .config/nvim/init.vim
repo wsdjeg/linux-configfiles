@@ -9,7 +9,7 @@
   call plug#begin()
 
   " Support for python plugins
-  let g:python_host_prog = '/usr/bin/python2.7'
+  let g:python_host_prog='/usr/bin/python2.7'
 
   " Set the map leader key
   let mapleader=','
@@ -50,17 +50,24 @@
 
   Plug 'kien/ctrlp.vim'
     let g:ctrlp_use_caching=1
-    let g:ctrlp_custom_ignore = {
+    let g:ctrlp_custom_ignore={
       \ 'dir': '\v[\/](\.git|\.svn|\.hg|node_modules|bower_components|build|docs)'
       \ }
 
   Plug 'scrooloose/nerdtree'
+    let g:NERDTreeShowFiles=1
+    let g:NERDTreeShowHidden=1
+    let g:NERDTreeCascadeOpenSingleChildDir=0
     "let g:NERDTreeWinPos='right'
     map <leader>[ :NERDTreeToggle<cr>
 
+    function! ToggleNerdTree()
+      normal :NERDTreeToggle()<cr>
+    endfunction
+
   Plug 'majutsushi/tagbar'
     map <leader>] :TagbarToggle<cr>
-    let g:tagbar_compact = 1
+    let g:tagbar_compact=1
 
   "Plug 'vim-scripts/taglist.vim'
   "  "let g:Tlist_Show_One_File=1
@@ -75,7 +82,14 @@
   " Display signs for the quickfix window
   "Plug 'tomtom/quickfixsigns_vim'
 
-  Plug 'bling/vim-airline'
+  " Color the prompt like airline.
+  Plug 'edkolev/promptline.vim'
+
+  " Color the tmux line like airline
+  Plug 'edkolev/tmuxline.vim'
+
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
     "let g:airline_left_sep='>'
     "let g:airline_right_sep='<'
     let g:airline_detect_modified=1
@@ -84,7 +98,7 @@
     let g:airline_inactive_collapse=1
     "let g:airline_theme=
     let g:airline_powerline_fonts=1
-    "let g:airline_mode_map = {
+    "let g:airline_mode_map={
     "    \ '__' : '-',
     "    \ 'n'  : 'N',
     "    \ 'i'  : 'I',
@@ -99,24 +113,24 @@
     "    \ }
 
     if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
+      let g:airline_symbols={}
     endif
 
     " unicode symbols
-    "let g:airline_left_sep = '»'
-    "let g:airline_right_sep = '«'
-    "let g:airline_symbols.linenr = '¶'
-    "let g:airline_symbols.branch = 'B'
-    "let g:airline_symbols.paste = '∥'
-    "let g:airline_symbols.whitespace = 'Ξ'
+    "let g:airline_left_sep='»'
+    "let g:airline_right_sep='«'
+    "let g:airline_symbols.linenr='¶'
+    "let g:airline_symbols.branch='B'
+    "let g:airline_symbols.paste='∥'
+    "let g:airline_symbols.whitespace='Ξ'
 
-    let g:airline#extensions#branch#enabled = 1
-    let g:airline#extensions#hunks#enabled = 0
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#whitespace#enabled = 1
-    let g:airline#extensions#syntastic#enabled = 1
-    "let g:airline#extensions#tagbar#enabled = 1
-    let g:airline#extensions#csv#enabled = 1
+    let g:airline#extensions#branch#enabled=1
+    let g:airline#extensions#hunks#enabled=0
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline#extensions#whitespace#enabled=1
+    let g:airline#extensions#syntastic#enabled=1
+    "let g:airline#extensions#tagbar#enabled=1
+    let g:airline#extensions#csv#enabled=1
 
   " make it possible to have buffers in the background
   set hidden
@@ -126,8 +140,6 @@
 
   " when vim opens, open NERDTree to the left, tagbar to the right and select
   " the file split on the right of NERDTree.
-  "autocmd vimenter * NERDTree | wincmd l
-  "autocmd vimenter * Tagbar
 " }}
 " Movement {{
   " make movement keys wrap to the next/previous line
@@ -140,7 +152,7 @@
   set nowrap
 
   Plug 'Lokaltog/vim-easymotion'
-  let g:EasyMotion_leader_key = '<leader>'
+  let g:EasyMotion_leader_key='<leader>'
 
   " switch buffers
   map <tab> :bn<cr>
@@ -169,14 +181,17 @@
 " Finding / Searching / Restructuring {{
   set noignorecase
 
+  Plug 'wincent/loupe'
+    " Don't set up a mapping to clean searhc highlighting.
+    let g:LoupeClearHighlightMap=1
+
   " TODO: this one screws up
   "Plug 'ervandew/ag'
   Plug 'Spaceghost/vim-matchit'
   Plug 'vim-scripts/IndexedSearch'
   Plug 'vim-scripts/grep.vim'
     let g:Grep_Default_Options="--exclude-dir=node_modules"
-
-  map <C-f> :Rgrep<cr>
+    map <C-f> :Rgrep<cr>
 
   map <leader>s :sort<cr>
 " }}
@@ -202,19 +217,19 @@
 " }}
 " Syntax {{
   Plug 'scrooloose/syntastic'
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_auto_jump = 0
-    let g:syntastic_auto_loc_list = 0
-    let g:syntastic_error_symbol = '!'
-    let g:syntastic_warning_symbol = '?'
-    "let g:syntastic_error_symbol = '✗'
-    "let g:syntastic_warning_symbol = '⚠'
-    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_check_on_open=1
+    let g:syntastic_auto_jump=0
+    let g:syntastic_auto_loc_list=0
+    let g:syntastic_error_symbol='!'
+    let g:syntastic_warning_symbol='?'
+    "let g:syntastic_error_symbol='✗'
+    "let g:syntastic_warning_symbol='⚠'
+    let g:syntastic_javascript_checkers=['eslint']
 " }}
 " Completion {{
   "Plug 'vim-scripts/AutoComplPop'
-  "  let g:acp_ignorecaseOption = 1
-  "  let g:acp_behaviorKeywordCommand = "\<C-p>"
+  "  let g:acp_ignorecaseOption=1
+  "  let g:acp_behaviorKeywordCommand="\<C-p>"
 
   " complete brackets / pairs
   Plug 'Raimondi/delimitMate'
@@ -226,27 +241,27 @@
   Plug 'honza/vim-snippets'
 
     " make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType = '<C-n>'
+    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+    let g:SuperTabDefaultCompletionType='<C-n>'
 
     " better key bindings for UltiSnipsExpandTrigger
-    let g:UltiSnipsExpandTrigger = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-    let g:UltiSnipsUsePythonVersion = 2
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:UltiSnipsUsePythonVersion=2
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
   function! AlignSection(regex) range
-    let extra = 1
-    let sep = empty(a:regex) ? '=' : a:regex
-    let maxpos = 0
-    let section = getline(a:firstline, a:lastline)
+    let extra=1
+    let sep=empty(a:regex) ? '=' : a:regex
+    let maxpos=0
+    let section=getline(a:firstline, a:lastline)
     for line in section
-      let pos = match(line, ' *'.sep)
+      let pos=match(line, ' *'.sep)
       if maxpos < pos
-        let maxpos = pos
+        let maxpos=pos
       endif
     endfor
     call map(section, 'AlignLine(v:val, sep, maxpos, extra)')
@@ -254,11 +269,11 @@
   endfunction
 
   function! AlignLine(line, sep, maxpos, extra)
-    let m = matchlist(a:line, '\(.\{-}\) \{-}\('.a:sep.'.*\)')
+    let m=matchlist(a:line, '\(.\{-}\) \{-}\('.a:sep.'.*\)')
     if empty(m)
       return a:line
     endif
-    let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
+    let spaces=repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
     return m[1] . spaces . m[2]
   endfunction
 
@@ -271,16 +286,13 @@
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
     " If you want to detect filetype from the filename:
-    let g:gist_detect_filetype = 1
+    let g:gist_detect_filetype=1
     " If you want your gist to be private by default:
-    let g:gist_post_private = 1
+    let g:gist_post_private=1
     " If you want to manipulate multiple files in a gist:
-    let g:gist_get_multiplefile = 1
+    let g:gist_get_multiplefile=1
 
-  "Plug 'vim-scripts/vim-signify'
-
-  " Nice git integration.
-  Plug 'gregsexton/gitv'
+  Plug 'vim-scripts/vim-signify'
 
   " Visualize the undo history as a tree.
   Plug 'sjl/gundo.vim'
@@ -295,7 +307,11 @@
 
   " JSX
   Plug 'mxw/vim-jsx'
-    let g:jsx_ext_required = 0
+    let g:jsx_ext_required=0
+
+  " Nomad
+  Plug 'buztard/vim-nomad'
+
 " }}
 " Visual Information {{
   "Plug 'nathanaelkane/vim-indent-guides'
@@ -321,7 +337,7 @@
   set incsearch
 
   " No "matchparen" plugin.
-  let loaded_matchparen = 1
+  let loaded_matchparen=1
 
   " gui options
   set guioptions=
@@ -415,7 +431,7 @@
   endfunction
 
   function! ToggleClassFoldMode()
-    if &foldmethod == 'indent'
+    if &foldmethod=='indent'
       call SetDefaultFoldMode()
     else
       call SetClassFoldMode()
@@ -423,7 +439,7 @@
   endfunction
 
   function! ToggleFunctionFoldMode()
-    if &foldmethod == 'indent'
+    if &foldmethod=='indent'
       call SetDefaultFoldMode()
     else
       call SetFunctionFoldMode()
@@ -437,7 +453,7 @@
 " }}
 " Font {{
   function! ToggleFontSize()
-    if w:font_size == 'small'
+    if w:font_size=='small'
       if has('macunix')
         set guifont=Menlo:h14
       else
@@ -447,7 +463,7 @@
         set guifont=Inconsolata\ Medium\ 12
       endif
 
-      let w:font_size = 'large'
+      let w:font_size='large'
 
     else
       if has('macunix')
@@ -458,13 +474,13 @@
         "set guifont=Ubuntu\ Mono\ 12
       endif
 
-      let w:font_size = 'small'
+      let w:font_size='small'
 
     endif
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  let w:font_size = 'small'
+  let w:font_size='small'
 
   " then call
 
@@ -481,16 +497,15 @@
   set t_Co=256
 
   if has('gui_running')
-    let w:lightscheme = 'base16-atelierforest'
-    let w:darkscheme = 'base16-atelierdune'
+    let w:lightscheme='base16-atelierforest'
+    let w:darkscheme='base16-atelierdune'
   else
-    "let w:lightscheme = 'base16-flat'
-    let w:lightscheme = 'base16-google'
-    let w:darkscheme = 'base16-atelierforest'
+    let w:lightscheme='base16-flat'
+    let w:darkscheme='base16-flat'
   endif
 
   function! ToggleColorschemeBackground()
-    if &background == 'light'
+    if &background=='light'
       execute 'colorscheme' w:darkscheme
       set background=dark
     else
@@ -518,4 +533,7 @@
   call SetDefaultFoldMode()
   call ToggleFontSize()
   call ToggleColorschemeBackground()
+
+  " Open NERDTree and move the cursor to the right split, the file buffer.
+  autocmd VimEnter * NERDTree | wincmd l
 " }}

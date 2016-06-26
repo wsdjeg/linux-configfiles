@@ -1,0 +1,2 @@
+# editor
+new-session -s editor -c ~/Code -n vim vim

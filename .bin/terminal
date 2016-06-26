@@ -4,3 +4,4 @@ gnome-terminal
 #urxvt -si -sw +sb -bg black -fg grey -fn "xft:Terminus:size=9"
 #urxvt -si -sw +sb -bg black -fg grey -fn "xft:DejaVu Sans Mono for Powerline:size=10"
 #urxvt -si -sw +sb -bg black -fg grey -fn "xft:Ubuntu\ Mono:size=12"
+#urxvt -si -sw +sb -bg black -fg grey -fn "xft:Roboto Mono for Powerline:size=11"

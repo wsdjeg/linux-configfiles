@@ -1,0 +1,6 @@
+# social
+# TODO: Slack in weechat
+# TODO: Gitter.im in weechat
+# TODO: Facebook in weechat
+# TODO: KiK in weechat
+new-session -s social -n IRC -c ~/Documents weechat-curses

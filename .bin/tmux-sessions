@@ -1,0 +1,13 @@
+# editor
+tmux new-session -s editor -c ~/Code -n vim vim
+
+# media
+tmux new-session -s media -n mixer -c ~/Documents alsamixer
+tmux new-window           -n music -c ~/Music     cmus
+
+# social
+# TODO: Slack in weechat
+# TODO: Gitter.im in weechat
+# TODO: Facebook in weechat
+# TODO: KiK in weechat
+tmux new-session -s social -n IRC -c ~/Documents weechat-curses
