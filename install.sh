@@ -15,6 +15,7 @@ ln -s ~/Repositories/linux-configfiles/.config/nvim ~/.config/nvim
 TERM=xterm
 #RUN sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm ~/.zshrc
 ln -s ~/Repositories/linux-configfiles/.zshrc ~
 
 # Tmux.
