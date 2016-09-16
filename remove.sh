@@ -2,7 +2,6 @@
 
 rm ~/.bin
 rm ~/.sh
-rm ~/.shell_prompt.sh
 
 rm ~/.config/nvim
 

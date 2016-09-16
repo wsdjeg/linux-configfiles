@@ -1,7 +1,7 @@
 export ZSH=/home/tom/.oh-my-zsh
 
 # TODO: pick a theme from ~/.oh-my-zsh/themes
-#ZSH_THEME="bureau"
+ZSH_THEME="bureau"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="sunrise"
 HYPHEN_INSENSITIVE="true"
@@ -15,7 +15,6 @@ plugins=(
   command-not-found
   docker
   docker-compose
-  extract
   git
   git-extras
   git-flow
@@ -24,16 +23,9 @@ plugins=(
   gitignore
   gulp
   history
-  jira
-  jsontools
   node
   npm
   nvm
-  rsync
-  terraform
-  tmux
-  urltools
-  vagrant
   vi-mode
 )
 
@@ -93,26 +85,12 @@ export EDITOR;
 export GIT_EDITOR;
 export MAKEFLAGS;
 
-source ~/.shell_prompt.sh
-
 # NVM
 export NVM_DIR="/home/tom/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Gulp Autocompletion
-source /home/tom/.gulp-autocompletion-zsh/gulp-autocompletion.zsh
-
-# N
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # Run Tmux, but not if it's already in tmux.
 # TODO: This approach doesn't work.
 #if command -v tmux>/dev/null; then
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'

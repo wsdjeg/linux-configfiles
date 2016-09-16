@@ -3,7 +3,6 @@
 # Shell improvments and misc commands.
   ln -s ~/Repositories/linux-configfiles/.bin ~
   ln -s ~/Repositories/linux-configfiles/.sh ~
-  ln -s ~/Repositories/linux-configfiles/.shell_prompt.sh ~
 
 # Bash
   #ln -s ~/Repositories/linux-configfiles/.bashrc ~
