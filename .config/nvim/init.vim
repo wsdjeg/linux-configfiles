@@ -235,21 +235,25 @@
   Plug 'Raimondi/delimitMate'
 
   " if you use Vundle, load plugins:
-  Plug 'ervandew/supertab'
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'SirVer/ultisnips'
+  "Plug 'ervandew/supertab'
   Plug 'honza/vim-snippets'
 
-    " make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType='<C-n>'
+  Plug 'Shougo/neco-syntax'
+  Plug 'Shougo/neco-vim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup=1
+    let g:deoplete#enable_smart_case=1
+    let g:deoplete#auto_complete_start_length=1
+    let g:deoplete#max_menu_width=0
+    let g:deoplete#auto_complete_delay=10
+    let g:deoplete#auto_refresh_delay=10
 
+  Plug 'SirVer/ultisnips'
     " better key bindings for UltiSnipsExpandTrigger
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    let g:UltiSnipsUsePythonVersion=2
+    "let g:UltiSnipsUsePythonVersion=2
 
   " http://vim.wikia.com/wiki/Regex-based_text_alignment
   command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
@@ -304,6 +308,9 @@
 
   " Livescript
   Plug 'gkz/vim-ls'
+
+  " JavaScript
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
   " JSX
   Plug 'mxw/vim-jsx'

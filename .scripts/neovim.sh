@@ -16,6 +16,8 @@ sudo add-apt-repository -y ppa:neovim-ppa/unstable > /dev/null
 sudo apt-get update > /dev/null
 sudo apt-get install -y neovim > /dev/null
 
+sudo pip3 install --upgrade neovim > /dev/null
+sudo pip3 install --upgrade neovim > /dev/null
 
 mkdir -p ~/.config
 if [ -d ~/.config/nvim ]; then
