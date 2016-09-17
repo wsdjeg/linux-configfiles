@@ -15,14 +15,11 @@ ln -s $REPO/.sh ~
 $REPO/.scripts/git.sh
 $REPO/.scripts/bash.sh
 $REPO/.scripts/zsh.sh
+$REPO/.scripts/cmus.sh
+$REPO/.scripts/weechat.sh
 $REPO/.scripts/tmux.sh
 $REPO/.scripts/neovim.sh
+$REPO/.scripts/xorg.sh
 $REPO/.scripts/xmonad.sh
 $REPO/.scripts/nodejs.sh
 $REPO/.scripts/ack-grep.sh
-
-
-
-
-
-
