@@ -23,3 +23,4 @@ $REPO/.scripts/xorg.sh
 $REPO/.scripts/xmonad.sh
 $REPO/.scripts/nodejs.sh
 $REPO/.scripts/ack-grep.sh
+$REPO/.scripts/steam.sh
