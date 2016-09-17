@@ -1,50 +1,28 @@
 #!/usr/bin/env bash
 
-# Shell improvments and misc commands.
-  ln -s ~/Repositories/linux-configfiles/.bin ~
-  ln -s ~/Repositories/linux-configfiles/.sh ~
+export REPO=~/Repositories/linux-configfiles
 
-# Bash
-  #ln -s ~/Repositories/linux-configfiles/.bashrc ~
+if [ -d ~/.bin ]; then
+  rm ~/.bin
+fi
+ln -s $REPO/.bin ~
 
-# ZSH
-# NOTE: This one should go last, as it drops the user into a zsh
-#       session. Any commands follwing these will be ignored.
-# TODO: Install oh my zsh.
-# TODO: Get ZSH to be the default shell.
-  export TERM=xterm
-  if [ -f ~/.zshrc ]; then
-    rm ~/.zshrc
-  fi
-  if [ -d ~/.oh-my-zsh ]; then
-    rm  -rf ~/.oh-my-zsh
-  fi
-  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  if [ -f ~/.zshrc ]; then
-    rm ~/.zshrc
-  fi
-  ln -s ~/Repositories/linux-configfiles/.zshrc ~
+if [ -d ~/.sh ]; then
+  rm ~/.sh
+fi
+ln -s $REPO/.sh ~
 
-# Neovim
-  mkdir -p ~/.config
-  ln -s ~/Repositories/linux-configfiles/.config/nvim ~/.config/nvim
+$REPO/.scripts/git.sh
+$REPO/.scripts/bash.sh
+$REPO/.scripts/zsh.sh
+$REPO/.scripts/tmux.sh
+$REPO/.scripts/neovim.sh
+$REPO/.scripts/xmonad.sh
+$REPO/.scripts/nodejs.sh
+$REPO/.scripts/ack-grep.sh
 
-# Tmux.
-  ln -s ~/Repositories/linux-configfiles/.tmux.conf ~
-  ln -s ~/Repositories/linux-configfiles/.tmux ~
 
-# Xmonad
-# TODO: Do something with the .Xmodmap file.
-# TODO: Do something with the .xinitrc file.
-  ln -s ~/Repositories/linux-configfiles/.xmonad ~
 
-# Ack-Grep
-  ln -s ~/Repositories/linux-configfiles/.ackrc ~
 
-# Git
-  ln -s ~/Repositories/linux-configfiles/.gitconfig ~
 
-# Node.js
-# TODO: Install NPM and Node.js
-# TODO: Do it via a version manager like n or nvm. Prefer n over nvm.
-  ln -s ~/Repositories/linux-configfiles/.npmrc ~
+
