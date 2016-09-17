@@ -496,13 +496,8 @@
   Plug 'CSApprox'
   set t_Co=256
 
-  if has('gui_running')
-    let w:lightscheme='base16-atelierforest'
-    let w:darkscheme='base16-atelierdune'
-  else
-    let w:lightscheme='base16-flat'
-    let w:darkscheme='base16-flat'
-  endif
+  let w:lightscheme='base16-default-light'
+  let w:darkscheme='base16-default-dark'
 
   function! ToggleColorschemeBackground()
     if &background=='light'
@@ -515,7 +510,7 @@
   endfunction
 
   " prepare the first call (set values to what we don't want)
-  set background=dark
+  set background=light
 
   " - Maps
     " Toggle background color
