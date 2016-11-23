@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd ~/World\ of\ Warcraft/Interface/AddOns;
+cd ~/Games/World\ of\ Warcraft/Interface/AddOns;
 mv ~/Downloads/*.zip .;
 unzip-all;
 #rm -rf ./*.zip;
