@@ -2,7 +2,7 @@
 
 echo "Installing weechat."
 
-sudo apt-get install -y weechat > /dev/null
+sudo apt-get install -y weechat
 
 if [ -d ~/.weechat ]; then
   rm ~/.weechat

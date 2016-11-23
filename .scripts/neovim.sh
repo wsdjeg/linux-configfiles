@@ -10,14 +10,14 @@ sudo apt-get install -y \
   python-pip \
   python3-dev \
   python3-pip \
-  > /dev/null
+ 
 
-sudo add-apt-repository -y ppa:neovim-ppa/unstable > /dev/null
-sudo apt-get update > /dev/null
-sudo apt-get install -y neovim > /dev/null
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install -y neovim
 
-sudo pip3 install --upgrade neovim > /dev/null
-sudo pip3 install --upgrade neovim > /dev/null
+sudo pip3 install --upgrade neovim
+sudo pip3 install --upgrade neovim
 
 mkdir -p ~/.config
 if [ -d ~/.config/nvim ]; then

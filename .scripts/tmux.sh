@@ -2,7 +2,7 @@
 
 echo "Installing tmux."
 
-sudo apt-get install -y tmux > /dev/null
+sudo apt-get install -y tmux
 
 if [ -d ~/.tmux ]; then
   rm ~/.tmux

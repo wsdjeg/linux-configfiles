@@ -2,7 +2,7 @@
 
 echo "Installing xmonad."
 
-sudo apt-get install -y xmonad > /dev/null
+sudo apt-get install -y xmonad
 
 if [ -d ~/.xmonad ]; then
   rm ~/.xmonad

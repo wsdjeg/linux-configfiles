@@ -2,7 +2,7 @@
 
 echo "Installing ack-grep."
 
-sudo apt-get install -y ack-grep > /dev/null
+sudo apt-get install -y ack-grep
 
 if [ -f ~/.ackrc ]; then
   rm ~/.ackrc

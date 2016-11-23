@@ -2,4 +2,4 @@
 
 echo "Installing cmus."
 
-sudo apt-get install -y cmus > /dev/null
+sudo apt-get install -y cmus
