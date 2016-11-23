@@ -40,8 +40,11 @@ PATH="/home/tom/.bin:$PATH";
 PATH="/home/tom/.cabal/bin:$PATH";
 PATH="/home/tom/Applications/google-could-sdk/bin:$PATH";
 PATH="/home/tom/n/bin:$PATH";
+PATH="/home/tom/npm/bin:$PATH";
+PATH="/home/tom/Applications/RoboMongo/bin:$PATH";
 
-TERM="xterm-256color"
+#TERM="xterm-256color"
+#TERM="rxvt-unicode"
 
 # Remove things set by Oh My ZSH
 # TODO: Add location in file of where these are being set by oh my zsh.
@@ -94,3 +97,5 @@ export NVM_DIR="/home/tom/.nvm"
 #if command -v tmux>/dev/null; then
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
+
+~/.bin/xorg-keyboard
