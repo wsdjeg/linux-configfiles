@@ -1,3 +1,4 @@
+" Initialize
 " load filetype plugins, indentation and turn syntax highlighting on
 filetype plugin indent on
 syntax on
@@ -8,22 +9,15 @@ call plug#begin()
 " Support for python plugins
 let g:python_host_prog='/usr/bin/python2.7'
 
-" # Unknown
-  " Set the map leader key
-  let mapleader=','
+" Set the map leader key
+let mapleader=','
 
-  " ease of use / typos
-  "map :Q :q
-  "map :W :w
-  "map :E :e
+" resync syntax
+map <leader>sy :syntax sync fromstart<cr>
 
-  " resync syntax
-  map <leader>sy :syntax sync fromstart<cr>
-
-  " open and reload init.vim
-  map <leader>v :edit ~/.config/nvim/init.vim<cr>
-  map <leader>V :bufdo :source ~/.config/nvim/init.vim<cr>:bufdo :filetype detect<cr>
-
+" open and reload init.vim
+map <leader>v :edit ~/.config/nvim/init.vim<cr>
+map <leader>V :bufdo :source ~/.config/nvim/init.vim<cr>:bufdo :filetype detect<cr>
 
 function SetIndentation()
   set autoindent
@@ -319,6 +313,9 @@ function SetFileTypes()
 
   " Nomad
   Plug 'buztard/vim-nomad'
+
+  " Go
+  Plug 'fatih/vim-go'
 endfunction
 
 function SetVisualInformation()
@@ -550,12 +547,12 @@ call SetVisualInformation()
 call SetFont()
 call SetColorSchemes()
 
-" # Finalization
-  call plug#end()
+" Finalize
+call plug#end()
 
-  call SetDefaultFoldMode()
-  call ToggleFontSize()
-  call ToggleColorschemeBackground()
+call SetDefaultFoldMode()
+call ToggleFontSize()
+call ToggleColorschemeBackground()
 
-  " Open NERDTree and move the cursor to the right split, the file buffer.
-  autocmd VimEnter * NERDTree | wincmd l
+" Open NERDTree and move the cursor to the right split, the file buffer.
+autocmd VimEnter * NERDTree | wincmd l
