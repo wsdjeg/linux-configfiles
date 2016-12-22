@@ -1,16 +1,14 @@
-" vim: set foldmethod=marker foldmarker={{,}} :
+" load filetype plugins, indentation and turn syntax highlighting on
+filetype plugin indent on
+syntax on
 
-" Initialization {{
-  " load filetype plugins, indentation and turn syntax highlighting on
-  filetype plugin indent on
-  syntax on
+" load vundle
+call plug#begin()
 
-  " load vundle
-  call plug#begin()
+" Support for python plugins
+let g:python_host_prog='/usr/bin/python2.7'
 
-  " Support for python plugins
-  let g:python_host_prog='/usr/bin/python2.7'
-
+" # Unknown
   " Set the map leader key
   let mapleader=','
 
@@ -25,28 +23,27 @@
   " open and reload init.vim
   map <leader>v :edit ~/.config/nvim/init.vim<cr>
   map <leader>V :bufdo :source ~/.config/nvim/init.vim<cr>:bufdo :filetype detect<cr>
-" }}
-" Indentation {{
+
+
+function SetIndentation()
   set autoindent
   set tabstop=2
   set shiftwidth=2
   set expandtab
-" }}
-" Backups {{
+endfunction
+
+function SetBackups()
   set writebackup
   set backup
   set noswapfile
   set backupcopy=auto
   set backupdir=~/.config/nvim/backup
   set directory=~/.config/nvim/temp
-" }}
-" Buffers / Files {{
+endfunction
+
+function SetBuffersAndFiles()
   Plug 'Industrial/vim-smartbd'
   Plug 'Industrial/vim-smartbw'
-
-  "Plug 'fholgado/minibufexpl.vim'
-  "  " open at 1 buffer
-  "  let g:miniBufExplorerMoreThanOne=1
 
   Plug 'kien/ctrlp.vim'
     let g:ctrlp_use_caching=1
@@ -55,10 +52,14 @@
       \ }
 
   Plug 'scrooloose/nerdtree'
+    let g:NERDTreeCascadeOpenSingleChildDir=0
+    let g:NERDTreeCaseSensitiveSort=1
+    let g:NERDTreeShowHidden=1
     let g:NERDTreeShowFiles=1
     let g:NERDTreeShowHidden=1
-    let g:NERDTreeCascadeOpenSingleChildDir=0
-    "let g:NERDTreeWinPos='right'
+    let g:NERDTreeCascadeSingleChildDir=0
+    let g:NERDTreeCascadeOpenSingleChildDir=1
+    let g:NERDTreeAutoDeleteBuffer=1
     map <leader>[ :NERDTreeToggle<cr>
 
     function! ToggleNerdTree()
@@ -66,21 +67,12 @@
     endfunction
 
   Plug 'majutsushi/tagbar'
-    map <leader>] :TagbarToggle<cr>
     let g:tagbar_compact=1
+    map <leader>] :TagbarToggle<cr>
 
-  "Plug 'vim-scripts/taglist.vim'
-  "  "let g:Tlist_Show_One_File=1
-  "  let g:Tlist_Auto_Update=1
-  "  let g:Tlist_Enable_Fold_Column=0
-  "  let g:Tlist_File_Fold_Auto_Close=1
-  "  let g:Tlist_Show_Menu=1
-  "  let g:Tlist_Use_Right_Window=1
-  "  autocmd vimenter * Tlist
-  "  map <leader>] :TlistToggle<cr>
 
   " Display signs for the quickfix window
-  "Plug 'tomtom/quickfixsigns_vim'
+  Plug 'tomtom/quickfixsigns_vim'
 
   " Color the prompt like airline.
   Plug 'edkolev/promptline.vim'
@@ -137,11 +129,10 @@
 
   " reload changes from disk
   set autoread
+endfunction
 
-  " when vim opens, open NERDTree to the left, tagbar to the right and select
-  " the file split on the right of NERDTree.
-" }}
-" Movement {{
+function SetMovement()
+  " # Movement
   " make movement keys wrap to the next/previous line
   set whichwrap=b,s,h,l,<,>,[,]
 
@@ -177,8 +168,9 @@
   " TODO: Disables the grep.vim enter functionality.
   " Solution: Do not do it for quickfix windows?
   "nmap <cr> o<esc>
-" }}
-" Finding / Searching / Restructuring {{
+endfunction
+
+function SetFindingSearchingReplacing()
   set noignorecase
 
   Plug 'wincent/loupe'
@@ -194,8 +186,8 @@
     map <C-f> :Rgrep<cr>
 
   map <leader>s :sort<cr>
-" }}
-" Cut, Copy and Paste {{
+
+  " # Cut, Copy and Paste
   "Plug 'maxbrunsfeld/vim-yankstack'
 
   map <leader>d "+d
@@ -205,8 +197,8 @@
   map <leader>D "*d
   map <leader>Y "*y
   map <leader>P "*p
-" }}
-" Save, Close, Quit {{
+
+  " # Save, Close, Quit
   map <c-s> :write<cr>
   "map <c-w> :SmartBw<cr>
   map <c-q> :qa!<cr>
@@ -214,8 +206,9 @@
   imap <c-s> <esc>:write<cr>a
   "imap <c-w> <esc>:SmartBw<cr>a
   imap <c-q> <esc>:qa!<cr>
-" }}
-" Syntax {{
+endfunction
+
+function SetSyntax()
   Plug 'scrooloose/syntastic'
     let g:syntastic_check_on_open=1
     let g:syntastic_auto_jump=0
@@ -225,8 +218,10 @@
     "let g:syntastic_error_symbol='✗'
     "let g:syntastic_warning_symbol='⚠'
     let g:syntastic_javascript_checkers=['eslint']
-" }}
-" Completion {{
+endfunction
+
+function SetCompletion()
+  " # Completion
   "Plug 'vim-scripts/AutoComplPop'
   "  let g:acp_ignorecaseOption=1
   "  let g:acp_behaviorKeywordCommand="\<C-p>"
@@ -235,7 +230,7 @@
   Plug 'Raimondi/delimitMate'
 
   " if you use Vundle, load plugins:
-  "Plug 'ervandew/supertab'
+  Plug 'ervandew/supertab'
   Plug 'honza/vim-snippets'
 
   Plug 'Shougo/neco-syntax'
@@ -283,8 +278,10 @@
 
   vnoremap <silent> <leader>a :Align<cr>
   vnoremap <silent> <leader>A :'<,'>sort<cr>:'<,'>Align<cr>
-" }}
-" Version Control {{
+endfunction
+
+function SetVersionControl()
+  " # Version Control
   Plug 'tpope/vim-fugitive'
 
   Plug 'mattn/webapi-vim'
@@ -301,8 +298,9 @@
   " Visualize the undo history as a tree.
   Plug 'sjl/gundo.vim'
     map <leader>u :GundoToggle<cr>
-" }}
-" File Types {{
+endfunction
+
+function SetFileTypes()
   " Many languages
   Plug 'sheerun/vim-polyglot'
 
@@ -310,17 +308,20 @@
   Plug 'gkz/vim-ls'
 
   " JavaScript
+  Plug 'othree/yajs.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'othree/es.next.syntax.vim'
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
   " JSX
-  Plug 'mxw/vim-jsx'
+  "Plug 'mxw/vim-jsx'
     let g:jsx_ext_required=0
 
   " Nomad
   Plug 'buztard/vim-nomad'
+endfunction
 
-" }}
-" Visual Information {{
+function SetVisualInformation()
   "Plug 'nathanaelkane/vim-indent-guides'
 
   " Show the command being executed
@@ -362,6 +363,16 @@
 
   " highlight the line the cursor is on
   "set cursorline
+
+  " TODO: Document what this does.
+  Plug 'w0rp/ale'
+    let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \}
+
+  " Folds
+  set foldenable
+  set foldcolumn=1
 
   " Don't ignore anything (e.g. comments) when making folds
   set foldignore=
@@ -457,8 +468,9 @@
     " Toggle fold mode
     map <f8> :call ToggleClassFoldMode()<cr>
     map <f9> :call ToggleFunctionFoldMode()<cr>
-" }}
-" Font {{
+endfunction
+
+function SetFont()
   function! ToggleFontSize()
     if w:font_size=='small'
       if has('macunix')
@@ -494,8 +506,9 @@
   " - Maps
     " Toggle font size
     map <f11> :call ToggleFontSize()<cr>
-" }}
-" Color Schemes {{
+endfunction
+
+function SetColorSchemes()
   Plug 'chriskempson/base16-vim'
   Plug 'altercation/vim-colors-solarized'
 
@@ -503,8 +516,8 @@
   Plug 'CSApprox'
   set t_Co=256
 
-  let w:lightscheme='base16-default-light'
-  let w:darkscheme='base16-default-dark'
+  let w:lightscheme='base16-google-light'
+  let w:darkscheme='base16-atelier-dune'
 
   function! ToggleColorschemeBackground()
     if &background=='light'
@@ -522,14 +535,22 @@
   " - Maps
     " Toggle background color
     map <f12> :call ToggleColorschemeBackground()<cr>
-" }}
-" NyaoVim {{
-  Plug 'rhysd/nyaovim-popup-tooltip'
-  Plug 'rhysd/nyaovim-mini-browser'
-  Plug 'rhysd/nyaovim-markdown-preview'
-  Plug 'rhysd/nyaovim-tree-view'
-" }}
-" Finalization {{
+endfunction
+
+call SetIndentation()
+call SetBackups()
+call SetBuffersAndFiles()
+call SetMovement()
+call SetFindingSearchingReplacing()
+call SetSyntax()
+call SetCompletion()
+call SetVersionControl()
+call SetFileTypes()
+call SetVisualInformation()
+call SetFont()
+call SetColorSchemes()
+
+" # Finalization
   call plug#end()
 
   call SetDefaultFoldMode()
@@ -538,4 +559,3 @@
 
   " Open NERDTree and move the cursor to the right split, the file buffer.
   autocmd VimEnter * NERDTree | wincmd l
-" }}
