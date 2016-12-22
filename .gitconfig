@@ -1,61 +1,66 @@
-[alias]
-	a   = add
-	A   = add -A
-	b   = branch
-	ba  = branch --all
-	bd  = branch -d
-	cb  = checkout -b
-	cm  = commit -m
-	co  = checkout
-	d   = diff
-	dc  = diff --cached
-	dt  = difftool -y
-	dtd = difftool -y --dir-diff
-	f   = fetch
-	l   = log --all --oneline --graph --decorate=full
-	lg  = log
-	m   = merge
-	mt  = mergetool
-	p   = pull
-	pa  = pull -a
-	ps  = push
-	rb  = rebase
-	rba = rebase --abort
-	rbc = rebase --continue
-	rbs = rebase --skip
-	rbi = rebase -i
-	rn  = reset HEAD@{1}
-	rp  = reset HEAD~1
-	rs  = reset
-	rsh = reset --hard HEAD^
-	rss = reset --soft HEAD^
-	r   = remote --verbose
-	ru  = remote update -p
-	s   = status
-	sh  = stash
-	t   = tag
-
-[color]
-	branch      = auto
-	diff        = auto
-	interactive = auto
-	pager       = true
-	status      = auto
-	ui          = true
-
-[diff]
-	tool = gvimdiff
-
-[github]
-	user = Industrial
+[pull]
+  rebase = true
 
 [push]
-	default = simple
+  default = simple
+
+[diff]
+  tool = meld
+
+[difftool]
+  prompt = false
+
+[merge]
+  tool = meld
+
+[alias]
+  a   = add
+  A   = add -A
+  b   = branch
+  ba  = branch --all
+  bd  = branch -d
+  cb  = checkout -b
+  cm  = commit -m
+  co  = checkout
+  d   = diff
+  dc  = diff --cached
+  dt  = difftool -y
+  dtd = difftool -y --dir-diff
+  f   = fetch
+  l   = log --all --oneline --graph --decorate=full
+  lg  = log
+  m   = merge
+  mt  = mergetool
+  p   = pull
+  pa  = pull -a
+  ps  = push
+  rb  = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbs = rebase --skip
+  rbi = rebase -i
+  rn  = reset HEAD@{1}
+  rp  = reset HEAD~1
+  rs  = reset
+  rsh = reset --hard HEAD^
+  rss = reset --soft HEAD^
+  r   = remote --verbose
+  ru  = remote update -p
+  s   = status
+  sh  = stash
+  t   = tag
+
+[color]
+  branch      = auto
+  diff        = auto
+  interactive = auto
+  pager       = true
+  status      = auto
+  ui          = true
+
+[github]
+  user = Industrial
 
 [user]
-	email = tom.wieland@gmail.com
-	name  = Tom Wieland
-[difftool]
-	prompt = false
-[pull]
-	rebase = true
+  email = tom.wieland@gmail.com
+  name  = Tom Wieland
