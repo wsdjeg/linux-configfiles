@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # editor
 tmux new-session -s editor -c ~/Code -n vim vim
 
