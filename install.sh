@@ -34,11 +34,12 @@ $REPO/.scripts/nodejs.sh
 $REPO/.scripts/nomad.sh
 $REPO/.scripts/packer.sh
 $REPO/.scripts/terraform.sh
-$REPO/.scripts/vagrant.sh
-$REPO/.scripts/virtualbox.sh
+
+#$REPO/.scripts/vagrant.sh
+#$REPO/.scripts/virtualbox.sh
 
 # Games
-$REPO/.scripts/autohotkey.sh
-$REPO/.scripts/playonlinux.sh
-$REPO/.scripts/steam.sh
-$REPO/.scripts/wine.sh
+#$REPO/.scripts/autohotkey.sh
+#$REPO/.scripts/playonlinux.sh
+#$REPO/.scripts/steam.sh
+#$REPO/.scripts/wine.sh
