@@ -13,6 +13,7 @@ ln -s $REPO/.sh ~
 
 # Dependencies
 $REPO/.scripts/git.sh
+# TODO: Git Flow.
 
 # Terminal Setup
 $REPO/.scripts/bash.sh
