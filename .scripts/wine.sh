@@ -11,7 +11,7 @@ sudo apt-get install -y \
   ttf-mscorefonts-installer \
   winehq-devel
 
-if [ -d ~/.wine ]; then
-  rm ~/.wine
+if [ -d $HOME/.wine ]; then
+  rm $HOME/.wine
 fi
 ln -s /mnt/linux-data/.wine ~

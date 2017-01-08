@@ -5,4 +5,4 @@ xset r rate 200 60;
 
 # Swap Caps Lock and Left Control
 # Disabled for now, ubuntu seems to do it by default in 16.04
-#xmodmap ~/.Xmodmap
+#xmodmap $HOME/.Xmodmap

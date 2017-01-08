@@ -2,8 +2,8 @@
 
 echo "Installing Packer."
 
-if [ -f ~/.bin/packer ]; then
-  rm ~/.bin/packer
+if [ -f $HOME/.bin/packer ]; then
+  rm $HOME/.bin/packer
 fi
 
 cd $REPO/.bin

@@ -2,8 +2,8 @@
 
 echo "Installing Nomad."
 
-if [ -f ~/.bin/nomad ]; then
-  rm ~/.bin/nomad
+if [ -f $HOME/.bin/nomad ]; then
+  rm $HOME/.bin/nomad
 fi
 
 cd $REPO/.bin

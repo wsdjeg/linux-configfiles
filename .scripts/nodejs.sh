@@ -2,8 +2,8 @@
 
 echo "Installing nodejs."
 
-if [ -f ~/.npmrc ]; then
-  rm ~/.npmrc
+if [ -f $HOME/.npmrc ]; then
+  rm $HOME/.npmrc
 fi
 ln -s $REPO/.npmrc ~
 

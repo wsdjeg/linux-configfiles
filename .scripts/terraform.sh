@@ -2,8 +2,8 @@
 
 echo "Installing Terraform."
 
-if [ -f ~/.bin/terraform ]; then
-  rm ~/.bin/terraform
+if [ -f $HOME/.bin/terraform ]; then
+  rm $HOME/.bin/terraform
 fi
 
 cd $REPO/.bin

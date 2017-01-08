@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-_JAVA_AWT_WM_NONREPARENTING=1 ~/Applications/WebStorm/bin/webstorm.sh;
+_JAVA_AWT_WM_NONREPARENTING=1 $HOME/Applications/WebStorm/bin/webstorm.sh;

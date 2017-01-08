@@ -23,7 +23,7 @@ import qualified Data.Map        as Map
 import qualified XMonad.StackSet as StackSet
 
 main = do
-  xmproc <- spawnPipe "~/.cabal/bin/xmobar --bottom ~/.xmonad/.xmobarrc"
+  xmproc <- spawnPipe "$HOME/.cabal/bin/xmobar --bottom $HOME/.xmonad/.xmobarrc"
   xmonad $ myConfig xmproc
 
 myTheme = defaultTheme {
@@ -42,7 +42,7 @@ myTheme = defaultTheme {
 
 myConfig xmproc = defaultConfig {
   -- simple stuff
-  terminal = "~/.bin/terminal",
+  terminal = "$HOME/.bin/terminal",
 
   focusFollowsMouse = True,
   clickJustFocuses = False,
@@ -170,7 +170,7 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
     ((modm .|. shiftMask, xK_q), io exitSuccess)
 
     -- WoW HAXXXX
-    --((0, xK_grave), spawn "wine ~/Applications/AutoHotKey/bin/AutoHotKey.exe ")
+    --((0, xK_grave), spawn "wine $HOME/Applications/AutoHotKey/bin/AutoHotKey.exe ")
   ]
   ++
 

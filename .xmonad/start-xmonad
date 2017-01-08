@@ -1,7 +1,7 @@
 # Xorg config
-~/.bin/xorg-keyboard &
-~/.bin/xorg-touchpad-off &
-~/.bin/xorg-monitors-one &
+$HOME/.bin/xorg-keyboard &
+$HOME/.bin/xorg-touchpad-off &
+$HOME/.bin/xorg-monitors-one &
 
 # Wallpaper
 # TODO: Get a solid color.

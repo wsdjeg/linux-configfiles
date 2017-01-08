@@ -25,12 +25,12 @@
 # 
 #        * /etc/bash-completion.d
 #        * /usr/local/etc/bash-completion.d
-#        * ~/bash-completion.d
+#        * $HOME/bash-completion.d
 # 
-#     b. Or, copy it somewhere (e.g. ~/.git-flow-completion.sh) and put the following line in
+#     b. Or, copy it somewhere (e.g. $HOME/.git-flow-completion.sh) and put the following line in
 #        your .bashrc:
 # 
-#            source ~/.git-flow-completion.sh
+#            source $HOME/.git-flow-completion.sh
 # 
 #  2. If you are using Git < 1.7.1: Edit git-completion.sh and add the following line to the giant
 #     $command case in _git:

@@ -4,7 +4,7 @@ echo "Installing steam."
 
 sudo apt-get install -y steam
 
-if [ -d ~/.steam ]; then
-  rm -rf ~/.steam
+if [ -d $HOME/.steam ]; then
+  rm -rf $HOME/.steam
 fi
 ln -s /mnt/linux-data/.steam ~

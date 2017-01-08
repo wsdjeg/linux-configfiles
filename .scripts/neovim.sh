@@ -19,10 +19,10 @@ sudo apt-get install -y neovim
 sudo pip3 install --upgrade neovim
 sudo pip3 install --upgrade neovim
 
-mkdir -p ~/.config
-if [ -d ~/.config/nvim ]; then
-  rm ~/.config/nvim
+mkdir -p $HOME/.config
+if [ -d $HOME/.config/nvim ]; then
+  rm $HOME/.config/nvim
 fi
-ln -s $REPO/.config/nvim ~/.config/nvim
-mkdir -p ~/.config/nvim/backup
-mkdir -p ~/.config/nvim/temp
+ln -s $REPO/.config/nvim $HOME/.config/nvim
+mkdir -p $HOME/.config/nvim/backup
+mkdir -p $HOME/.config/nvim/temp

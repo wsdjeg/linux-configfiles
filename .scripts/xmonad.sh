@@ -4,7 +4,7 @@ echo "Installing xmonad."
 
 sudo apt-get install -y xmonad
 
-if [ -d ~/.xmonad ]; then
-  rm ~/.xmonad
+if [ -d $HOME/.xmonad ]; then
+  rm $HOME/.xmonad
 fi
 ln -s $REPO/.xmonad ~

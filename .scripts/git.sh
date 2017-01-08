@@ -4,7 +4,7 @@ echo "Installing git."
 
 sudo apt-get install -y git
 
-if [ -f ~/.gitconfig ]; then
-  rm ~/.gitconfig
+if [ -f $HOME/.gitconfig ]; then
+  rm $HOME/.gitconfig
 fi
 ln -s $REPO/.gitconfig ~

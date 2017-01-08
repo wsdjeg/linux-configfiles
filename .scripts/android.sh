@@ -2,8 +2,8 @@
 
 echo "Installing android."
 
-#if [ -f ~/.npmrc ]; then
-#  rm ~/.npmrc
+#if [ -f $HOME/.npmrc ]; then
+#  rm $HOME/.npmrc
 #fi
 #ln -s $REPO/.npmrc ~
 
@@ -13,8 +13,8 @@ echo "Installing android."
 
 sudo apt-get install -y default-jdk
 
-mkdir -p ~/Applications
-cd ~/Applications
+mkdir -p $HOME/Applications
+cd $HOME/Applications
 wget https://dl.google.com/dl/android/studio/ide-zips/2.1.3.0/android-studio-ide-143.3101438-linux.zip
 unzip android-studio-ide-143.3101438-linux.zip
 rm android-studio-ide-143.3101438-linux.zip

@@ -2,7 +2,7 @@
 
 echo "Installing X configuration."
 
-if [ -f ~/.Xmodmap ]; then
-  rm ~/.Xmodmap
+if [ -f $HOME/.Xmodmap ]; then
+  rm $HOME/.Xmodmap
 fi
 ln -s $REPO/.Xmodmap ~
