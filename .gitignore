@@ -1,9 +1,12 @@
+.bin/nomad
+.bin/packer
+.bin/terraform
 .config/nvim/backup/*
 .config/nvim/plugged/*
 .config/nvim/temp/*
+.weechat/*.log
+.weechat/logs/*
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
-.weechat/logs/*
-.weechat/*.log
