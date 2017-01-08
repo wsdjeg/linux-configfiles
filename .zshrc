@@ -1,13 +1,13 @@
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-# TODO: pick a theme from ~/.oh-my-zsh/themes
+# TODO: pick a theme from $HOME/.oh-my-zsh/themes
 ZSH_THEME="bureau"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="sunrise"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
-# TODO: pick plugins from ~/.oh-my-zsh/plugins
+# TODO: pick plugins from $HOME/.oh-my-zsh/plugins
 plugins=(
   battery
   colored-man-pages
@@ -36,12 +36,12 @@ EDITOR="vim";
 GIT_EDITOR=$EDITOR;
 MAKEFLAGS="-j 7";
 
-PATH="~/.bin:$PATH";
-PATH="~/.cabal/bin:$PATH";
-PATH="~/Applications/google-could-sdk/bin:$PATH";
-PATH="~/n/bin:$PATH";
-PATH="~/npm/bin:$PATH";
-PATH="~/Applications/RoboMongo/bin:$PATH";
+PATH="$HOME/.bin:$PATH";
+PATH="$HOME/.cabal/bin:$PATH";
+PATH="$HOME/Applications/google-could-sdk/bin:$PATH";
+PATH="$HOME/n/bin:$PATH";
+PATH="$HOME/npm/bin:$PATH";
+PATH="$HOME/Applications/RoboMongo/bin:$PATH";
 
 #TERM="xterm-256color"
 #TERM="rxvt-unicode"
@@ -89,7 +89,7 @@ export GIT_EDITOR;
 export MAKEFLAGS;
 
 # NVM
-export NVM_DIR="~/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Run Tmux, but not if it's already in tmux.
@@ -97,5 +97,3 @@ export NVM_DIR="~/.nvm"
 #if command -v tmux>/dev/null; then
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
-
-~/.bin/xorg-keyboard
