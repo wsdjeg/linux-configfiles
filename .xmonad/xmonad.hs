@@ -23,7 +23,7 @@ import qualified Data.Map        as Map
 import qualified XMonad.StackSet as StackSet
 
 main = do
-  xmproc <- spawnPipe "/home/tom/.cabal/bin/xmobar --bottom /home/tom/.xmonad/.xmobarrc"
+  xmproc <- spawnPipe "~/.cabal/bin/xmobar --bottom ~/.xmonad/.xmobarrc"
   xmonad $ myConfig xmproc
 
 myTheme = defaultTheme {
@@ -170,7 +170,7 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
     ((modm .|. shiftMask, xK_q), io exitSuccess)
 
     -- WoW HAXXXX
-    --((0, xK_grave), spawn "wine /home/tom/Applications/AutoHotKey/bin/AutoHotKey.exe ")
+    --((0, xK_grave), spawn "wine ~/Applications/AutoHotKey/bin/AutoHotKey.exe ")
   ]
   ++
 

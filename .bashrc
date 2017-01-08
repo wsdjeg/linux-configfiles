@@ -44,7 +44,7 @@ PATH=~/.cabal/bin:$PATH
 PATH=~/npm/bin:$PATH
 export PATH
 
-export NODE_PATH=/usr/bin/node:/home/tom/npm/lib/node_modules
+export NODE_PATH=/usr/bin/node:~/npm/lib/node_modules
 alias npm='npm --python=python2'
 #alias npi='npm --python=python2'
 
