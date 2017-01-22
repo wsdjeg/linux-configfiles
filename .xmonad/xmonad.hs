@@ -23,7 +23,7 @@ import qualified Data.Map        as Map
 import qualified XMonad.StackSet as StackSet
 
 main = do
-  xmproc <- spawnPipe "$HOME/.cabal/bin/xmobar --bottom $HOME/.xmonad/.xmobarrc"
+  xmproc <- spawnPipe "xmobar --bottom ~/.xmonad/.xmobarrc"
   xmonad $ myConfig xmproc
 
 myTheme = defaultTheme {
@@ -42,7 +42,7 @@ myTheme = defaultTheme {
 
 myConfig xmproc = defaultConfig {
   -- simple stuff
-  terminal = "$HOME/.bin/terminal",
+  terminal = "~/.bin/terminal",
 
   focusFollowsMouse = True,
   clickJustFocuses = False,
@@ -112,7 +112,7 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
     -- launch a terminal
     ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
     -- launch dmenu
-    ((modm .|. shiftMask, xK_p), spawn "exe=`dmenu_run -fn 'Terminus:size=9'` && eval \"exec $exe\""),
+    ((modm .|. shiftMask, xK_p), spawn "dmenu_run -fn 'Terminus:size=9'"),
 
     -- close focused window
     ((modm .|. shiftMask, xK_c), kill),
@@ -170,7 +170,7 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
     ((modm .|. shiftMask, xK_q), io exitSuccess)
 
     -- WoW HAXXXX
-    --((0, xK_grave), spawn "wine $HOME/Applications/AutoHotKey/bin/AutoHotKey.exe ")
+    --((0, xK_grave), spawn "wine ~/Applications/AutoHotKey/bin/AutoHotKey.exe ")
   ]
   ++
 
@@ -187,12 +187,23 @@ myKeys conf@ XConfig {XMonad.modMask = modm}  = Map.fromList $
   ]
   ++
 
+
   --
   -- mod-{u,i,o}, Switch to physical/Xinerama screens 1, 2, 3
   -- mod-shift-{u,i, o}, Move client to screen 1, 2, 3
   --
+  -- [
+  --   ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+  --     | (key, sc) <- zip [xK_i, xK_o, xK_u] [0..],
+  --       (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]
+  -- ]
+
+  --
+  -- mod-{i,o}, Switch to physical/Xinerama screens 1, 2, 3
+  -- mod-shift-{i, o}, Move client to screen 1, 2, 3
+  --
   [
     ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_i, xK_o, xK_u] [0..],
+      | (key, sc) <- zip [xK_o, xK_i] [0..],
         (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]
   ]
