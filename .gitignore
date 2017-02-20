@@ -1,3 +1,4 @@
+.bin/helm
 .bin/nomad
 .bin/packer
 .bin/terraform
