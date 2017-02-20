@@ -19,13 +19,6 @@ map <leader>sy :syntax sync fromstart<cr>
 map <leader>v :edit ~/.config/nvim/init.vim<cr>
 map <leader>V :bufdo :source ~/.config/nvim/init.vim<cr>:bufdo :filetype detect<cr>
 
-function SetIndentation()
-  set autoindent
-  set tabstop=2
-  set shiftwidth=2
-  set expandtab
-endfunction
-
 function SetBackups()
   set writebackup
   set backup
@@ -125,93 +118,33 @@ function SetBuffersAndFiles()
   set autoread
 endfunction
 
-function SetMovement()
-  " # Movement
-  " make movement keys wrap to the next/previous line
-  set whichwrap=b,s,h,l,<,>,[,]
+function SetColorSchemes()
+  Plug 'chriskempson/base16-vim'
+  Plug 'altercation/vim-colors-solarized'
 
-  " Fix backspace behaviour
-  set backspace=indent,eol,start
+  " Make colorschemes work in the terminal
+  Plug 'CSApprox'
+  set t_Co=256
 
-  " don't wrap lines
-  set nowrap
+  let w:lightscheme='base16-google-light'
+  let w:darkscheme='base16-atelier-dune'
 
-  Plug 'Lokaltog/vim-easymotion'
-  let g:EasyMotion_leader_key='<leader>'
+  function! ToggleColorschemeBackground()
+    if &background=='light'
+      execute 'colorscheme' w:darkscheme
+      set background=dark
+    else
+      execute 'colorscheme' w:lightscheme
+      set background=light
+    endif
+  endfunction
 
-  " switch buffers
-  map <tab> :bn<cr>
-  map <S-tab> :bp<cr>
+  " prepare the first call (set values to what we don't want)
+  set background=light
 
-  " move through splits
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-
-  " keep a certain number of lines visible
-  set scrolloff=50
-
-  " improved buffer delete
-  map <leader>d :SmartBd<cr>
-  map <leader>c :SmartBw<cr>
-
-  " select word under cursor
-  nmap <space> viw
-
-  " TODO: Disables the grep.vim enter functionality.
-  " Solution: Do not do it for quickfix windows?
-  "nmap <cr> o<esc>
-endfunction
-
-function SetFindingSearchingReplacing()
-  set noignorecase
-
-  Plug 'wincent/loupe'
-    " Don't set up a mapping to clean searhc highlighting.
-    let g:LoupeClearHighlightMap=1
-
-  " TODO: this one screws up
-  "Plug 'ervandew/ag'
-  Plug 'Spaceghost/vim-matchit'
-  Plug 'vim-scripts/IndexedSearch'
-  Plug 'vim-scripts/grep.vim'
-    let g:Grep_Default_Options="--exclude-dir=node_modules"
-    map <C-f> :Rgrep<cr>
-
-  map <leader>s :sort<cr>
-
-  " # Cut, Copy and Paste
-  "Plug 'maxbrunsfeld/vim-yankstack'
-
-  map <leader>d "+d
-  map <leader>y "+y
-  map <leader>p "+p
-
-  map <leader>D "*d
-  map <leader>Y "*y
-  map <leader>P "*p
-
-  " # Save, Close, Quit
-  map <c-s> :write<cr>
-  "map <c-w> :SmartBw<cr>
-  map <c-q> :qa!<cr>
-
-  imap <c-s> <esc>:write<cr>a
-  "imap <c-w> <esc>:SmartBw<cr>a
-  imap <c-q> <esc>:qa!<cr>
-endfunction
-
-function SetSyntax()
-  Plug 'scrooloose/syntastic'
-    let g:syntastic_check_on_open=1
-    let g:syntastic_auto_jump=0
-    let g:syntastic_auto_loc_list=0
-    let g:syntastic_error_symbol='!'
-    let g:syntastic_warning_symbol='?'
-    "let g:syntastic_error_symbol='✗'
-    "let g:syntastic_warning_symbol='⚠'
-    let g:syntastic_javascript_checkers=['eslint']
+  " - Maps
+    " Toggle background color
+    map <f12> :call ToggleColorschemeBackground()<cr>
 endfunction
 
 function SetCompletion()
@@ -274,6 +207,185 @@ function SetCompletion()
   vnoremap <silent> <leader>A :'<,'>sort<cr>:'<,'>Align<cr>
 endfunction
 
+function SetFileTypes()
+  " Many languages
+  Plug 'sheerun/vim-polyglot'
+
+  " Livescript
+  Plug 'gkz/vim-ls'
+
+  " JavaScript
+  Plug 'othree/yajs.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'othree/es.next.syntax.vim'
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+    let g:tern_show_argument_hints=1
+    let g:tern_show_signature_in_pum=1
+    let g:tern_map_prefix="<leader>"
+    let g:tern_map_keys=1
+
+  " JSX
+  "Plug 'mxw/vim-jsx'
+    let g:jsx_ext_required=0
+
+  " Nomad
+  Plug 'buztard/vim-nomad'
+
+  " Go
+  Plug 'fatih/vim-go'
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+endfunction
+
+function SetFindingSearchingReplacing()
+  set noignorecase
+
+  " Improves searching in vim.
+  Plug 'wincent/loupe'
+    " Don't set up a mapping to clean searhc highlighting.
+    let g:LoupeClearHighlightMap=1
+
+  " Insert matching code automatically.
+  Plug 'Spaceghost/vim-matchit'
+
+  " Easily surround code with matching characters (quotes, brackets).
+  Plug 'tpope/vim-surround'
+
+  " Set the program for :grep to ack-grep
+  set grepprg=ack\ -a
+
+  " TODO: See if grepprg can replace these 2 plugins.
+  Plug 'vim-scripts/IndexedSearch'
+  Plug 'vim-scripts/grep.vim'
+    let g:Grep_Default_Options="--exclude-dir=node_modules"
+    map <C-f> :Rgrep<cr>
+
+  map <leader>s :sort<cr>
+
+
+  Plug 'tomtom/tcomment_vim'
+
+  " # Cut, Copy and Paste
+  "Plug 'maxbrunsfeld/vim-yankstack'
+
+  map <leader>d "+d
+  map <leader>y "+y
+  map <leader>p "+p
+
+  map <leader>D "*d
+  map <leader>Y "*y
+  map <leader>P "*p
+
+  " # Save, Close, Quit
+  map <c-s> :write<cr>
+  "map <c-w> :SmartBw<cr>
+  map <c-q> :qa!<cr>
+
+  imap <c-s> <esc>:write<cr>a
+  "imap <c-w> <esc>:SmartBw<cr>a
+  imap <c-q> <esc>:qa!<cr>
+endfunction
+
+function SetFont()
+  function! ToggleFontSize()
+    if w:font_size=='small'
+      if has('macunix')
+        set guifont=Menlo:h14
+      else
+        " assume linux
+        "set guifont=Ubuntu\ Mono\ 12
+        "set guifont=Droid\ Sans\ Mono\ 12
+        set guifont=Inconsolata\ Medium\ 12
+      endif
+
+      let w:font_size='large'
+
+    else
+      if has('macunix')
+        set guifont=Monaco:h9
+      else
+        " assume linux
+        set guifont=Terminus\ 9
+        "set guifont=Ubuntu\ Mono\ 12
+      endif
+
+      let w:font_size='small'
+
+    endif
+  endfunction
+
+  " prepare the first call (set values to what we don't want)
+  let w:font_size='small'
+
+  " then call
+
+  " - Maps
+    " Toggle font size
+    map <f11> :call ToggleFontSize()<cr>
+endfunction
+
+function SetIndentation()
+  set autoindent
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
+endfunction
+
+function SetMovement()
+  " # Movement
+  " make movement keys wrap to the next/previous line
+  set whichwrap=b,s,h,l,<,>,[,]
+
+  " Fix backspace behaviour
+  set backspace=indent,eol,start
+
+  " don't wrap lines
+  set nowrap
+
+  Plug 'Lokaltog/vim-easymotion'
+    let g:EasyMotion_leader_key='<leader>m'
+
+  " switch buffers
+  map <tab> :bn<cr>
+  map <S-tab> :bp<cr>
+
+  " move through splits
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+
+  " keep a certain number of lines visible
+  set scrolloff=50
+
+  " improved buffer delete
+  map <leader>d :SmartBd<cr>
+  map <leader>c :SmartBw<cr>
+
+  " select word under cursor
+  nmap <space> viw
+
+  " TODO: Disables the grep.vim enter functionality.
+  " Solution: Do not do it for quickfix windows?
+  "nmap <cr> o<esc>
+endfunction
+
+function SetSyntax()
+  Plug 'scrooloose/syntastic'
+    let g:syntastic_check_on_open=1
+    let g:syntastic_auto_jump=0
+    let g:syntastic_auto_loc_list=0
+    let g:syntastic_error_symbol='!'
+    let g:syntastic_warning_symbol='?'
+    "let g:syntastic_error_symbol='✗'
+    "let g:syntastic_warning_symbol='⚠'
+    let g:syntastic_javascript_checkers=['eslint']
+endfunction
+
 function SetVersionControl()
   " # Version Control
   Plug 'tpope/vim-fugitive'
@@ -292,36 +404,6 @@ function SetVersionControl()
   " Visualize the undo history as a tree.
   Plug 'sjl/gundo.vim'
     map <leader>u :GundoToggle<cr>
-endfunction
-
-function SetFileTypes()
-  " Many languages
-  Plug 'sheerun/vim-polyglot'
-
-  " Livescript
-  Plug 'gkz/vim-ls'
-
-  " JavaScript
-  Plug 'othree/yajs.vim'
-  Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'othree/es.next.syntax.vim'
-  Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-
-  " JSX
-  "Plug 'mxw/vim-jsx'
-    let g:jsx_ext_required=0
-
-  " Nomad
-  Plug 'buztard/vim-nomad'
-
-  " Go
-  Plug 'fatih/vim-go'
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
 endfunction
 
 function SetVisualInformation()
@@ -473,85 +555,18 @@ function SetVisualInformation()
     map <f9> :call ToggleFunctionFoldMode()<cr>
 endfunction
 
-function SetFont()
-  function! ToggleFontSize()
-    if w:font_size=='small'
-      if has('macunix')
-        set guifont=Menlo:h14
-      else
-        " assume linux
-        "set guifont=Ubuntu\ Mono\ 12
-        "set guifont=Droid\ Sans\ Mono\ 12
-        set guifont=Inconsolata\ Medium\ 12
-      endif
-
-      let w:font_size='large'
-
-    else
-      if has('macunix')
-        set guifont=Monaco:h9
-      else
-        " assume linux
-        set guifont=Terminus\ 9
-        "set guifont=Ubuntu\ Mono\ 12
-      endif
-
-      let w:font_size='small'
-
-    endif
-  endfunction
-
-  " prepare the first call (set values to what we don't want)
-  let w:font_size='small'
-
-  " then call
-
-  " - Maps
-    " Toggle font size
-    map <f11> :call ToggleFontSize()<cr>
-endfunction
-
-function SetColorSchemes()
-  Plug 'chriskempson/base16-vim'
-  Plug 'altercation/vim-colors-solarized'
-
-  " Make colorschemes work in the terminal
-  Plug 'CSApprox'
-  set t_Co=256
-
-  let w:lightscheme='base16-google-light'
-  let w:darkscheme='base16-atelier-dune'
-
-  function! ToggleColorschemeBackground()
-    if &background=='light'
-      execute 'colorscheme' w:darkscheme
-      set background=dark
-    else
-      execute 'colorscheme' w:lightscheme
-      set background=light
-    endif
-  endfunction
-
-  " prepare the first call (set values to what we don't want)
-  set background=light
-
-  " - Maps
-    " Toggle background color
-    map <f12> :call ToggleColorschemeBackground()<cr>
-endfunction
-
-call SetIndentation()
 call SetBackups()
 call SetBuffersAndFiles()
-call SetMovement()
-call SetFindingSearchingReplacing()
-call SetSyntax()
-call SetCompletion()
-call SetVersionControl()
-call SetFileTypes()
-call SetVisualInformation()
-call SetFont()
 call SetColorSchemes()
+call SetCompletion()
+call SetFileTypes()
+call SetFindingSearchingReplacing()
+call SetFont()
+call SetIndentation()
+call SetMovement()
+call SetSyntax()
+call SetVersionControl()
+call SetVisualInformation()
 
 " Finalize
 call plug#end()
