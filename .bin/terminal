@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-#gnome-terminal "$@"
+gnome-terminal "$@"
 
-urxvt +si +vb -bc -bg black -fg grey -fn xft:Terminus:size=9 -is -j -sb -sk -sr -ss "$@"
+#urxvt +si +vb -bc -bg black -fg grey -fn xft:Terminus:size=9 -is -j -sb -sk -sr -ss "$@"
