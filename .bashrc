@@ -1,2 +1,2 @@
-# Let Fish replace bash
-exec fish
+# Let ZSH replace bash
+exec zsh

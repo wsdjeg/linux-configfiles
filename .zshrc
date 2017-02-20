@@ -31,21 +31,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Variables
-EDITOR="vim";
-GIT_EDITOR=$EDITOR;
-MAKEFLAGS="-j 7";
-
-PATH="$HOME/.bin:$PATH";
-PATH="$HOME/.cabal/bin:$PATH";
-PATH="$HOME/Applications/google-could-sdk/bin:$PATH";
-PATH="$HOME/n/bin:$PATH";
-PATH="$HOME/npm/bin:$PATH";
-PATH="$HOME/Applications/RoboMongo/bin:$PATH";
-
-#TERM="xterm-256color"
-#TERM="rxvt-unicode"
-
 # Remove things set by Oh My ZSH
 # TODO: Add location in file of where these are being set by oh my zsh.
 unalias l;
@@ -60,21 +45,23 @@ unalias po;
 unalias pu;
 unalias rd;
 
+# TODO: Document.
 unsetopt share_history;
 
-# Spelling correction
+# Spelling correction>
 setopt CORRECT;
 
-# Set vi mode
+# Set vi mode.
 bindkey -v
 
+# TODO: Find a way to go both up and down in history search.
 # History search on up/down
 bindkey '^R' history-beginning-search-backward
 # These don't work somehow
 #bindkey '^[[A' history-beginning-search-backward
 #bindkey '^[[B' history-beginning-search-forward
 
-
+# TODO: Find a way to declare this in a separate file.
 # This one is an alias because putting it in it's own executable won't work
 # (different shell instance?).
 c() {
@@ -82,18 +69,28 @@ c() {
   l .;
 }
 
-# Exports
-export PATH;
-export EDITOR;
-export GIT_EDITOR;
-export MAKEFLAGS;
+# Common environment variables.
+EDITOR=nvim
+GIT_EDITOR=nvim
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Command line execution path.
+PATH=$HOME/.bin:$PATH
+PATH=$HOME/.cabal/bin:$PATH
+PATH=$HOME/npm/bin:$PATH
+PATH=$HOME/Applications/RoboMongo/bin:$PATH
 
-# Run Tmux, but not if it's already in tmux.
-# TODO: This approach doesn't work.
-#if command -v tmux>/dev/null; then
-#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-#fi
+# Go
+GOPATH=$HOME/go
+PATH=$GOROOT/bin:$PATH
+PATH=$GOPATH/bin:$PATH
+
+# Node Version Manager
+NVM_DIR=$HOME/.nvm
+. $NVM_DIR/nvm.sh
+
+# Export the environment variables.
+export EDITOR
+export GIT_EDITOR
+export GOPATH
+export NVM_DIR
+export PATH
