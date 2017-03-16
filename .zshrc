@@ -86,7 +86,7 @@ PATH=$GOPATH/bin:$PATH
 
 # Node Version Manager
 NVM_DIR=$HOME/.nvm
-. $NVM_DIR/nvm.sh
+. /usr/local/opt/nvm/nvm.sh
 
 # Export the environment variables.
 export EDITOR
