@@ -71,6 +71,7 @@ c() {
 
 # Common environment variables.
 EDITOR=nvim
+PAGER=less
 GIT_EDITOR=nvim
 
 # Command line execution path.
@@ -93,4 +94,5 @@ export EDITOR
 export GIT_EDITOR
 export GOPATH
 export NVM_DIR
+export PAGER
 export PATH

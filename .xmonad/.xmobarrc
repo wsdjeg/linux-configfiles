@@ -1,5 +1,5 @@
 Config {
-  font = "xft:Terminus:size=9",
+  font = "xft:Roboto Mono for Powerline:size=9",
 
   bgColor = "#000000",
   fgColor = "#ffffff",

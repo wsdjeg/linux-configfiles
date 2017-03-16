@@ -1,0 +1,5 @@
+pane	edit	1	:~/Code/Code9	1	:*	1	:/mnt/linux-data/Code/Code9	1	zsh	:
+pane	irc	1	:WeeChat 1.5	1	:*	1	:/home/tom	1	weechat	:weechat
+window	edit	1	1	:*	b4de,237x70,0,0,1
+window	irc	1	1	:*	b4dd,237x70,0,0,0
+state	edit	

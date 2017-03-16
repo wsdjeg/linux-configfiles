@@ -1,0 +1,8 @@
+pane	dev	1	:nvim	1	:*	1	:/mnt/linux-data/Code/Code9/JavaScript/Projects/tomwieland.nl	1	nvim	:nvim
+pane	irc	1	:WeeChat 1.5	1	:*	1	:/home/tom	1	weechat	:weechat
+pane	term	1	:dc	1	:*	1	:/mnt/linux-data/Code/Code9/JavaScript/Projects/tomwieland.nl	1	bash	:bash /home/tom/.bin/dc up --build
+pane	term	1	:dc	1	:*	2	:/mnt/linux-data/Code/Code9/JavaScript/Projects/tomwieland.nl/services/app	0	zsh	:
+window	dev	1	1	:*	b4dd,237x70,0,0,0
+window	irc	1	1	:*	b4e1,237x70,0,0,4
+window	term	1	1	:*	e4f6,237x70,0,0{118x70,0,0,1,118x70,119,0,3}
+state	irc	

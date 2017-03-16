@@ -64,8 +64,8 @@ myConfig xmproc = defaultConfig {
   borderWidth = 1,
 
   normalBorderColor = "#000000",
-  --focusedBorderColor = "#336699",
-  focusedBorderColor = "#339966",
+  focusedBorderColor = "#336699",
+  --focusedBorderColor = "#339966",
 
   -- key bindings
   keys = myKeys,

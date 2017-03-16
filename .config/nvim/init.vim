@@ -38,6 +38,7 @@ function SetBuffersAndFiles()
       \ 'dir': '\v[\/](\.git|\.svn|\.hg|node_modules|bower_components|build|docs)'
       \ }
 
+  Plug 'airodactyl/neovim-ranger'
   Plug 'scrooloose/nerdtree'
     let g:NERDTreeCascadeOpenSingleChildDir=0
     let g:NERDTreeCaseSensitiveSort=1
@@ -48,10 +49,6 @@ function SetBuffersAndFiles()
     let g:NERDTreeCascadeOpenSingleChildDir=1
     let g:NERDTreeAutoDeleteBuffer=1
     map <leader>[ :NERDTreeToggle<cr>
-
-    function! ToggleNerdTree()
-      normal :NERDTreeToggle()<cr>
-    endfunction
 
   Plug 'majutsushi/tagbar'
     let g:tagbar_compact=1
@@ -64,9 +61,6 @@ function SetBuffersAndFiles()
   " Color the prompt like airline.
   Plug 'edkolev/promptline.vim'
 
-  " Color the tmux line like airline
-  Plug 'edkolev/tmuxline.vim'
-
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
     "let g:airline_left_sep='>'
@@ -75,33 +69,11 @@ function SetBuffersAndFiles()
     let g:airline_detect_paste=1
     let g:airline_detect_iminsert=1
     let g:airline_inactive_collapse=1
-    "let g:airline_theme=
     let g:airline_powerline_fonts=1
-    "let g:airline_mode_map={
-    "    \ '__' : '-',
-    "    \ 'n'  : 'N',
-    "    \ 'i'  : 'I',
-    "    \ 'R'  : 'R',
-    "    \ 'c'  : 'C',
-    "    \ 'v'  : 'V',
-    "    \ 'V'  : 'V',
-    "    \ '' : 'V',
-    "    \ 's'  : 'S',
-    "    \ 'S'  : 'S',
-    "    \ '' : 'S',
-    "    \ }
 
     if !exists('g:airline_symbols')
       let g:airline_symbols={}
     endif
-
-    " unicode symbols
-    "let g:airline_left_sep='»'
-    "let g:airline_right_sep='«'
-    "let g:airline_symbols.linenr='¶'
-    "let g:airline_symbols.branch='B'
-    "let g:airline_symbols.paste='∥'
-    "let g:airline_symbols.whitespace='Ξ'
 
     let g:airline#extensions#branch#enabled=1
     let g:airline#extensions#hunks#enabled=0
@@ -386,6 +358,15 @@ function SetSyntax()
     let g:syntastic_javascript_checkers=['eslint']
 endfunction
 
+function SetTmuxSupport()
+  " Color the tmux line like airline
+  Plug 'edkolev/tmuxline.vim'
+
+  " Vim inside tmux support
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'roxma/vim-tmux-clipboard'
+endfunction
+
 function SetVersionControl()
   " # Version Control
   Plug 'tpope/vim-fugitive'
@@ -407,8 +388,6 @@ function SetVersionControl()
 endfunction
 
 function SetVisualInformation()
-  "Plug 'nathanaelkane/vim-indent-guides'
-
   " Show the command being executed
   set showcmd
 
@@ -449,7 +428,7 @@ function SetVisualInformation()
   " highlight the line the cursor is on
   "set cursorline
 
-  " TODO: Document what this does.
+  " Linting hints in the gutter.
   Plug 'w0rp/ale'
     let g:ale_linters = {
     \   'javascript': ['eslint'],
@@ -565,6 +544,7 @@ call SetFont()
 call SetIndentation()
 call SetMovement()
 call SetSyntax()
+call SetTmuxSupport()
 call SetVersionControl()
 call SetVisualInformation()
 
@@ -576,4 +556,4 @@ call ToggleFontSize()
 call ToggleColorschemeBackground()
 
 " Open NERDTree and move the cursor to the right split, the file buffer.
-autocmd VimEnter * NERDTree | wincmd l
+" autocmd VimEnter * NERDTree | wincmd l
