@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ls -AFhHlX --color=auto --group-directories-first "$@";
+ls -AlFhHG "$@";
